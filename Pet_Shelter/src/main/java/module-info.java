@@ -10,6 +10,7 @@ module com.example.pet_shelter {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.desktop;
 
     opens com.example.pet_shelter to javafx.fxml;
     exports com.example.pet_shelter;
