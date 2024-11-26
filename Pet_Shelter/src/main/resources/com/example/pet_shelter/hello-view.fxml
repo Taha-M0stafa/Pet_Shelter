@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.pet_shelter.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="1080.0" minWidth="1920.0" style="-fx-background-color: Black; -fx-border-color: Red; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pet_shelter.HelloController">
+   <children>
+      <ImageView fitHeight="740.0" fitWidth="1441.0" layoutX="457.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Photos/dog_BackGround.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="ExitProgram" alignment="TOP_LEFT" layoutX="904.0" layoutY="403.0" mnemonicParsing="false" onAction="#ExitProgram" text="Close Program" AnchorPane.topAnchor="403.0" />
+   
+        <Label fx:id="welcomeText" />
+     <Button layoutX="886.0" layoutY="540.0" onAction="#onHelloButtonClick" text="Hey how are you doing" AnchorPane.topAnchor="600.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="nextScene" layoutX="913.0" layoutY="497.0" mnemonicParsing="false" onAction="#nextScene" text="Next Scene" />
+   </children>
+</AnchorPane>
