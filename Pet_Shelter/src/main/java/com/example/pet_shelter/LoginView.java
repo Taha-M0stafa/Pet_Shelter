@@ -1,6 +1,7 @@
 package com.example.pet_shelter;
 
 import com.almasb.fxgl.entity.action.Action;
+import com.sun.tools.javac.Main;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,15 +29,8 @@ public class LoginView {
     @FXML
     public void returnToView(ActionEvent e) throws IOException
     {
-        try {
-            Parent root2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            stage.getScene().setRoot(root2);
-            stage.show();
-        }
-        catch (Exception ex) {
-            System.out.println("Error");
-        }
+        HelloApplication m = new HelloApplication();
+        m.changeScene("hello-view.fxml");
     }
 
 }

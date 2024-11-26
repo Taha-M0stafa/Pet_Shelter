@@ -24,14 +24,9 @@ public class HelloController {
     public Button ExitProgram;
     @FXML
     private Label welcomeText;
-    public Stage exitStage;
     @FXML
-    private Group newGroup = new Group();
     private Parent root;
     private Stage stage;
-    private Scene scene;
-    private Paint rectanglePaint = Color.BLACK;
-
     @FXML
     protected void onHelloButtonClick() {
 
@@ -51,15 +46,8 @@ public class HelloController {
     @FXML
     public void nextScene(ActionEvent e) throws Exception
     {
-        try {
-            Parent root2 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login View.fxml")));
-            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            stage.getScene().setRoot(root2);
-            stage.show();
-        }
-        catch (Exception ex) {
-            System.out.println("Error");
-        }
+        HelloApplication m = new HelloApplication();
+        m.changeScene("Login View.fxml");
     }
 
 }
