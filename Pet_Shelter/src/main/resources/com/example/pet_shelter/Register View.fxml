@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pet_shelter.RegisterView">
+   <children>
+      <TextField layoutX="75.0" layoutY="108.0" promptText="Username Register" style="-fx-border-width: 1; -fx-border-color: black;" />
+      <TextField layoutX="75.0" layoutY="175.0" promptText="Password Register" style="-fx-border-color: black; -fx-border-width: 1;" />
+      <MenuButton layoutX="97.0" layoutY="240.0" mnemonicParsing="false" text="MenuButton">
+        <items>
+            <Menu mnemonicParsing="false" text="Choose Type">
+              <items>
+                    <MenuItem text="Admin" />
+                    <MenuItem text="Pet adopter" />
+              </items>
+            </Menu>
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>
