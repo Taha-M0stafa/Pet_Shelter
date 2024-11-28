@@ -22,7 +22,6 @@ public class HelloApplication extends Application {
         stage.setTitle("Salutations");
         stage.setScene(scene);
         stage.show();
-
     }
 
     public void changeScene(String FXML) throws IOException {

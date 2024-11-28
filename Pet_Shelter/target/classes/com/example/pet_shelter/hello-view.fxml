@@ -31,6 +31,7 @@
                   <Font size="16.0" />
                </font>
             </TextArea>
+            <Pane layoutX="348.0" layoutY="1.0" prefHeight="951.0" prefWidth="9.0" style="-fx-background-color: purple;" />
          </children>
       </AnchorPane>
    </left>

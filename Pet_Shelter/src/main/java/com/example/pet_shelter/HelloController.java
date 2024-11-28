@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,11 +33,7 @@ public class HelloController implements Initializable {
     @FXML
     private Parent root;
     private Stage stage;
-    @FXML
-    protected void onHelloButtonClick() {
-
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+    private TextField text;
 
     @FXML
     public void onExitProgram(ActionEvent actionEvent) throws IOException
@@ -50,7 +47,6 @@ public class HelloController implements Initializable {
     @FXML
     public void onLoginButton(ActionEvent e) throws Exception
     {
-
         HelloApplication m = new HelloApplication();
         m.changeScene("Login View.fxml");
     }
@@ -60,7 +56,6 @@ public class HelloController implements Initializable {
         HelloApplication m = new HelloApplication();
         m.changeScene("Register View.fxml");
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
