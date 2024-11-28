@@ -5,19 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import com.example.pet_shelter.HelloController;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
 
-
     private static Stage changeStage;
-
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.setFullScreen(false);
         changeStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
