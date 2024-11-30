@@ -31,10 +31,8 @@ public class HelloApplication extends Application {
         changeStage.getScene().setRoot(changeRoot);
         changeStage.show();
     }
-    //hi Thanoid
+
     public static void main(String[] args) {
-
         launch();
-
     }
 }

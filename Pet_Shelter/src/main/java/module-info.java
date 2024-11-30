@@ -12,6 +12,7 @@ module com.example.pet_shelter {
     requires com.almasb.fxgl.all;
     requires java.desktop;
     requires jdk.compiler;
+    requires org.json;
 
     opens com.example.pet_shelter to javafx.fxml;
     exports com.example.pet_shelter;
