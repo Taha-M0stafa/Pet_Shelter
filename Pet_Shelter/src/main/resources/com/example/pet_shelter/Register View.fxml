@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pet_shelter.RegisterView">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.RegisterView">
    <children>
       <TextField layoutX="75.0" layoutY="108.0" promptText="Username Register" style="-fx-border-width: 1; -fx-border-color: black;" />
       <TextField layoutX="75.0" layoutY="175.0" promptText="Password Register" style="-fx-border-color: black; -fx-border-width: 1;" />

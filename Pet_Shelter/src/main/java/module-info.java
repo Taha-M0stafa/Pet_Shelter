@@ -15,4 +15,6 @@ module com.example.pet_shelter {
 
     opens com.example.pet_shelter to javafx.fxml;
     exports com.example.pet_shelter;
+    exports com.example.GUI;
+    opens com.example.GUI to javafx.fxml;
 }

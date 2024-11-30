@@ -1,6 +1,7 @@
-package com.example.pet_shelter;
+package com.example.GUI;
 
 
+import com.example.pet_shelter.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

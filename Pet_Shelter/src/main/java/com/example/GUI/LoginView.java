@@ -1,14 +1,11 @@
-package com.example.pet_shelter;
+package com.example.GUI;
 
 
+import com.example.pet_shelter.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import java.io.IOException;
-
-import javafx.animation.*;
-import javafx.scene.transform.Rotate;
-import javafx.util.Duration;
 
 
 public class LoginView {
