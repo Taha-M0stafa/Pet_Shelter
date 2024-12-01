@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.RegisterView">
-   <children>
-      <TextField layoutX="75.0" layoutY="108.0" promptText="Username Register" style="-fx-border-width: 1; -fx-border-color: black;" />
-      <TextField layoutX="75.0" layoutY="175.0" promptText="Password Register" style="-fx-border-color: black; -fx-border-width: 1;" />
-      <MenuButton layoutX="97.0" layoutY="240.0" mnemonicParsing="false" text="MenuButton">
-        <items>
-            <Menu mnemonicParsing="false" text="Choose Type">
-              <items>
-                    <MenuItem text="Admin" />
-                    <MenuItem text="Pet adopter" />
-              </items>
-            </Menu>
-        </items>
-      </MenuButton>
-   </children>
-</AnchorPane>
+<BorderPane minHeight="1080.0" minWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.RegisterView">
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="username" layoutX="15.0" layoutY="155.0" prefHeight="40.0" prefWidth="220.0" promptText="Username" style="-fx-border-width: 1; -fx-border-color: black;" />
+            <Button fx:id="createAccount" layoutX="72.0" layoutY="432.0" mnemonicParsing="false" onAction="#onCreateAccount" text="Create Account" />
+            <TextField fx:id="email" layoutX="15.0" layoutY="95.0" prefHeight="40.0" prefWidth="220.0" promptText="Email" style="-fx-border-width: 1; -fx-border-color: black;" />
+            <PasswordField fx:id="password" layoutX="15.0" layoutY="227.0" prefHeight="40.0" prefWidth="220.0" promptText="Password" style="-fx-border-color: black; -fx-border-width: 1;" />
+            <Button fx:id="returnButton" layoutX="7.0" layoutY="1.0" mnemonicParsing="false" onAction="#onReturnButton" text="Return" />
+            <TextField fx:id="textID" layoutX="15.0" layoutY="291.0" prefHeight="43.0" prefWidth="225.0" promptText="ID" style="-fx-border-color: black; -fx-border-width: 1;" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

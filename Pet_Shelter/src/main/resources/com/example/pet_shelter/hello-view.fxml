@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="789.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.HelloController">
+<BorderPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.HelloController">
    <left>
-      <AnchorPane prefHeight="797.0" prefWidth="345.0" style="-fx-background-color: #FEDCAE;" BorderPane.alignment="CENTER">
+      <AnchorPane style="-fx-background-color: #FEDCAE;">
          <children>
-            <ImageView fitHeight="277.0" fitWidth="281.0" layoutX="35.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="51.0">
+            <ImageView fitHeight="277.0" fitWidth="281.0" layoutX="35.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Photos/Pet_Shop_1.jpg" />
                </image>
@@ -31,28 +31,28 @@
                   <Font size="16.0" />
                </font>
             </TextArea>
-            <Pane layoutX="348.0" layoutY="1.0" prefHeight="951.0" prefWidth="9.0" style="-fx-background-color: purple;" />
+            <Pane layoutX="348.0" layoutY="1.0" prefHeight="1080.0" prefWidth="13.0" style="-fx-background-color: purple;" />
          </children>
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="951.0" minWidth="413.0" prefHeight="951.0" prefWidth="413.0" style="-fx-background-color: White; -fx-border-width: 10;" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="1080.0" maxWidth="1920.0" style="-fx-background-color: White; -fx-border-width: 10;" BorderPane.alignment="CENTER">
          <children>
          
               <Label fx:id="welcomeText" />
-            <Button fx:id="Login" layoutX="92.0" layoutY="557.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="19.0" prefWidth="145.0" style="-fx-background-color: #FEDCA1; -fx-border-width: 2;" stylesheets="@LoginButton.css" text="Login">
+            <Button fx:id="Login" layoutX="92.0" layoutY="557.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="40.0" prefWidth="145.0" style="-fx-background-color: #FEDCA1; -fx-border-width: 2;" stylesheets="@LoginButton.css" text="Login">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
                <effect>
                   <DropShadow />
                </effect></Button>
-            <TextField layoutX="68.0" layoutY="388.0" prefHeight="45.0" prefWidth="237.0" promptText="Username">
+            <TextField fx:id="userField" layoutX="68.0" layoutY="388.0" prefHeight="45.0" prefWidth="237.0" promptText="Username">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </TextField>
-            <TextField layoutX="68.0" layoutY="475.0" prefHeight="49.0" prefWidth="239.0" promptText="Password">
+            <TextField fx:id="passwordField" layoutX="68.0" layoutY="475.0" prefHeight="49.0" prefWidth="239.0" promptText="Password">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -67,7 +67,7 @@
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Text>
-            <Button fx:id="registerButton" layoutX="93.0" layoutY="692.0" mnemonicParsing="false" onAction="#onRegisterButton" prefHeight="22.0" prefWidth="145.0" stylesheets="@LoginButton.css" text="Register">
+            <Button fx:id="registerButton" layoutX="92.0" layoutY="635.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegisterButton" prefHeight="40.0" prefWidth="145.0" stylesheets="@LoginButton.css" text="Register">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -75,7 +75,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Pane prefHeight="231.0" prefWidth="415.0" style="-fx-background-color: #FEDCAE;" />
+            <Pane prefHeight="231.0" prefWidth="1555.0" style="-fx-background-color: #FEDCAE;" />
          </children>
       </AnchorPane>
    </center>
