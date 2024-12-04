@@ -1,7 +1,7 @@
 package com.example.GUI;
 
 
-import com.example.pet_shelter.HelloApplication;
+import com.example.pet_shelter.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,7 +17,7 @@ public class LoginView {
     public void returnToView(ActionEvent e) throws IOException
     {
 
-        HelloApplication m = new HelloApplication();
+        Main m = new Main();
         m.changeScene("hello-view.fxml");
     }
 

@@ -17,11 +17,6 @@
    <left>
       <AnchorPane style="-fx-background-color: #FEDCAE;">
          <children>
-            <ImageView fitHeight="277.0" fitWidth="281.0" layoutX="35.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../Photos/Pet_Shop_1.jpg" />
-               </image>
-            </ImageView>
             <Button fx:id="ExitProgram" alignment="TOP_LEFT" layoutY="1.0" mnemonicParsing="false" onAction="#onExitProgram" style="-fx-background-color: #FEDCAE;" text="X" AnchorPane.topAnchor="1.0">
                <font>
                   <Font size="23.0" />
@@ -32,6 +27,11 @@
                </font>
             </TextArea>
             <Pane layoutX="348.0" layoutY="1.0" prefHeight="1080.0" prefWidth="13.0" style="-fx-background-color: purple;" />
+            <ImageView fitHeight="277.0" fitWidth="281.0" layoutX="42.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Photos/Pet_Shop_1.jpg" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </left>

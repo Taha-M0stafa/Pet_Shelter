@@ -1,6 +1,12 @@
+package com.example.pet_shelter;
+
+import com.example.pet_shelter.ContactInformation;
+import com.example.pet_shelter.Pet;
+import com.example.pet_shelter.User;
+
 import java.util.ArrayList;
 
-public class Adopter extends User{
+public class Adopter extends User {
     private int numOfadoptedPets;
     private ArrayList<Pet>adoptionHistory;
     private ArrayList<Adopter>adopterProfiles=new ArrayList<>(); //admin
@@ -45,7 +51,7 @@ public class Adopter extends User{
         else {
             for (int i = 0; i < adoptionHistory.size(); i++) {
                 System.out.println("Pet number " + (i + 1) + "#");
-                System.out.println("Pet id: " + adoptionHistory.get(i).getId());
+                System.out.println("Pet id: " + adoptionHistory.get(i).getID());
                 System.out.println("Pet name: " + adoptionHistory.get(i).getName());
                 System.out.println("Pet age: " + adoptionHistory.get(i).getAge());
                 System.out.println("Pet Health Status: " + adoptionHistory.get(i).getHealthStatus());

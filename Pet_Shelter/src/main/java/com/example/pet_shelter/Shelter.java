@@ -7,6 +7,10 @@ public class Shelter {
     private int shelterNumber;
     private String shelterEmail;
     static int shelterCounter;
+
+
+
+
     public Shelter(String shelterName, String shelterLocation, int shelterNumber, String shelterEmail) {
         this.shelterName = shelterName;
         this.shelterLocation = shelterLocation;
