@@ -17,9 +17,9 @@ public class User {
     private String user_password;
     private String user_role;
     private String user_email;
-
     // File to store user data
     private static final String FILE_NAME = "users.json";
+    public static User loggedInUser;
 
     public User(int id, String user_name, String user_password, String user_role, String user_email) {
 
@@ -69,10 +69,11 @@ public class User {
 
     // Login method__
     public static boolean login(String userName, String password) throws UserException {
-        List<User> users = readData();
-        for (User user : users) {
+
+        for (User user : Main.currentUsers) {
             if (user.getUserName().equals(userName) && user.getUserPassword().equals(password)) {
                 System.out.println("Login successful أهلا بيك");
+                loggedInUser = user;
                 return true;
             }
         }
@@ -89,19 +90,18 @@ public class User {
 
     // Register method__
     public static void register(User newUser) throws UserException {
-        List<User> users = readData();
-        for (User user : users) {
+
+        for (User user : Main.currentUsers) {
             if (user.getUserEmail().equals(newUser.getUserEmail())) {
                 throw new UserException("Email already registered.");
             }
         }
-        users.add(newUser);
-        writeData(users);
+        Main.currentUsers.add(newUser);
         System.out.println("Registration successful!");
     }
 
     // Generic function to read user data from JSON file
-    private static List<User> readData() {
+    public static List<User> readData() {
         List<User> users = new ArrayList<>();
         try {
             // Specify the file path
@@ -128,7 +128,7 @@ public class User {
     }
 
     // Generic function to write user data to JSON file
-    private static void writeData(List<User> users) {
+    public static void writeData(List<User> users) {
         JSONArray jsonArray = new JSONArray();
 
         for (User user : users) {

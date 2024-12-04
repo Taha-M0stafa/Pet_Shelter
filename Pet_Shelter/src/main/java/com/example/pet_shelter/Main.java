@@ -9,11 +9,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
 
-    private static Stage changeStage;
+
+    public static List<User> currentUsers;
+
+    //Initiate a stage to swap during Runtime
+    public static Stage changeStage;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -21,7 +26,7 @@ public class HelloApplication extends Application {
         stage.sizeToScene();
 
         changeStage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Salutations");
         stage.setScene(scene);
@@ -34,7 +39,28 @@ public class HelloApplication extends Application {
         changeStage.show();
     }
 
+    //Variables that will store read data from the files
+
+
     public static void main(String[] args) {
+
+        ReadAllData();
+
         launch();
+
+
     }
+
+    public static void ReadAllData()
+    {
+       currentUsers = User.readData();
+
+    }
+
+    public static void WriteAllData()
+    {
+        User.writeData(currentUsers);
+    }
+
+
 }
