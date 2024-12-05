@@ -1,7 +1,7 @@
 package com.example.GUI;
 
 
-import com.example.pet_shelter.HelloApplication;
+import com.example.pet_shelter.Main;
 import com.example.pet_shelter.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,17 +48,17 @@ public class HelloController implements Initializable {
     @FXML
     public void onLoginButton(ActionEvent e) throws Exception
     {
-        HelloApplication m = new HelloApplication();
+        Main m = new Main();
         if(User.login(userField.getText(), passwordField.getText()))
         {
-            m.changeScene("Login View.fxml");
+            m.changeScene("program-view.fxml");
         }
 
     }
 
     public void onRegisterButton(ActionEvent e) throws Exception
     {
-        HelloApplication m = new HelloApplication();
+        Main m = new Main();
         m.changeScene("Register View.fxml");
     }
 
