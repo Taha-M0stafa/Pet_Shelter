@@ -16,16 +16,11 @@ public class Shelter {
     private String shelterLocation;
     private int shelterContactNumber;
     private String shelterEmail;
-<<<<<<< HEAD
     private static int shelterCounter;
-    private static final String FILE_NAME = "shelters.json";
-=======
-    static int shelterCounter;
 
 
 
 
->>>>>>> 2665650d439520d02a698b8b2647bfea3746b9ee
     public Shelter(String shelterName, String shelterLocation, int shelterNumber, String shelterEmail) {
         this.shelterName = shelterName;
         this.shelterLocation = shelterLocation;
