@@ -39,7 +39,7 @@ public class HelloController implements Initializable {
     @FXML
     public void onExitProgram(ActionEvent actionEvent) throws IOException
     {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/login-view.fxml")));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.close();
@@ -51,7 +51,13 @@ public class HelloController implements Initializable {
         Main m = new Main();
         if(User.login(userField.getText(), passwordField.getText()))
         {
-            m.changeScene("program-view.fxml");
+            if(User.loggedInUser.getUserRole().equals("admin")) {
+                m.changeScene("/FXML/Register view.fxml");
+            }
+            else
+            {
+                m.changeScene("/FXML/program-view.fxml");
+            }
         }
 
     }
@@ -59,7 +65,7 @@ public class HelloController implements Initializable {
     public void onRegisterButton(ActionEvent e) throws Exception
     {
         Main m = new Main();
-        m.changeScene("Register View.fxml");
+        m.changeScene("/FXML/Register View.fxml");
     }
 
     @Override

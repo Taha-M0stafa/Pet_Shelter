@@ -39,25 +39,27 @@ public class Pet {
 
 
 
-    public void PetManagement()
+    public void addPet(Pet pet)
     {
-
+        Main.allPets.add(pet);
     }
 
-    private static List<Pet> readData() {
-        List<Pet> pets = new ArrayList<>();
+    public static List<Pet> readData() {
+
+        List<Pet> pets = null;
         try {
             // Specify the file path
             Path path = Path.of("pets.json");
             byte[] bytes = Files.readAllBytes(path);
             String jsonString = new String(bytes);
             JSONArray jsonArray = new JSONArray(jsonString);
-
+            pets = new ArrayList<>();
             // Iterate through the array and add User objects
             for (int i = 0; i < jsonArray.length(); i++) {
+
                 JSONObject obj = jsonArray.getJSONObject(i);
                 pets.add(new Pet(
-                        obj.getInt("ID"),
+                        obj.getInt("id"),
                         obj.getString("name"),
                         obj.getString("species"),
                         obj.getString("breed"),
@@ -92,12 +94,12 @@ public class Pet {
     }
 
     // Generic function to write user data to JSON file
-    private static void writeData(List<Pet> pets) {
+    public static void writeData(List<Pet> pets) {
         JSONArray jsonArray = new JSONArray();
 
         for (Pet pet : pets) {
             JSONObject obj = new JSONObject();
-            obj.put("id", pet.getID());
+            obj.put("id", jsonArray.length()-1);
             obj.put("name", pet.getName());
             obj.put("species", pet.getSpecies());
             obj.put("breed", pet.getBreed());

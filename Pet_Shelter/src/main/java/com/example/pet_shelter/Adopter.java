@@ -7,10 +7,10 @@ import com.example.pet_shelter.User;
 import java.util.ArrayList;
 
 public class Adopter extends User {
-    private int numOfadoptedPets;
-    private ArrayList<Pet>adoptionHistory;
-    private ArrayList<Adopter>adopterProfiles=new ArrayList<>(); //admin
-    private ArrayList<Pet>currentPets;
+    public int numOfadoptedPets;
+    public ArrayList<Pet>adoptionHistory;
+    public ArrayList<Adopter>adopterProfiles; //admin
+    public ArrayList<Pet>currentPets;
     public ContactInformation contactInfo;
 
 
@@ -20,9 +20,9 @@ public class Adopter extends User {
         this.adoptionHistory = new ArrayList<>();
         this.currentPets = new ArrayList<>();
         this.contactInfo = new ContactInformation();
-        contactInfo.setName(user_name);
-        contactInfo.setPhoneNumber(phoneNumber);
-        contactInfo.setEmail(user_email);
+        contactInfo.name = user_name;
+        contactInfo.phoneNumber = (phoneNumber);
+        contactInfo.email = (user_email);
 
     }
 
@@ -71,9 +71,9 @@ public class Adopter extends User {
     public void editAdopter(Adopter adopterId, String newName,String newEmail, int newPhoneNumber){
         for (Adopter adopter : adopterProfiles) {
             if (adopter.equals(adopterId)) {
-                adopter.getContactInfo().setName(newName);
-                adopter.getContactInfo().setEmail(newEmail);
-                adopter.getContactInfo().setPhoneNumber(newPhoneNumber);
+                adopter.getContactInfo().name = (newName);
+                adopter.getContactInfo().email = (newEmail);
+                adopter.getContactInfo().phoneNumber = (newPhoneNumber);
             }
 
         }

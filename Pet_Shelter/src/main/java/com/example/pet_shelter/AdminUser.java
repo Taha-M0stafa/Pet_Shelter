@@ -1,13 +1,17 @@
+package com.example.pet_shelter;
+
+import com.example.pet_shelter.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdminUser extends User {
-    private List<String> adoptionRequests;
-    private List<String> notifications;
+    private final List<String> adoptionRequests;
+    private final List<String> notifications;
 
     // Constructor
-    public AdminUser(int id, String username, String password) {
-        super(id, username, password, "admin");
+    public AdminUser(int id, String username, String password, String email) {
+        super(id, username, password, "admin", email);
         this.adoptionRequests = new ArrayList<>();
         this.notifications = new ArrayList<>();
     }
@@ -49,7 +53,7 @@ public class AdminUser extends User {
 
     public List<String> getNotifications() {
         return notifications;
-    }
+    } }
 //    public void clearNotifications() {
 //        notifications.clear();
 //        System.out.println("All notifications cleared.");
@@ -72,8 +76,3 @@ public class AdminUser extends User {
 
     // Override displayInfo
 
-    public void displayInfo() {
-        super.displayInfo();
-        System.out.println("Role: Admin");
-    }
-}
