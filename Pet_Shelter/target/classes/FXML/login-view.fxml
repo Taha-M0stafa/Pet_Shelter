@@ -29,7 +29,7 @@
             <Pane layoutX="348.0" layoutY="1.0" prefHeight="1080.0" prefWidth="13.0" style="-fx-background-color: purple;" />
             <ImageView fitHeight="277.0" fitWidth="281.0" layoutX="42.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Photos/Pet_Shop_1.jpg" />
+                  <Image url="@../Photos/Pet_Shop_1.jpg" />
                </image>
             </ImageView>
          </children>
@@ -40,7 +40,7 @@
          <children>
          
               <Label fx:id="welcomeText" />
-            <Button fx:id="Login" layoutX="92.0" layoutY="557.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="40.0" prefWidth="145.0" style="-fx-background-color: #FEDCA1; -fx-border-width: 2;" stylesheets="@LoginButton.css" text="Login">
+            <Button fx:id="Login" layoutX="92.0" layoutY="557.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="40.0" prefWidth="145.0" style="-fx-background-color: #FEDCA1; -fx-border-width: 2;" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Login">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
@@ -67,7 +67,7 @@
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Text>
-            <Button fx:id="registerButton" layoutX="92.0" layoutY="635.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegisterButton" prefHeight="40.0" prefWidth="145.0" stylesheets="@LoginButton.css" text="Register">
+            <Button fx:id="registerButton" layoutX="92.0" layoutY="635.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegisterButton" prefHeight="40.0" prefWidth="145.0" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Register">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

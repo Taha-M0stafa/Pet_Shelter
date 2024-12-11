@@ -9,5 +9,13 @@
         <module name="Pet_Shelter" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="json" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="json" options="-Xlint:unchecked" />
+    </option>
   </component>
 </project>

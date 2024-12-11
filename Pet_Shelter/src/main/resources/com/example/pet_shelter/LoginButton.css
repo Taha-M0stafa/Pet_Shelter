@@ -1,14 +1,14 @@
 
+
+
+
 .button
 {
-    -fx-background-color:  #FEDCA1;
     -fx-text-fill: Black;
+    -fx-background-color: #d9d9d9;
 }
 .button:hover {
-    -fx-font-size: -fx-font-size + 2;
-    -fx-text-fill: Black;
-    -fx-border-color: #06d0b5;
-    -fx-background-color: rgba(181, 159, 113, 0.74);
-    -fx-border-width: 5;
-    -fx-cursor: pointer;
+    -fx-background-color: #ececec;
+    -fx-underline: true;
 }
+

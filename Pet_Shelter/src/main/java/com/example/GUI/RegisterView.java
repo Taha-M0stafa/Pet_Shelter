@@ -5,12 +5,16 @@ import com.example.pet_shelter.Main;
 import com.example.pet_shelter.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class RegisterView {
+public class RegisterView implements Initializable {
     @FXML
     private Button createAccount;
     @FXML
@@ -24,6 +28,8 @@ public class RegisterView {
     @FXML
     private TextField textID;
 
+    public FXMLLoader fxmlloader = new FXMLLoader();
+
     public void onCreateAccount(ActionEvent e) throws UserException, IOException {
 
 
@@ -35,15 +41,11 @@ public class RegisterView {
             User.register(newUser);
 
             Main m = new Main();
-            m.changeScene("hello-view.fxml");
+            m.changeScene("/FXML/login-view.fxml");
         }
         catch (UserException exception)
         {
             System.out.println(exception.getMessage());
-        }
-        finally
-        {
-
         }
 
 
@@ -52,7 +54,14 @@ public class RegisterView {
 
     public void onReturnButton(ActionEvent e) throws IOException {
         Main m = new Main();
-        m.changeScene("hello-view.fxml");
+        m.changeScene("/FXML/login-view.fxml");
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+
+
+
+    }
 }

@@ -1,10 +1,10 @@
 package com.example.pet_shelter;
 
 public class ContactInformation {
-    private int phoneNumber;
-    private String name;
-    private String email;
-    private String address;
+    public int phoneNumber;
+    public String name;
+    public String email;
+    public String address;
 
     public ContactInformation(){
         this.phoneNumber=-1;
@@ -29,21 +29,6 @@ public class ContactInformation {
         return address;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
 
 

@@ -19,7 +19,9 @@ public class Shelter {
     private static int shelterCounter;
 
 
+    // User can swap between multiple shelters In the program to view different pets
 
+    // Pet[] shownPets;
 
     public Shelter(String shelterName, String shelterLocation, int shelterNumber, String shelterEmail) {
         this.shelterName = shelterName;
@@ -32,7 +34,7 @@ public class Shelter {
     }
 
 
-    private static ArrayList<Shelter> shelterList = new ArrayList<>();
+    private static final ArrayList<Shelter> shelterList = new ArrayList<>();
     public String getShelterID() {
         return shelterID;
     }
