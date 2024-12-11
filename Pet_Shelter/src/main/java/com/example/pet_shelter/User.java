@@ -148,5 +148,20 @@ public class User {
     }
 
 
+    // to use in the search for both users and admins
+    public void displayAllPets(ArrayList <Pet> pets){
+        if (pets.isEmpty()){
+            System.out.println("No Pets yet");
+            return;
+        }
+        for (Pet pet : pets) {
+            System.out.println("Pet ID: " + pet.getID());
+            System.out.println("Name: " + pet.getName());
+            System.out.println("Age: " + pet.getAge());
+            System.out.println("Breed: " + pet.getBreed());
+        }
+    }
+
+
 }
 
