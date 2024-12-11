@@ -1,21 +1,26 @@
 package com.example.GUI;
 
+import com.example.pet_shelter.AdminUser;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
+import com.example.pet_shelter.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+
+import com.example.GUI.AddUserStage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -69,12 +74,38 @@ public class ProgramView extends AnchorPane implements Initializable {
     @FXML
     private GridPane gridPane;
 
+    @FXML
+    private VBox adoptVBox;
+
+
+    @FXML
+    private AnchorPane mainAnchorPane;
+    @FXML
+    private HBox swapHBox;
     private petListener PetListener;
+
+
+
+
+    //Nodes used in the Modify User Admin pane
+
+    @FXML
+    private Button addUser, changeUser, deleteUser, modifyUser;
+    @FXML
+    ComboBox<User> userComboBox;
+
+    @FXML
+    private HBox ModifyUserHBox;
+
+    ArrayList<Node> ModifyUserNodes = new ArrayList<Node>();
+
+    //List of nodes to swap betweeen scenes
 
 
 
     ArrayList<Node> adminNodes = new ArrayList<>();
     ArrayList<Node> adoptNodes = new ArrayList<>();
+
     int currentMenu = 0; //Swaps between different buttons in the program, 0,1,2,3 for Profile, Adopt, Request, History respectively.
 
 
@@ -85,36 +116,54 @@ public class ProgramView extends AnchorPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        //Store all scene nodes in their respective arrayLists.
+        adoptNodes.add(adoptVBox);
+        adoptNodes.add(leftAnchorPane);
+
+
+        mainAnchorPane.getChildren().clear();
+        mainAnchorPane.getChildren().add(swapHBox);
+
+
+        adoptNodes.forEach(child -> {child.setVisible(true);});
+
+
+
+        //Remove Admin button if the user is not an admin
+
+        if(/*!User.loggedInUser.getUserRole().equals("admin"*/ false){
+            swapHBox.getChildren().remove(adminButton);
+        }
+
+        //Add all pet posts to the main page on Start-up
+
         int column = 0;
         int row = 1;
 
-
+        if(!Main.allPets.isEmpty())
+        {
+            PetListener = new petListener() {
+                @Override
+                public void onClickPet(Pet pet) {
+                    setPetData(pet);
+                }
+            };
+        }
 
         try {
-
-
             for (int i = 0; i < Main.allPets.size(); i++) {
-
-                PetListener = new petListener() {
-                    @Override
-                    public void onClickPet(Pet pet) {
-                        setPetData(pet);
-                    }
-                };
-
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/pet-post.fxml"));
                 AnchorPane anchorPostPane = fxmlLoader.load();
-
                 petPostController petController = fxmlLoader.getController();
                 petController.setPostData(Main.allPets.get(i), PetListener);
-
                 if (column == 3)
                 {
                     row += 1;
                     column = 0;
                 }
                 GridPane.setMargin(anchorPostPane, new Insets(10, 10 , 10, 10 ));
-
                 gridPane.add(anchorPostPane, column++, row);
                 gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
@@ -122,20 +171,13 @@ public class ProgramView extends AnchorPane implements Initializable {
                 gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
                 gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
                 gridPane.setMaxWidth(Region.USE_PREF_SIZE);
-
-
-
-
-
             }
-
         } catch (IOException e) {
             System.out.println("File is gone lmao");
         } catch (NullPointerException ne) {
             System.out.println("Couldn't find the file");
-
         }
-    }
+    }//End of logic;
 
 
     public void setPetData(Pet pet)
@@ -145,30 +187,43 @@ public class ProgramView extends AnchorPane implements Initializable {
         healthStatusLabel.setText("Health Status:" + pet.getHealthStatus());
         breedLabel.setText("Breed: " + pet.getBreed());
         speciesLabel.setText("Species: " + pet.getSpecies());
+        petImage.setImage(pet.getPetImage());
      }
 
 
-    @FXML
-    public void onReturn(ActionEvent e) throws Exception {
-        Main m = new Main();
-        currentMenu = 0;
-        m.changeScene("login-view.fxml");
-    }
 
     public void ChooseMenu() {
 
-        switch (currentMenu) {
-            case 0: {
 
-            } // Add nodes for profile Menu
+        mainAnchorPane.getChildren().clear();
+
+        mainAnchorPane.getChildren().add(swapHBox);
+
+
+        switch (currentMenu) {
+
+            //Add nodes for the adoption view menu
+            case 0: {
+                mainAnchorPane.getChildren().addAll(adoptNodes);
+                break;
+            }
+            // Add nodes for profile Menu
             case 1: {
 
-
-            } // Add nodes for Adopt Menu\
+                break;
+            }
+            // Add nodes for Adopt Menu
             case 2: {
-            } // Add nodes for Requests menu
+
+
+                break;
+            }
+            // Add nodes for Requests menu
             case 3: {
-            } // Add nodes for History menu
+                mainAnchorPane.getChildren().add(ModifyUserHBox);
+                break;
+            }
+            // Add nodes for History menu
             default: {
                 break;
             }
@@ -179,6 +234,7 @@ public class ProgramView extends AnchorPane implements Initializable {
     void onAdopt(ActionEvent event) {
         currentMenu = 0;
         ChooseMenu();
+        System.out.println("I was clicked but not swapped");
     }
 
     @FXML
@@ -189,12 +245,14 @@ public class ProgramView extends AnchorPane implements Initializable {
 
     @FXML
     void onProfile(ActionEvent event) {
-
+        currentMenu = 2;
+        ChooseMenu();
     }
 
     @FXML
     void onRequest(ActionEvent event) {
-
+        currentMenu = 3;
+        ChooseMenu();
     }
 
 
@@ -205,10 +263,36 @@ public class ProgramView extends AnchorPane implements Initializable {
     }
 
     @FXML
+    void onAdminButton(ActionEvent event)
+    {
+        currentMenu = 3;
+        ChooseMenu();
+    }
+
+    @FXML
     void onHomeView(MouseEvent event) throws IOException {
         Main m = new Main();
         m.changeScene("/FXML/login-view.fxml");
     }
+
+    @FXML
+    void onModifyUser() throws IOException {
+        Stage stage = new Stage();
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.sizeToScene();
+        FXMLLoader fxmlLoader = new FXMLLoader(ProgramView.class.getResource("/FXML/add-user.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Modify Users");
+        stage.setScene(scene);
+        stage.toFront();
+        stage.setAlwaysOnTop(true);
+        stage.requestFocus();
+        stage.showAndWait();
+    }
+
+
+
+
 }
 
 

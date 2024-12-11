@@ -6,16 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminUser extends User {
-    private final List<String> adoptionRequests;
-    private final List<String> notifications;
+    private  List<String> adoptionRequests;
+    private  List<String> notifications;
     private ArrayList<Adopter>adopterProfiles; //admin
 
+
     // Constructor
-    public AdminUser(int id, String username, String password, String email) {
-        super(id, username, password, "admin", email);
+    public AdminUser(int id, String username, String password, String email, int phoneNum , String address) {
+        super(id, username, password, "admin", email, new ContactInformation(phoneNum, address));
         this.adoptionRequests = new ArrayList<>();
         this.notifications = new ArrayList<>();
         this.adopterProfiles = new ArrayList<>();
+
+    }
+
+    public AdminUser(User user)
+    {
+        super(user.getId(), user.getUserName(), user.getUserPassword(), "admin", user.getUserEmail(), user.contactInfo);
 
     }
 
@@ -30,8 +37,8 @@ public class AdminUser extends User {
     public void editAdopter(Adopter adopterId, String newName,String newEmail, int newPhoneNumber){
         for (Adopter adopter : adopterProfiles) {
             if (adopter.equals(adopterId)) {
-                adopter.getContactInfo().name = (newName);
-                adopter.getContactInfo().email = (newEmail);
+                adopter.setUserName(newName);
+                adopter.setUserEmail(newEmail);
                 adopter.getContactInfo().phoneNumber = (newPhoneNumber);
             }
 
@@ -59,7 +66,7 @@ public class AdminUser extends User {
         for (Adopter adopter:adopterProfiles){
             System.out.println("Adopter ID: " + adopter.getId());
             System.out.println("Adopter Name: " + adopter.getUserName());
-            System.out.println("Number of pets: " + this.numOfadoptedPets);
+            System.out.println("Number of pets: " + adopter.numOfadoptedPets);
             System.out.println("--------------------");
             System.out.println();
         }

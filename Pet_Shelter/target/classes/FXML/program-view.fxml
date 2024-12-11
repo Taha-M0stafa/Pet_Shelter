@@ -13,64 +13,64 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ProgramView">
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ProgramView">
    <children>
-      <VBox>
+      <HBox fx:id="swapHBox" prefHeight="116.0" prefWidth="1920.0" style="-fx-background-color: #d9d9d9;">
          <children>
-            <HBox prefHeight="116.0" prefWidth="1920.0" style="-fx-background-color: #d9d9d9;">
-               <children>
-                  <ImageView fx:id="homeView" fitHeight="60.0" fitWidth="61.0" onMousePressed="#onHomeView">
-                     <image>
-                        <Image url="@../Photos/Home_icon_orange.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="adoptButton" mnemonicParsing="false" onAction="#onAdopt" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Adopt" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets bottom="40.0" left="250.0" right="300.0" top="40.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="requestButton" layoutX="210.0" layoutY="50.0" mnemonicParsing="false" onAction="#onRequest" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Requests">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="300.0" top="40.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button layoutX="303.0" layoutY="50.0" mnemonicParsing="false" onAction="#onHistory" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="History">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="300.0" top="40.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="profileButton" layoutX="377.0" layoutY="10.0" mnemonicParsing="false" onAction="#onProfile" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Profile">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="300.0" top="40.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="adminButton" layoutX="1395.0" layoutY="50.0" mnemonicParsing="false" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Admin">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="40.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
+            <ImageView fx:id="homeView" fitHeight="60.0" fitWidth="61.0" onMousePressed="#onHomeView">
+               <image>
+                  <Image url="@../Photos/Home_icon_orange.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="adoptButton" mnemonicParsing="false" onAction="#onAdopt" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Adopt" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="40.0" left="250.0" right="300.0" top="40.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="requestButton" layoutX="210.0" layoutY="50.0" mnemonicParsing="false" onAction="#onRequest" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Requests">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="300.0" top="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="303.0" layoutY="50.0" mnemonicParsing="false" onAction="#onHistory" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="History">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="300.0" top="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="profileButton" layoutX="377.0" layoutY="10.0" mnemonicParsing="false" onAction="#onProfile" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Profile">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="300.0" top="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="adminButton" layoutX="1395.0" layoutY="50.0" mnemonicParsing="false" onAction="#onAdminButton" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Admin">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="40.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <VBox fx:id="adoptVBox" mouseTransparent="true" prefWidth="1907.0" visible="false">
+         <children>
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="307.0" prefWidth="391.0">
                <children>
                   <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="917.0" prefWidth="1327.0">
                      <content>
-                        <GridPane fx:id="gridPane" prefHeight="202.0" prefWidth="295.0">
+                        <GridPane fx:id="gridPane" prefHeight="740.0" prefWidth="1325.0">
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" />
                            </rowConstraints>
@@ -83,8 +83,11 @@
                </VBox.margin>
             </HBox>
          </children>
+         <padding>
+            <Insets top="120.0" />
+         </padding>
       </VBox>
-      <AnchorPane fx:id="leftAnchorPane" layoutY="117.0" maxHeight="1080.0" maxWidth="1920.0" prefHeight="963.0" prefWidth="548.0" style="-fx-background-color: #FEDCAE;">
+      <AnchorPane fx:id="leftAnchorPane" layoutY="117.0" maxHeight="1080.0" maxWidth="1920.0" prefHeight="963.0" prefWidth="548.0" style="-fx-background-color: #FEDCAE;" visible="false">
          <children>
             <VBox layoutX="53.0" layoutY="445.0" prefHeight="276.0" prefWidth="247.0">
                <children>
@@ -152,5 +155,17 @@
             </Button>
          </children>
       </AnchorPane>
+      <HBox fx:id="ModifyUserHBox" layoutY="117.0">
+         <children>
+            <AnchorPane prefHeight="963.0" prefWidth="462.0">
+               <children>
+                  <Button fx:id="modifyUser" layoutX="164.0" layoutY="115.0" mnemonicParsing="false" onAction="#onModifyUser" text="Modify Users" />
+                  <Button layoutX="167.0" layoutY="388.0" mnemonicParsing="false" text="Modify Pets" />
+                  <Button layoutX="158.0" layoutY="671.0" mnemonicParsing="false" text="Modify Shelters" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="963.0" prefWidth="1455.0" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

@@ -20,8 +20,6 @@ public class Main extends Application {
     public static List<Pet> allPets;
     public static Stage changeStage;
 
-    public Main() {
-    }
 
     public void start(Stage stage) throws IOException {
         stage.resizableProperty().setValue(Boolean.FALSE);

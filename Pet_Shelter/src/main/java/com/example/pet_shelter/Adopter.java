@@ -10,19 +10,14 @@ public class Adopter extends User {
     public int numOfadoptedPets;
     public ArrayList<Pet>adoptionHistory;
     public ArrayList<Pet>currentPets;
-    public ContactInformation contactInfo;
 
 
-    public Adopter(int id, String user_name, String user_password, String user_role, String user_email,int phoneNumber) {
-        super(id, user_name, user_password, user_role, user_email);
+
+    public Adopter(int id, String user_name, String user_password, String user_role, String user_email,int phoneNumber, String address) {
+        super(id, user_name, user_password, user_role, user_email, new ContactInformation(phoneNumber, address));
         this.numOfadoptedPets = 0;
         this.adoptionHistory = new ArrayList<>();
         this.currentPets = new ArrayList<>();
-        this.contactInfo = new ContactInformation();
-        contactInfo.name = user_name;
-        contactInfo.phoneNumber = (phoneNumber);
-        contactInfo.email = (user_email);
-
     }
 
     public ArrayList<Pet> getAdoptionHistory() {

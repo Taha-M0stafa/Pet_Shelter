@@ -52,7 +52,7 @@ public class HelloController implements Initializable {
         if(User.login(userField.getText(), passwordField.getText()))
         {
             if(User.loggedInUser.getUserRole().equals("admin")) {
-                m.changeScene("/FXML/Register view.fxml");
+                m.changeScene("/FXML/program-view.fxml");
             }
             else
             {

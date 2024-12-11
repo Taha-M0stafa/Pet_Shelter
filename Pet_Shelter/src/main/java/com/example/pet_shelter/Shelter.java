@@ -29,8 +29,6 @@ public class Shelter {
         this.shelterContactNumber = shelterNumber;
         this.shelterEmail = shelterEmail;
         shelterCounter++;
-        
-
     }
 
 

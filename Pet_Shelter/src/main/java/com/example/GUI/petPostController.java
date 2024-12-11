@@ -40,19 +40,23 @@ public class petPostController implements Initializable {
     {
 
         this.PetListener = PetListener;
+        this.pet = pet;
         nameLabel.setText(nameLabel.getText() +  pet.getName());
         breedLabel.setText(breedLabel.getText() + pet.getBreed());
         speciesLabel.setText( speciesLabel.getText()  + pet.getSpecies());
+        petImage.setImage(pet.getPetImage());
     }
 
 
     public void getPostDetails(MouseEvent mouseEvent)
     {
-        PetListener.onClickPet(Main.allPets.get(0));
+        PetListener.onClickPet(pet);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
 
     }
 }

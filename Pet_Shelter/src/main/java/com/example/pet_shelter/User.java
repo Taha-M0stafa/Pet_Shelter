@@ -17,18 +17,20 @@ public class User {
     private String user_password;
     private String user_role;
     private String user_email;
+    public ContactInformation contactInfo;
+
     // File to store user data
     private static final String FILE_NAME = "users.json";
     public static User loggedInUser;
 
-    public User(int id, String user_name, String user_password, String user_role, String user_email) {
+    public User(int id, String user_name, String user_password, String user_role, String user_email, ContactInformation contactInfo) {
 
         this.id = id;
         this.user_name = user_name;
         this.user_password = user_password;
         this.user_role = user_role;
         this.user_email = user_email;
-
+        this.contactInfo = contactInfo;
     }
 
     // Getters and setters
@@ -75,6 +77,10 @@ public class User {
             if (user.getUserName().equals(userName) && user.getUserPassword().equals(password)) {
                 System.out.println("Login successful أهلا بيك");
                 loggedInUser = user;
+                if(loggedInUser.getUserRole().equals("admin"))
+                {
+                    loggedInUser = new AdminUser(user);
+                }
                 return true;
             }
         }
@@ -119,7 +125,8 @@ public class User {
                         obj.getString("user_name"),
                         obj.getString("user_password"),
                         obj.getString("user_role"),
-                        obj.getString("user_email")
+                        obj.getString("user_email"),
+                        new ContactInformation(obj.getInt("phoneNum"), obj.getString("address"))
                 ));
             }
         } catch (IOException e) {
@@ -139,6 +146,8 @@ public class User {
             obj.put("user_password", user.getUserPassword());
             obj.put("user_role", user.getUserRole());
             obj.put("user_email", user.getUserEmail());
+            obj.put("phoneNum", user.getContactInfo().getPhoneNumber());
+            obj.put("address", user.getContactInfo().getAddress());
             jsonArray.put(obj);
         }
         try (FileWriter writer = new FileWriter(FILE_NAME)) {
@@ -163,6 +172,6 @@ public class User {
         }
     }
 
-
+    public ContactInformation getContactInfo(){return contactInfo;}
 }
 

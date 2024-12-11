@@ -1,3 +1,7 @@
+package com.example.pet_shelter;
+
+import com.example.pet_shelter.Pet;
+
 import java.util.ArrayList;
 
 public class AdvancedSearch {
@@ -7,9 +11,7 @@ public class AdvancedSearch {
         for (Pet pet :pets){
             if (pet.getName().toLowerCase().contains(searchKey.toLowerCase())){
                 searchedPets.add(pet);
-
             }
-
         }
 
         return  searchedPets;
@@ -35,13 +37,9 @@ public class AdvancedSearch {
         for (Pet pet :pets){
             if (pet.getBreed().toLowerCase().contains(searchKey.toLowerCase())){
                 searchedPets.add(pet);
-
             }
-
         }
-
         return  searchedPets;
-
     }
 
 
