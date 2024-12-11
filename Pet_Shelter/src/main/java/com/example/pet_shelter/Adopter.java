@@ -46,8 +46,9 @@ public class Adopter extends User {
     }
 
     public void displayAdoptedPets() {
-        if (adoptionHistory.isEmpty())
+        if (adoptionHistory.isEmpty()){
             System.out.println("No pets adopted yet");
+            return;}
         else {
             for (int i = 0; i < adoptionHistory.size(); i++) {
                 System.out.println("Pet number " + (i + 1) + "#");
@@ -55,7 +56,9 @@ public class Adopter extends User {
                 System.out.println("Pet name: " + adoptionHistory.get(i).getName());
                 System.out.println("Pet age: " + adoptionHistory.get(i).getAge());
                 System.out.println("Pet Health Status: " + adoptionHistory.get(i).getHealthStatus());
+                System.out.println("------------");
             }
+            System.out.println();
         }
     }
 
@@ -104,12 +107,15 @@ public class Adopter extends User {
     public void displayAllAdopters(){
         if (adopterProfiles.isEmpty()){
             System.out.println("No adopters yet");
+            return;
         }
         for (Adopter adopter:adopterProfiles){
             System.out.println("Adopter ID: " + adopter.getId());
+            System.out.println("Adopter Name: " + adopter.getUserName());
+            System.out.println("Number of pets: " + this.numOfadoptedPets);
+            System.out.println("--------------------");
             System.out.println();
         }
-
     }
 
 
