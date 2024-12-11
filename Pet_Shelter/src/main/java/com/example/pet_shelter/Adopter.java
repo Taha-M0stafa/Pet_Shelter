@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class Adopter extends User {
     public int numOfadoptedPets;
     public ArrayList<Pet>adoptionHistory;
-    public ArrayList<Adopter>adopterProfiles; //admin
     public ArrayList<Pet>currentPets;
     public ContactInformation contactInfo;
 
@@ -62,62 +61,7 @@ public class Adopter extends User {
         }
     }
 
-    // admin functionsssssssssss
-    public void addAdopter(Adopter adopter){
-
-        adopterProfiles.add(adopter);
-        System.out.println("Adopter profile added: " + adopter.getUserName());
-
-    }
-
-
-    public void editAdopter(Adopter adopterId, String newName,String newEmail, int newPhoneNumber){
-        for (Adopter adopter : adopterProfiles) {
-            if (adopter.equals(adopterId)) {
-                adopter.getContactInfo().name = (newName);
-                adopter.getContactInfo().email = (newEmail);
-                adopter.getContactInfo().phoneNumber = (newPhoneNumber);
-            }
-
-        }
-
-    }
-
-    @Override
-    public String toString() {
-        return
-                "numOfadoptedPets=" + numOfadoptedPets +
-                        ", adoptionHistory=" + adoptionHistory +
-                        ", currentPets=" + currentPets +
-                        ", contactInfo=" + contactInfo +
-                        '}';
-    }
-
-    public void deleteAdopter(int adopterId) {
-        for (int i=0;i<adopterProfiles.size();i++) {
-            if (adopterProfiles.get(i).getId() == adopterId) {
-                System.out.println("Adopter profile removed: " + adopterProfiles.get(i).getUserName());
-                adopterProfiles.remove(i);
-                return;
-            }
-
-        }
-        System.out.println("couldn't find that id ");
-    }
-    public void displayAllAdopters(){
-        if (adopterProfiles.isEmpty()){
-            System.out.println("No adopters yet");
-            return;
-        }
-        for (Adopter adopter:adopterProfiles){
-            System.out.println("Adopter ID: " + adopter.getId());
-            System.out.println("Adopter Name: " + adopter.getUserName());
-            System.out.println("Number of pets: " + this.numOfadoptedPets);
-            System.out.println("--------------------");
-            System.out.println();
-        }
-    }
-
+   
 
 
 }

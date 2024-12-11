@@ -8,12 +8,61 @@ import java.util.List;
 public class AdminUser extends User {
     private final List<String> adoptionRequests;
     private final List<String> notifications;
+    private ArrayList<Adopter>adopterProfiles; //admin
 
     // Constructor
     public AdminUser(int id, String username, String password, String email) {
         super(id, username, password, "admin", email);
         this.adoptionRequests = new ArrayList<>();
         this.notifications = new ArrayList<>();
+        this.adopterProfiles = new ArrayList<>();
+
+    }
+
+    public void addAdopter(Adopter adopter){
+
+        adopterProfiles.add(adopter);
+        System.out.println("Adopter profile added: " + adopter.getUserName());
+
+    }
+
+
+    public void editAdopter(Adopter adopterId, String newName,String newEmail, int newPhoneNumber){
+        for (Adopter adopter : adopterProfiles) {
+            if (adopter.equals(adopterId)) {
+                adopter.getContactInfo().name = (newName);
+                adopter.getContactInfo().email = (newEmail);
+                adopter.getContactInfo().phoneNumber = (newPhoneNumber);
+            }
+
+        }
+
+    }
+
+    public void deleteAdopter(int adopterId) {
+        for (int i=0;i<adopterProfiles.size();i++) {
+            if (adopterProfiles.get(i).getId() == adopterId) {
+                System.out.println("Adopter profile removed: " + adopterProfiles.get(i).getUserName());
+                adopterProfiles.remove(i);
+                return;
+            }
+
+        }
+        System.out.println("couldn't find that id ");
+    }
+
+    public void displayAllAdopters(){
+        if (adopterProfiles.isEmpty()){
+            System.out.println("No adopters yet");
+            return;
+        }
+        for (Adopter adopter:adopterProfiles){
+            System.out.println("Adopter ID: " + adopter.getId());
+            System.out.println("Adopter Name: " + adopter.getUserName());
+            System.out.println("Number of pets: " + this.numOfadoptedPets);
+            System.out.println("--------------------");
+            System.out.println();
+        }
     }
 
     // Handle adoption requests
