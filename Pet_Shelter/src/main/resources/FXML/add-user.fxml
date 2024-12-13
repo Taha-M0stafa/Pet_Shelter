@@ -10,12 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="MainAnchorPane" prefHeight="346.0" prefWidth="798.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.AddUserStage">
+<AnchorPane fx:id="MainAnchorPane" prefHeight="346.0" prefWidth="798.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ModifyUserStage">
    <children>
-      <VBox prefHeight="265.0" prefWidth="795.0">
+      <VBox prefHeight="269.0" prefWidth="795.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="600.0">
+            <HBox prefHeight="93.0" prefWidth="795.0">
                <children>
                   <Label text="ID">
                      <HBox.margin>
@@ -64,7 +63,7 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="111.0" prefWidth="795.0">
+            <HBox prefHeight="86.0" prefWidth="795.0">
                <children>
                   <Label text="Email">
                      <HBox.margin>
@@ -113,6 +112,14 @@
                   </TextField>
                </children>
             </HBox>
+            <Label text="UserRole">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="330.0" />
+               </VBox.margin>
+            </Label>
             <ComboBox fx:id="userRoleBox" prefWidth="150.0" promptText="UserRole" visibleRowCount="2">
                <VBox.margin>
                   <Insets left="300.0" />
@@ -121,8 +128,9 @@
          </children>
       </VBox>
       <Button fx:id="addUser" layoutX="14.0" layoutY="288.0" mnemonicParsing="false" onAction="#onAddUser" prefHeight="43.0" prefWidth="65.0" text="Add" />
-      <Button fx:id="addUser1" layoutX="177.0" layoutY="288.0" mnemonicParsing="false" onAction="#onChangeUser" prefHeight="43.0" prefWidth="65.0" text="Change" />
-      <Button fx:id="addUser11" layoutX="320.0" layoutY="288.0" mnemonicParsing="false" onAction="#onDeleteUser" prefHeight="43.0" prefWidth="65.0" text="Delete" />
-      <Button fx:id="addUser111" layoutX="572.0" layoutY="288.0" mnemonicParsing="false" onAction="#onFindUser" prefHeight="43.0" prefWidth="167.0" text="Find User (Using ID)" />
+      <Button fx:id="addUser1" layoutX="116.0" layoutY="288.0" mnemonicParsing="false" onAction="#onChangeUser" prefHeight="43.0" prefWidth="65.0" text="Change" />
+      <Button fx:id="addUser11" layoutX="217.0" layoutY="288.0" mnemonicParsing="false" onAction="#onDeleteUser" prefHeight="43.0" prefWidth="65.0" text="Delete" />
+      <Button fx:id="addUser111" layoutX="572.0" layoutY="288.0" mnemonicParsing="false" onAction="#onFindUser" prefHeight="43.0" prefWidth="167.0" text="Find User (ID/Email)" />
+      <Button fx:id="addUser1111" layoutX="347.0" layoutY="288.0" mnemonicParsing="false" onAction="#onShowNextUser" prefHeight="43.0" prefWidth="167.0" text="Show next user" />
    </children>
 </AnchorPane>

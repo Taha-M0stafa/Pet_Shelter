@@ -1,6 +1,6 @@
 package com.example.GUI;
 
-import com.example.Exceptions.UserException;
+import com.example.Exceptions.AlreadyFoundException;
 import com.example.pet_shelter.ContactInformation;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.User;
@@ -31,25 +31,19 @@ public class RegisterView implements Initializable {
 
     public FXMLLoader fxmlloader = new FXMLLoader();
 
-    public void onCreateAccount(ActionEvent e) throws UserException, IOException {
-
-
-        User newUser = new User(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "Admin", email.getText(), new ContactInformation(123, "home"));
-
+    public void onCreateAccount(ActionEvent e) throws AlreadyFoundException, IOException {
         try{
-            newUser.checkEmptyRegister();
+            User newUser = new User(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "Admin", email.getText(), new ContactInformation(123, "home"));
 
             User.register(newUser);
 
             Main m = new Main();
             m.changeScene("/FXML/login-view.fxml");
         }
-        catch (UserException exception)
+        catch (AlreadyFoundException | NumberFormatException | NullPointerException exception)
         {
             System.out.println(exception.getMessage());
         }
-
-
     }
 
 

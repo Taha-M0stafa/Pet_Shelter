@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ProgramView">
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ProgramStage">
    <children>
       <HBox fx:id="swapHBox" prefHeight="116.0" prefWidth="1920.0" style="-fx-background-color: #d9d9d9;">
          <children>
@@ -64,28 +64,18 @@
             </Button>
          </children>
       </HBox>
-      <VBox fx:id="adoptVBox" mouseTransparent="true" prefWidth="1907.0" visible="false">
+      <VBox fx:id="adoptVBox" layoutX="548.0" layoutY="117.0" prefHeight="963.0" prefWidth="1349.0" visible="false">
          <children>
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="307.0" prefWidth="391.0">
-               <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="917.0" prefWidth="1327.0">
-                     <content>
-                        <GridPane fx:id="gridPane" prefHeight="740.0" prefWidth="1325.0">
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                           </rowConstraints>
-                        </GridPane>
-                     </content>
-                  </ScrollPane>
-               </children>
-               <VBox.margin>
-                  <Insets left="580.0" top="10.0" />
-               </VBox.margin>
-            </HBox>
+            <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="961.0" prefWidth="1363.0">
+               <content>
+                  <GridPane fx:id="gridPane" prefHeight="359.0" prefWidth="1129.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
          </children>
-         <padding>
-            <Insets top="120.0" />
-         </padding>
       </VBox>
       <AnchorPane fx:id="leftAnchorPane" layoutY="117.0" maxHeight="1080.0" maxWidth="1920.0" prefHeight="963.0" prefWidth="548.0" style="-fx-background-color: #FEDCAE;" visible="false">
          <children>
@@ -155,12 +145,12 @@
             </Button>
          </children>
       </AnchorPane>
-      <HBox fx:id="ModifyUserHBox" layoutY="117.0">
+      <HBox fx:id="adminHBox" layoutY="117.0" visible="false">
          <children>
             <AnchorPane prefHeight="963.0" prefWidth="462.0">
                <children>
                   <Button fx:id="modifyUser" layoutX="164.0" layoutY="115.0" mnemonicParsing="false" onAction="#onModifyUser" text="Modify Users" />
-                  <Button layoutX="167.0" layoutY="388.0" mnemonicParsing="false" text="Modify Pets" />
+                  <Button layoutX="167.0" layoutY="388.0" mnemonicParsing="false" onAction="#onModifyPet" text="Modify Pets" />
                   <Button layoutX="158.0" layoutY="671.0" mnemonicParsing="false" text="Modify Shelters" />
                </children>
             </AnchorPane>

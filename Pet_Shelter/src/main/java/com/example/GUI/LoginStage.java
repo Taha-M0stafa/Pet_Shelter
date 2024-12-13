@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class LoginStage implements Initializable {
     //Login/Register Buttons
     @FXML
     public Button ExitProgram;

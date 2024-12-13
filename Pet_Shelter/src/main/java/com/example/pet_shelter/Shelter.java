@@ -1,14 +1,5 @@
 package com.example.pet_shelter;
-import com.example.Exceptions.UserException;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Shelter {
     private String shelterID;

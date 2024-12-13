@@ -1,6 +1,5 @@
 package com.example.GUI;
 
-import com.example.pet_shelter.AdminUser;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
 import com.example.pet_shelter.User;
@@ -11,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,14 +18,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import com.example.GUI.AddUserStage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ProgramView extends AnchorPane implements Initializable {
+public class ProgramStage extends AnchorPane implements Initializable {
 
     @FXML
     private ImageView homeView;
@@ -87,17 +83,11 @@ public class ProgramView extends AnchorPane implements Initializable {
 
 
 
-    //Nodes used in the Modify User Admin pane
+    //Nodes used in the  Admin pane
 
     @FXML
-    private Button addUser, changeUser, deleteUser, modifyUser;
-    @FXML
-    ComboBox<User> userComboBox;
+    private HBox adminHBox;
 
-    @FXML
-    private HBox ModifyUserHBox;
-
-    ArrayList<Node> ModifyUserNodes = new ArrayList<Node>();
 
     //List of nodes to swap betweeen scenes
 
@@ -109,7 +99,7 @@ public class ProgramView extends AnchorPane implements Initializable {
     int currentMenu = 0; //Swaps between different buttons in the program, 0,1,2,3 for Profile, Adopt, Request, History respectively.
 
 
-    public ProgramView() {
+    public ProgramStage() {
 
     }
 
@@ -128,6 +118,7 @@ public class ProgramView extends AnchorPane implements Initializable {
 
 
         adoptNodes.forEach(child -> {child.setVisible(true);});
+        adminHBox.setVisible(true);
 
 
 
@@ -137,46 +128,7 @@ public class ProgramView extends AnchorPane implements Initializable {
             swapHBox.getChildren().remove(adminButton);
         }
 
-        //Add all pet posts to the main page on Start-up
 
-        int column = 0;
-        int row = 1;
-
-        if(!Main.allPets.isEmpty())
-        {
-            PetListener = new petListener() {
-                @Override
-                public void onClickPet(Pet pet) {
-                    setPetData(pet);
-                }
-            };
-        }
-
-        try {
-            for (int i = 0; i < Main.allPets.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/pet-post.fxml"));
-                AnchorPane anchorPostPane = fxmlLoader.load();
-                petPostController petController = fxmlLoader.getController();
-                petController.setPostData(Main.allPets.get(i), PetListener);
-                if (column == 3)
-                {
-                    row += 1;
-                    column = 0;
-                }
-                GridPane.setMargin(anchorPostPane, new Insets(10, 10 , 10, 10 ));
-                gridPane.add(anchorPostPane, column++, row);
-                gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
-                gridPane.setMaxHeight(Region.USE_PREF_SIZE);
-                gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
-                gridPane.setMaxWidth(Region.USE_PREF_SIZE);
-            }
-        } catch (IOException e) {
-            System.out.println("File is gone lmao");
-        } catch (NullPointerException ne) {
-            System.out.println("Couldn't find the file");
-        }
     }//End of logic;
 
 
@@ -220,7 +172,7 @@ public class ProgramView extends AnchorPane implements Initializable {
             }
             // Add nodes for Requests menu
             case 3: {
-                mainAnchorPane.getChildren().add(ModifyUserHBox);
+                mainAnchorPane.getChildren().add(adminHBox);
                 break;
             }
             // Add nodes for History menu
@@ -233,7 +185,9 @@ public class ProgramView extends AnchorPane implements Initializable {
     @FXML
     void onAdopt(ActionEvent event) {
         currentMenu = 0;
+        showPetPosts();
         ChooseMenu();
+
         System.out.println("I was clicked but not swapped");
     }
 
@@ -277,17 +231,71 @@ public class ProgramView extends AnchorPane implements Initializable {
 
     @FXML
     void onModifyUser() throws IOException {
+        addNewStage("/FXML/modify-user.fxml", "Modify Users");
+    }
+
+    @FXML
+    void onModifyPet() throws IOException{
+       addNewStage("/FXML/modify-pet.fxml", "Modify Pet");
+    }
+
+
+    private void addNewStage(String fxml, String title) throws IOException {
         Stage stage = new Stage();
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.sizeToScene();
-        FXMLLoader fxmlLoader = new FXMLLoader(ProgramView.class.getResource("/FXML/add-user.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ProgramStage.class.getResource(fxml));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Modify Users");
+        stage.setTitle(title);
         stage.setScene(scene);
         stage.toFront();
         stage.setAlwaysOnTop(true);
         stage.requestFocus();
         stage.showAndWait();
+    }
+
+    private void showPetPosts()
+    {
+        //Add all pet posts to the main page on Start-up
+
+        int column = 0;
+        int row = 1;
+
+        if(!Main.allPets.isEmpty())
+        {
+            PetListener = new petListener() {
+                @Override
+                public void onClickPet(Pet pet) {
+                    setPetData(pet);
+                }
+            };
+        }
+
+        try {
+            for (int i = 0; i < Main.allPets.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/pet-post.fxml"));
+                AnchorPane anchorPostPane = fxmlLoader.load();
+                petPostController petController = fxmlLoader.getController();
+                petController.setPostData(Main.allPets.get(i), PetListener);
+                if (column == 3)
+                {
+                    row += 1;
+                    column = 0;
+                }
+                GridPane.setMargin(anchorPostPane, new Insets(10, 10 , 10, 10 ));
+                gridPane.add(anchorPostPane, column++, row);
+                gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                gridPane.setMaxHeight(Region.USE_PREF_SIZE);
+                gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                gridPane.setMaxWidth(Region.USE_PREF_SIZE);
+            }
+        } catch (IOException e) {
+            System.out.println("File is gone lmao");
+        } catch (NullPointerException ne) {
+            System.out.println("Couldn't find the file");
+        }
     }
 
 

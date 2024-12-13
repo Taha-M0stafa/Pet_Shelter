@@ -1,8 +1,7 @@
 package com.example.pet_shelter;
 
-import com.example.Exceptions.UserException;
+import com.example.Exceptions.AlreadyFoundException;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 //My Fav User Ever Go To Hell
 public class User {
-    final Integer id;
+    final int id;
     private String user_name;
     private String user_password;
     private String user_role;
@@ -70,7 +69,7 @@ public class User {
         {return id;}
 
     // Login method__
-    public static boolean login(String userName, String password) throws UserException {
+    public static boolean login(String userName, String password) throws AlreadyFoundException {
 
 
         for (User user : Main.currentUsers) {
@@ -84,23 +83,20 @@ public class User {
                 return true;
             }
         }
-        throw new UserException("Invalid password حاول مرة اخرى ربنا يكرمك");
+        throw new AlreadyFoundException("Invalid password حاول مرة اخرى ربنا يكرمك");
     }
 
-    public void checkEmptyRegister() throws UserException
-    {
-        if( this.id.toString().trim().isEmpty() || this.user_name == null || this.user_password == null || this.user_role == null || this.user_email == null || this.user_name.isEmpty() || this.user_password.trim().isEmpty() || this.user_role.trim().isEmpty() || this.user_email.trim().isEmpty())
-        {
-            throw new UserException("Missing data");
-        }
-    }
+
 
     // Register method__
-    public static void register(User newUser) throws UserException {
+    public static void register(User newUser) throws AlreadyFoundException {
 
         for (User user : Main.currentUsers) {
             if (user.getUserEmail().equals(newUser.getUserEmail())) {
-                throw new UserException("Email already registered.");
+                throw new AlreadyFoundException("Email already registered.");
+            }
+            else if(user.getId() == newUser.getId()) {
+                throw new AlreadyFoundException("ID already registered.");
             }
         }
         Main.currentUsers.add(newUser);
@@ -165,7 +161,7 @@ public class User {
             return;
         }
         for (Pet pet : pets) {
-            System.out.println("Pet ID: " + pet.getID());
+            System.out.println("Pet ID: " + pet.getPetId());
             System.out.println("Name: " + pet.getName());
             System.out.println("Age: " + pet.getAge());
             System.out.println("Breed: " + pet.getBreed());

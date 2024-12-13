@@ -12,9 +12,9 @@
 
 <AnchorPane fx:id="MainAnchorPane" prefHeight="346.0" prefWidth="798.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ModifyUserStage">
    <children>
-      <VBox prefHeight="269.0" prefWidth="795.0">
+      <VBox prefHeight="265.0" prefWidth="795.0">
          <children>
-            <HBox prefHeight="93.0" prefWidth="795.0">
+            <HBox prefHeight="100.0" prefWidth="600.0">
                <children>
                   <Label text="ID">
                      <HBox.margin>
@@ -63,7 +63,7 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="86.0" prefWidth="795.0">
+            <HBox prefHeight="111.0" prefWidth="795.0">
                <children>
                   <Label text="Email">
                      <HBox.margin>
@@ -112,14 +112,6 @@
                   </TextField>
                </children>
             </HBox>
-            <Label text="UserRole">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="330.0" />
-               </VBox.margin>
-            </Label>
             <ComboBox fx:id="userRoleBox" prefWidth="150.0" promptText="UserRole" visibleRowCount="2">
                <VBox.margin>
                   <Insets left="300.0" />
