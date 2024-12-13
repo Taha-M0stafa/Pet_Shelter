@@ -16,7 +16,7 @@ public class User {
     private String user_password;
     private String user_role;
     private String user_email;
-    private String age;
+    private int age;
     private String gender;
 
 
@@ -26,7 +26,7 @@ public class User {
     private static final String FILE_NAME = "users.json";
     public static User loggedInUser;
 
-    public User(int id, String user_name, String user_password, String user_role, String user_email, String age, String gender, ContactInformation contactInfo) {
+    public User(int id, String user_name, String user_password, String user_role, String user_email, int age, String gender, ContactInformation contactInfo) {
 
         this.id = id;
         this.user_name = user_name;
@@ -73,8 +73,8 @@ public class User {
 
     public int getId()
         {return id;}
-    public String getAge() {return age;}
-    public void setAge(String age) {this.age = String.valueOf(age);}
+    public int getAge() {return age;}
+    public void setAge(int age) {this.age = age;}
     public String getGender() {return gender;}
     public void setGender(String gender) {this.gender = gender;}
 
@@ -132,9 +132,9 @@ public class User {
                         obj.getString("user_password"),
                         obj.getString("user_role"),
                         obj.getString("user_email"),
-                        obj.getString("age"),
+                        obj.getInt("age"),
                         obj.getString("gender"),
-                        new ContactInformation(obj.getString("phoneNum"), obj.getString("address"))
+                        new ContactInformation(obj.getInt("phoneNum"), obj.getString("address"))
 
                 ));
             }

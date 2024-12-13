@@ -57,7 +57,7 @@ public class ModifyUserStage implements Initializable
     void onAddUser(ActionEvent event)
     {
         try {
-            User newUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(), Integer.parseInt(phoneNumText.getText()), addressText.getText(), ageText.getText(), genderText.getText());
+            User newUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(),  Integer.parseInt(ageText.getText()), genderText.getText(),Integer.parseInt(phoneNumText.getText()), addressText.getText());
             User.register(newUser);
             TaskSuccessful();
         }
@@ -88,7 +88,7 @@ public class ModifyUserStage implements Initializable
 
 
         try {
-            changedUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(), Integer.parseInt(phoneNumText.getText()), addressText.getText(), ageText.getText(), genderText.getText());
+            changedUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(),Integer.parseInt(ageText.getText()),genderText.getText() ,Integer.parseInt(phoneNumText.getText()), addressText.getText());
         }
         catch (AlreadyFoundException | NumberFormatException | NullPointerException e)
         {

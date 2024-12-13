@@ -9,8 +9,8 @@ public class Adopter extends User {
 
 
 
-    public Adopter(int id, String user_name, String user_password, String user_role, String user_email, int age, String gender, String phoneNumber, String address) {
-        super(id, user_name, user_password, user_role, user_email, String.valueOf(age), gender, new ContactInformation(phoneNumber, address));
+    public Adopter(int id, String user_name, String user_password, String user_role, String user_email, int age, String gender, int phoneNumber, String address) {
+        super(id, user_name, user_password, user_role, user_email, age, gender, new ContactInformation(phoneNumber, address));
         this.numOfadoptedPets = 0;
         this.adoptionHistory = new ArrayList<>();
         this.currentPets = new ArrayList<>();

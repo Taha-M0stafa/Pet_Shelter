@@ -36,14 +36,18 @@ public class Pet {
         this.age = age;
         this.healthStatus = healthStatus;
         ID++;
+
+
+
+
         if(getSpecies().equals("Dog"))
         {
-            petImage = new Image(new File("/Photos/Dog.png").toURI().toString());
+            petImage = new Image(new File("Pet_Shelter/src/main/resources/Photos/Dog.png").toURI().toString());
 
         }
         else if(getSpecies().equals("Cat"))
         {
-            petImage = new Image("file:/Photos/Cat.png");
+            petImage = new Image(new File("Pet_Shelter/src/main/resources/Photos/Cat.png").toURI().toString());
         }
 
     }

@@ -10,7 +10,7 @@ public class AdminUser extends User {
 
 
     // Constructor
-    public AdminUser(int id, String username, String password, String email, String age, String gender ,String phoneNum , String address) {
+    public AdminUser(int id, String username, String password, String email, int age, String gender ,int phoneNum , String address) {
         super(id, username, password, "admin", email, age, gender, new ContactInformation(phoneNum, address));
         this.adoptionRequests = new ArrayList<>();
         this.notifications = new ArrayList<>();
@@ -32,7 +32,7 @@ public class AdminUser extends User {
     }
 
 
-    public void editAdopter(Adopter adopterId, String newName,String newEmail,String newPhoneNumber){
+    public void editAdopter(Adopter adopterId, String newName,String newEmail,int newPhoneNumber){
         for (Adopter adopter : adopterProfiles) {
             if (adopter.equals(adopterId)) {
                 adopter.setUserName(newName);
