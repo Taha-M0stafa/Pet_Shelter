@@ -26,10 +26,10 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         stage.resizableProperty().setValue(Boolean.TRUE);
 
-        stage.setWidth(800);
-        stage.setHeight(800);
+        stage.sizeToScene();
+
         changeStage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/FXML/login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/FXML/program-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Salutations");
         stage.setScene(scene);
@@ -39,6 +39,7 @@ public class Main extends Application {
     public void changeScene(String FXML) throws IOException {
         Parent changeRoot = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource(FXML)));
         changeStage.getScene().setRoot(changeRoot);
+        changeStage.sizeToScene();
         changeStage.show();
     }
 

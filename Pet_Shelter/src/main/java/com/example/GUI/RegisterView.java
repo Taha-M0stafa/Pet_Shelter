@@ -29,6 +29,10 @@ public class RegisterView implements Initializable {
     @FXML
     private TextField textID;
     @FXML
+    private TextField addressText;
+    @FXML
+    private TextField PhoneNumText;
+    @FXML
     private TextField age;
     @FXML
     private TextField gender;
@@ -38,7 +42,7 @@ public class RegisterView implements Initializable {
 
     public void onCreateAccount(ActionEvent e) throws AlreadyFoundException, IOException {
         try{
-            User newUser = new User(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "Admin", email.getText(), age.getText(), gender.getText(), new ContactInformation("123", "home"));
+            User newUser = new User(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "Admin", email.getText(), Integer.parseInt(age.getText()), gender.getText(),new ContactInformation(Integer.parseInt(PhoneNumText.getText()), addressText.getText()));
 
             User.register(newUser);
 
