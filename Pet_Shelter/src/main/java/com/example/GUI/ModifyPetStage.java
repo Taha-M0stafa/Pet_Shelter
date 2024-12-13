@@ -1,15 +1,15 @@
 package com.example.GUI;
 
 import com.example.Exceptions.AlreadyFoundException;
-import com.example.pet_shelter.Adopter;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
-import com.example.pet_shelter.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -69,8 +69,8 @@ public class ModifyPetStage implements Initializable {
         {
             throw new AlreadyFoundException("Missing data");
         }
-       Main.allPets.remove(foundPet);
-       Main.allPets.add(changedPet);
+        Main.allPets.remove(foundPet);
+        Main.allPets.add(changedPet);
         TaskSuccessful();
     }
 
@@ -101,8 +101,8 @@ public class ModifyPetStage implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-            petSpeciesBox.getItems().addAll("Cat", "Dog");
-            petSpeciesBox.setValue(null);
+        petSpeciesBox.getItems().addAll("Cat", "Dog");
+        petSpeciesBox.setValue(null);
     }
 
     public Pet findPet()
@@ -113,10 +113,10 @@ public class ModifyPetStage implements Initializable {
             Predicate<Pet> findPet = new Predicate<Pet>() {
                 @Override
                 public boolean test(Pet pet) {
-                        if (pet.getPetId() == Integer.parseInt(idText.getText()))
-                        {
-                            return true;
-                        }
+                    if (pet.getPetId() == Integer.parseInt(idText.getText()))
+                    {
+                        return true;
+                    }
                     return false;
                 }
             };

@@ -6,9 +6,12 @@ import com.example.pet_shelter.Adopter;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.User;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -42,6 +45,10 @@ public class ModifyUserStage implements Initializable
 
     @FXML
     private ComboBox<String> userRoleBox;
+    @FXML
+    private TextField ageText;
+    @FXML
+    private TextField genderText;
 
 
 
@@ -50,7 +57,7 @@ public class ModifyUserStage implements Initializable
     void onAddUser(ActionEvent event)
     {
         try {
-            User newUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(), Integer.parseInt(phoneNumText.getText()), addressText.getText());
+            User newUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(), Integer.parseInt(phoneNumText.getText()), addressText.getText(), ageText.getText(), genderText.getText());
             User.register(newUser);
             TaskSuccessful();
         }
@@ -81,7 +88,7 @@ public class ModifyUserStage implements Initializable
 
 
         try {
-            changedUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(), Integer.parseInt(phoneNumText.getText()), addressText.getText());
+            changedUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(), Integer.parseInt(phoneNumText.getText()), addressText.getText(), ageText.getText(), genderText.getText());
         }
         catch (AlreadyFoundException | NumberFormatException | NullPointerException e)
         {

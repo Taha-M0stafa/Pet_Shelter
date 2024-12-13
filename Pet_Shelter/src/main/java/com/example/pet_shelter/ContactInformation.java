@@ -1,15 +1,15 @@
 package com.example.pet_shelter;
 
 public class ContactInformation {
-    public int phoneNumber;
+    public String phoneNumber;
     public String address;
 
-    public ContactInformation(int phoneNumber, String address) {
+    public ContactInformation(String phoneNumber, String address) {
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 

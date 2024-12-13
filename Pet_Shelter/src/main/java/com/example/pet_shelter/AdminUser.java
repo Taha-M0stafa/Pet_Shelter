@@ -1,7 +1,5 @@
 package com.example.pet_shelter;
 
-import com.example.pet_shelter.User;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +10,8 @@ public class AdminUser extends User {
 
 
     // Constructor
-    public AdminUser(int id, String username, String password, String email, int phoneNum , String address) {
-        super(id, username, password, "admin", email, new ContactInformation(phoneNum, address));
+    public AdminUser(int id, String username, String password, String email, String age, String gender ,String phoneNum , String address) {
+        super(id, username, password, "admin", email, age, gender, new ContactInformation(phoneNum, address));
         this.adoptionRequests = new ArrayList<>();
         this.notifications = new ArrayList<>();
         this.adopterProfiles = new ArrayList<>();
@@ -22,7 +20,7 @@ public class AdminUser extends User {
 
     public AdminUser(User user)
     {
-        super(user.getId(), user.getUserName(), user.getUserPassword(), "admin", user.getUserEmail(), user.contactInfo);
+        super(user.getId(), user.getUserName(), user.getUserPassword(), "admin", user.getUserEmail(), user.getAge(), user.getGender(), user.contactInfo);
 
     }
 
@@ -34,7 +32,7 @@ public class AdminUser extends User {
     }
 
 
-    public void editAdopter(Adopter adopterId, String newName,String newEmail, int newPhoneNumber){
+    public void editAdopter(Adopter adopterId, String newName,String newEmail,String newPhoneNumber){
         for (Adopter adopter : adopterProfiles) {
             if (adopter.equals(adopterId)) {
                 adopter.setUserName(newName);

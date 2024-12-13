@@ -1,0 +1,40 @@
+.root {
+    -fx-background-color: #E6E6FAFF;
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+.text-field, .combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #b0bec5;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-background-color: #9370DB;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color:  #836FFF;
+}
+
+.anchor-pane {
+    -fx-padding: 15px;
+}
+
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.combo-box-popup {
+    -fx-background-color: #ffffff;
+}

@@ -16,19 +16,25 @@ public class User {
     private String user_password;
     private String user_role;
     private String user_email;
+    private String age;
+    private String gender;
+
+
     public ContactInformation contactInfo;
 
     // File to store user data
     private static final String FILE_NAME = "users.json";
     public static User loggedInUser;
 
-    public User(int id, String user_name, String user_password, String user_role, String user_email, ContactInformation contactInfo) {
+    public User(int id, String user_name, String user_password, String user_role, String user_email, String age, String gender, ContactInformation contactInfo) {
 
         this.id = id;
         this.user_name = user_name;
         this.user_password = user_password;
         this.user_role = user_role;
         this.user_email = user_email;
+        this.age = age;
+        this.gender = gender;
         this.contactInfo = contactInfo;
     }
 
@@ -67,6 +73,10 @@ public class User {
 
     public int getId()
         {return id;}
+    public String getAge() {return age;}
+    public void setAge(String age) {this.age = String.valueOf(age);}
+    public String getGender() {return gender;}
+    public void setGender(String gender) {this.gender = gender;}
 
     // Login method__
     public static boolean login(String userName, String password) throws AlreadyFoundException {
@@ -122,7 +132,10 @@ public class User {
                         obj.getString("user_password"),
                         obj.getString("user_role"),
                         obj.getString("user_email"),
-                        new ContactInformation(obj.getInt("phoneNum"), obj.getString("address"))
+                        obj.getString("age"),
+                        obj.getString("gender"),
+                        new ContactInformation(obj.getString("phoneNum"), obj.getString("address"))
+
                 ));
             }
         } catch (IOException e) {
@@ -144,6 +157,8 @@ public class User {
             obj.put("user_email", user.getUserEmail());
             obj.put("phoneNum", user.getContactInfo().getPhoneNumber());
             obj.put("address", user.getContactInfo().getAddress());
+            obj.put("gender", user.getGender());
+            obj.put("age", user.getAge());
             jsonArray.put(obj);
         }
         try (FileWriter writer = new FileWriter(FILE_NAME)) {

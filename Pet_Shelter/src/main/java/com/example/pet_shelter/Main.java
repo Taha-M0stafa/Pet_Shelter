@@ -5,27 +5,31 @@
 
 package com.example.pet_shelter;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
+
 public class Main extends Application {
     public static List<User> currentUsers;
     public static List<Pet> allPets;
     public static Stage changeStage;
 
+    public Main() {
+    }
 
     public void start(Stage stage) throws IOException {
-        stage.resizableProperty().setValue(Boolean.FALSE);
-        stage.sizeToScene();
+        stage.resizableProperty().setValue(Boolean.TRUE);
+
+        stage.setWidth(800);
+        stage.setHeight(800);
         changeStage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/FXML/program-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/FXML/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Salutations");
         stage.setScene(scene);
@@ -53,4 +57,6 @@ public class Main extends Application {
         User.writeData(currentUsers);
         Pet.writeData(allPets);
     }
+
+    
 }
