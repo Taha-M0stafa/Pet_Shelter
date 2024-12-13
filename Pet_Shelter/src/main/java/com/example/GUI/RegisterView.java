@@ -16,10 +16,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class RegisterView implements Initializable {
-    @FXML
-    private Button createAccount;
-    @FXML
-    private Button returnButton;
+
+
     @FXML
     private TextField username;
     @FXML

@@ -14,7 +14,7 @@
    <children>
       <VBox prefHeight="265.0" prefWidth="795.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="600.0">
+            <HBox prefHeight="89.0" prefWidth="795.0">
                <children>
                   <Label text="ID">
                      <HBox.margin>
@@ -63,7 +63,7 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="111.0" prefWidth="795.0">
+            <HBox prefHeight="117.0" prefWidth="795.0">
                <children>
                   <Label text="Email">
                      <HBox.margin>
@@ -112,11 +112,44 @@
                   </TextField>
                </children>
             </HBox>
-            <ComboBox fx:id="userRoleBox" prefWidth="150.0" promptText="UserRole" visibleRowCount="2">
+            <HBox prefHeight="74.0" prefWidth="795.0">
                <VBox.margin>
-                  <Insets left="300.0" />
+                  <Insets />
                </VBox.margin>
-            </ComboBox>
+               <children>
+                  <Label text="Gender">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="genderText" prefHeight="27.0" prefWidth="150.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </TextField>
+                  <Label text="Age">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="ageText" prefHeight="27.0" prefWidth="150.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </TextField>
+                  <ComboBox fx:id="userRoleBox" prefWidth="150.0" promptText="UserRole" visibleRowCount="2">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <Button fx:id="addUser" layoutX="14.0" layoutY="288.0" mnemonicParsing="false" onAction="#onAddUser" prefHeight="43.0" prefWidth="65.0" text="Add" />
