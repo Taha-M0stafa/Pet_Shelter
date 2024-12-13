@@ -1,6 +1,6 @@
 
 .root {
-    -fx-background-color: #E6E6FA;
+    -fx-background-color: #F7F3F9;
 }
 
 /* Input Fields */
@@ -22,7 +22,7 @@
 
 /* Buttons */
 .action-button {
-    -fx-background-color: #9370DB;
+    -fx-background-color: #7E57C2;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
