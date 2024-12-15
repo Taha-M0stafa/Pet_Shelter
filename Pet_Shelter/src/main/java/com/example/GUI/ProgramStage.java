@@ -2,7 +2,6 @@ package com.example.GUI;
 
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
-import com.example.pet_shelter.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,6 +31,9 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
     @FXML
     private Button adoptButton;
+
+    @FXML
+    private Button reportsButton;
 
 
     @FXML
@@ -237,6 +238,12 @@ public class ProgramStage extends AnchorPane implements Initializable {
     @FXML
     void onModifyPet() throws IOException{
        addNewStage("/FXML/modify-pet.fxml", "Modify Pet");
+    }
+
+    @FXML
+    void onReporting() throws IOException{
+        addNewStage("/FXML/reportingUsers.fxml", "Reporting");
+        System.out.println("i'm here");
     }
 
 

@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,7 +39,7 @@ public class RegisterView implements Initializable {
 
     public void onCreateAccount(ActionEvent e) throws AlreadyFoundException, IOException {
         try{
-            User newUser = new User(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "Admin", email.getText(), Integer.parseInt(age.getText()), gender.getText(),new ContactInformation(Integer.parseInt(PhoneNumText.getText()), addressText.getText()));
+            User newUser = new User(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "User", email.getText(), Integer.parseInt(age.getText()), gender.getText(),new ContactInformation(Integer.parseInt(PhoneNumText.getText()), addressText.getText()));
 
             User.register(newUser);
 

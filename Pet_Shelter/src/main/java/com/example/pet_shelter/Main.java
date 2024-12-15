@@ -26,10 +26,13 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         stage.resizableProperty().setValue(Boolean.TRUE);
 
-        stage.sizeToScene();
+
+        stage.setWidth(800);
+        stage.setHeight(600);
+
 
         changeStage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/FXML/program-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/FXML/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Salutations");
         stage.setScene(scene);

@@ -15,6 +15,11 @@
                   <Image url="@../Photos/Home_icon_orange.png" />
                </image>
             </ImageView>
+            <Button fx:id="reportsButton" mnemonicParsing="false" onAction="#onReporting" text="reports">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
             <Button fx:id="adoptButton" mnemonicParsing="false" onAction="#onAdopt" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Adopt" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="40.0" left="250.0" right="300.0" top="40.0" />
@@ -55,6 +60,7 @@
                   <Insets top="40.0" />
                </HBox.margin>
             </Button>
+
          </children>
       </HBox>
       <VBox fx:id="adoptVBox" layoutX="548.0" layoutY="117.0" prefHeight="963.0" prefWidth="1349.0" visible="false">

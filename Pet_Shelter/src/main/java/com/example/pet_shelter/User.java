@@ -18,8 +18,6 @@ public class User {
     private String user_email;
     private int age;
     private String gender;
-
-
     public ContactInformation contactInfo;
 
     // File to store user data
@@ -161,12 +159,15 @@ public class User {
             obj.put("age", user.getAge());
             jsonArray.put(obj);
         }
+
         try (FileWriter writer = new FileWriter(FILE_NAME)) {
-            writer.write(jsonArray.toString());
+            // Format 4 spaces
+            writer.write(jsonArray.toString(4));
         } catch (IOException e) {
             System.out.println("Error writing data to file: " + e.getMessage());
         }
     }
+
 
 
     // to use in the search for both users and admins
