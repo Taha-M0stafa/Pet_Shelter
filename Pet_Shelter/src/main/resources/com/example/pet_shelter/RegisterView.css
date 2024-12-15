@@ -1,0 +1,37 @@
+
+.root {
+    -fx-background-color: #F7F3F9;
+}
+
+/* Input Fields */
+.input-field {
+    -fx-border-color: #9370DB;
+    -fx-border-width: 1.5px;
+    -fx-background-color: #F8F8FF;
+    -fx-text-fill: #4B0082;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+.input-field {
+    -fx-pref-height: 30px;
+    -fx-pref-width: 200px;
+    -fx-font-size: 14px;
+}
+
+/* Buttons */
+.action-button {
+    -fx-background-color: #7E57C2;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: #836FFF;
+}

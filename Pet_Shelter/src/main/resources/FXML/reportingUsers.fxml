@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.Label?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.GUI.reportingUsers"
+            stylesheets="@../com/example/pet_shelter/reportingUsers.css"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <top>
+        <Label text="User Demographics Report" styleClass="header-label" />
+    </top>
+
+    <center>
+        <VBox spacing="20.0" alignment="CENTER">
+            <PieChart fx:id="genderPieChart" title="Gender Distribution" />
+            <BarChart fx:id="ageBarChart" title="Age Distribution">
+                <xAxis>
+                    <CategoryAxis label="Age Groups" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Number of Users" />
+                </yAxis>
+            </BarChart>
+            <FlowPane fx:id="tagCloudPane" hgap="10.0" vgap="10.0" />
+        </VBox>
+    </center>
+
+</BorderPane>
+

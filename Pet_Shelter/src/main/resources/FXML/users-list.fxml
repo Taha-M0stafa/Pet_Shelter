@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.UsersList">
+   <children>
+      <Text fx:id="userName" layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John doe" wrappingWidth="158.803466796875">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="userEmail" layoutX="14.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="John@gmail.com" wrappingWidth="127.47003173828125" />
+      <Text fx:id="userRole" layoutX="277.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" wrappingWidth="46.13671875">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

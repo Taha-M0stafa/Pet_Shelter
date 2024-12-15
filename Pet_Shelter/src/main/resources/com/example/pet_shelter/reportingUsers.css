@@ -1,0 +1,15 @@
+.header-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+    -fx-text-fill: #333;
+}
+
+.pie-chart {
+    -fx-background-color: #f5f5f5;
+}
+
+.bar-chart {
+    -fx-background-color: #ffffff;
+}
