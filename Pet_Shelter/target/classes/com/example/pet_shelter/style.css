@@ -3,13 +3,14 @@
     -fx-font-family: 'Segoe UI', sans-serif;
 }
 
-.text-field, .combo-box {
+.text-field, .combo-box, .list-view{
     -fx-background-color: #ffffff;
     -fx-border-color: #b0bec5;
     -fx-border-radius: 4px;
     -fx-padding: 5px;
     -fx-font-size: 14px;
 }
+
 
 .button {
     -fx-background-color: #9370DB;
@@ -31,10 +32,11 @@
 
 .label {
     -fx-text-fill: #ffffff;
-    -fx-font-size: 14px;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
 }
 
 .combo-box-popup {
     -fx-background-color: #ffffff;
 }
+

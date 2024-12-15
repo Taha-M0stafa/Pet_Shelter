@@ -18,7 +18,6 @@ import java.util.List;
 public class Pet {
 
     public int petID;
-    public static int ID;
     public String name;
     private Image petImage;
 
@@ -28,17 +27,13 @@ public class Pet {
     public int age;
     public String healthStatus;
 
-    public Pet(String name, String species, String breed, int age, String healthStatus)  {
-        this.petID = ID;
+    public Pet(int petID, String name, String species, String breed, int age, String healthStatus)  {
+        this.petID = petID;
         this.name = name;
         this.species = species;
         this.breed = breed;
         this.age = age;
         this.healthStatus = healthStatus;
-        ID++;
-
-
-
 
         if(getSpecies().equals("Dog"))
         {
@@ -83,8 +78,10 @@ public class Pet {
             // Iterate through the array and add User objects
             for (int i = 0; i < jsonArray.length(); i++) {
 
+
                 JSONObject obj = jsonArray.getJSONObject(i);
                 pets.add(new Pet(
+                        i,
                         obj.getString("name"),
                         obj.getString("species"),
                         obj.getString("breed"),

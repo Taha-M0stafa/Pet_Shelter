@@ -32,9 +32,6 @@ public class ProgramStage extends AnchorPane implements Initializable {
     @FXML
     private Button adoptButton;
 
-    @FXML
-    private Button reportsButton;
-
 
     @FXML
     private BorderPane borderPane;
@@ -238,12 +235,6 @@ public class ProgramStage extends AnchorPane implements Initializable {
     @FXML
     void onModifyPet() throws IOException{
        addNewStage("/FXML/modify-pet.fxml", "Modify Pet");
-    }
-
-    @FXML
-    void onReporting() throws IOException{
-        addNewStage("/FXML/reportingUsers.fxml", "Reporting");
-        System.out.println("i'm here");
     }
 
 
