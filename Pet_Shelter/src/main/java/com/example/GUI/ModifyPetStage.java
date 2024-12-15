@@ -5,13 +5,15 @@ import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -28,7 +30,7 @@ public class ModifyPetStage implements Initializable {
     private TextField petAgeText;
 
     @FXML
-    private TextField idText;
+    private Text idText;
 
     @FXML
     private TextField petNameText;
@@ -39,17 +41,23 @@ public class ModifyPetStage implements Initializable {
     private TextField healthStatusText;
 
     @FXML
+    private ListView<Pet> petListView;
+
+
+    @FXML
     void onAddPet(ActionEvent event) {
         try
         {
-            Pet newPet = new Pet(petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText());
+            Pet newPet = new Pet(Main.allPets.getLast().petID + 1, petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText());
             Pet.addPet(newPet);
+            UpdateCellFactory();
             TaskSuccessful();
         }
         catch (NumberFormatException | NullPointerException e)
         {
             throw new AlreadyFoundException("Missing data");
         }
+
     }
 
     @FXML
@@ -63,7 +71,7 @@ public class ModifyPetStage implements Initializable {
         }
 
         try {
-            changedPet = new Pet(petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText());
+            changedPet = new Pet(Integer.parseInt(idText.getText()),petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText());
         }
         catch (AlreadyFoundException | NumberFormatException | NullPointerException e)
         {
@@ -71,13 +79,22 @@ public class ModifyPetStage implements Initializable {
         }
         Main.allPets.remove(foundPet);
         Main.allPets.add(changedPet);
+        UpdateIDs();
+        UpdateCellFactory();
         TaskSuccessful();
     }
 
     @FXML
     void onDeletePet(ActionEvent event) {
         Pet foundPet = findPet();
+
+
+        if(foundPet.equals(null))
+        {
+            return;
+        }
         Main.allPets.remove(foundPet);
+        UpdateCellFactory();
         TaskSuccessful();
     }
 
@@ -103,13 +120,17 @@ public class ModifyPetStage implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         petSpeciesBox.getItems().addAll("Cat", "Dog");
         petSpeciesBox.setValue(null);
+
+
+        UpdateCellFactory();
+
     }
 
     public Pet findPet()
     {
         Optional<Pet> chosenPet = null;
         try {
-            //Condition to search for the user, Checks for ID first, If it's not entered check for Email, returns false if both conditions fail
+            //Condition to search for the pet, Checks for ID , returns false if the conditions fails
             Predicate<Pet> findPet = new Predicate<Pet>() {
                 @Override
                 public boolean test(Pet pet) {
@@ -120,7 +141,7 @@ public class ModifyPetStage implements Initializable {
                     return false;
                 }
             };
-            //Stream to find the user following the Predicate
+            //Stream to find the pet following the Predicate
             chosenPet = Main.allPets.stream()
                     .filter(findPet)
                     .findAny();
@@ -154,7 +175,7 @@ public class ModifyPetStage implements Initializable {
         successStage.toFront();
         successStage.setAlwaysOnTop(true);
         successStage.showAndWait();
-        idText.clear();
+        idText.setText(null);
         breedText.clear();
         petAgeText.clear();
         healthStatusText.clear();
@@ -173,4 +194,64 @@ public class ModifyPetStage implements Initializable {
     }
 
 
+
+    private void UpdateCellFactory()
+    {
+
+        petListView.getItems().clear();
+
+
+
+
+        System.out.println(Main.allPets.size());
+
+
+
+
+        petListView.setCellFactory(new Callback<ListView<Pet>, ListCell<Pet>>()
+        {
+            @Override
+            public ListCell<Pet> call(ListView<Pet> petListView)
+            {
+                return new ListCell<Pet>(){
+                    protected void updateItem(Pet pet, boolean empty)
+                    {
+                        super.updateItem(pet, empty);
+                        if(!empty)
+                        {
+
+                          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/pets-list.fxml"));
+                          AnchorPane anchorPane;
+
+                          try {
+                              anchorPane = fxmlLoader.load();
+                          } catch (IOException e) {
+                                throw new RuntimeException(e);
+                         }
+
+                          PetsList petsList = (PetsList)fxmlLoader.getController();
+                         petsList.setPetData(pet);
+
+                         anchorPane.setOnMousePressed(MouseEvent -> {
+                            displayPet(pet);
+                         });
+
+                         anchorPane.setPrefWidth(petListView.getMaxWidth());
+                         setGraphic(anchorPane);
+
+                        }
+                    }
+                };
+            }
+        });
+        petListView.getItems().addAll(Main.allPets);
+    }
+
+    private void UpdateIDs()
+    {
+        for (int i=0; i < Main.allPets.size(); i++)
+        {
+            Main.allPets.get(i).petID = i;
+        }
+    }
 }

@@ -44,7 +44,7 @@
                         <Insets top="25.0" />
                      </VBox.margin>
                   </TextField>
-               <TextField fx:id="address" prefHeight="40.0" prefWidth="220.0" promptText="Address" styleClass="input-field">
+               <TextField fx:id="addressText" prefHeight="40.0" prefWidth="220.0" promptText="Address" styleClass="input-field">
                      <VBox.margin>
                         <Insets top="25.0" />
                      </VBox.margin>

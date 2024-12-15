@@ -1,8 +1,6 @@
 package com.example.GUI;
 
-import com.example.pet_shelter.Main;
-import com.example.pet_shelter.Pet;
-import com.example.pet_shelter.User;
+import com.example.pet_shelter.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,9 +76,13 @@ public class ProgramStage extends AnchorPane implements Initializable {
     private AnchorPane mainAnchorPane;
     @FXML
     private HBox swapHBox;
+
+
+
+    //Nodes used to get the chosenPet
     private petListener PetListener;
 
-
+    private Pet chosenPet;
 
 
     //Nodes used in the  Admin pane
@@ -214,6 +216,10 @@ public class ProgramStage extends AnchorPane implements Initializable {
     void onAdoptPet(ActionEvent event)
     {
 
+
+
+
+
     }
 
     @FXML
@@ -267,6 +273,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
                 @Override
                 public void onClickPet(Pet pet) {
                     setPetData(pet);
+                    chosenPet = pet;
                 }
             };
         }

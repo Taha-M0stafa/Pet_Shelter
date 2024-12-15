@@ -16,6 +16,11 @@ public class Adopter extends User {
         this.currentPets = new ArrayList<>();
     }
 
+    public Adopter(User user)
+    {
+        super(user.getId(), user.getUserName(), user.getUserPassword(), user.getUserRole(), user.getUserEmail(), user.getAge(), user.getGender(), user.getContactInfo());
+    }
+
     public ArrayList<Pet> getAdoptionHistory() {
         return adoptionHistory;
     }
