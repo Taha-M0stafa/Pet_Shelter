@@ -34,6 +34,7 @@ public class User {
         this.age = age;
         this.gender = gender;
         this.contactInfo = contactInfo;
+
     }
 
     // Getters and setters
@@ -69,8 +70,7 @@ public class User {
         this.user_email = user_email;
     }
 
-    public int getId()
-        {return id;}
+    public int getId() {return id;}
     public int getAge() {return age;}
     public void setAge(int age) {this.age = age;}
     public String getGender() {return gender;}

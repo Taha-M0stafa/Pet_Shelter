@@ -7,8 +7,6 @@ public class Adopter extends User {
     public ArrayList<Pet>adoptionHistory;
     public ArrayList<Pet>currentPets;
 
-
-
     public Adopter(int id, String user_name, String user_password, String user_role, String user_email, int age, String gender, int phoneNumber, String address) {
         super(id, user_name, user_password, user_role, user_email, age, gender, new ContactInformation(phoneNumber, address));
         this.numOfadoptedPets = 0;
@@ -28,16 +26,11 @@ public class Adopter extends User {
     public ContactInformation getContactInfo() {
         return contactInfo;
     }
-    public void requestAdoption(Pet pet){
-        // if (admin.approve())
-        {
+
+    public  void requestAdoption(Pet pet){
             adoptionHistory.add(pet);
             numOfadoptedPets++;
             currentPets.add(pet);
-        }
-//            else {
-//                System.out.println("Admin denied your request");
-//            }
     }
 
     public void displayAdoptedPets() {
@@ -56,9 +49,6 @@ public class Adopter extends User {
             System.out.println();
         }
     }
-
-   
-
 
 }
 
