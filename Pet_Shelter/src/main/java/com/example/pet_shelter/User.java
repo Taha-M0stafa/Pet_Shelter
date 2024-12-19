@@ -9,8 +9,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 //My Fav User Ever Go To Hell
-public class User {
+public  abstract class User {
     final int id;
     private String user_name;
     private String user_password;
@@ -107,13 +108,13 @@ public class User {
                 throw new AlreadyFoundException("ID already registered.");
             }
         }
-        Main.currentUsers.add(newUser);
+        Main.currentUsers.add((Adopter)newUser);
         System.out.println("Registration successful!");
     }
 
     // Generic function to read user data from JSON file
-    public static List<User> readData() {
-        List<User> users = new ArrayList<>();
+    public static List<Adopter> readData() {
+        List<Adopter> users = new ArrayList<Adopter>();
         try {
             // Specify the file path
             Path path = Path.of("users.json");
@@ -124,7 +125,7 @@ public class User {
             // Iterate through the array and add User objects
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
-                users.add(new User(
+                users.add(new Adopter(
                         obj.getInt("id"),
                         obj.getString("user_name"),
                         obj.getString("user_password"),
@@ -132,7 +133,7 @@ public class User {
                         obj.getString("user_email"),
                         obj.getInt("age"),
                         obj.getString("gender"),
-                        new ContactInformation(obj.getInt("phoneNum"), obj.getString("address"))
+                        obj.getInt("phoneNum"), obj.getString("address")
 
                 ));
             }
@@ -143,10 +144,10 @@ public class User {
     }
 
     // Generic function to write user data to JSON file
-    public static void writeData(List<User> users) {
+    public static void writeData(List<Adopter> users) {
         JSONArray jsonArray = new JSONArray();
 
-        for (User user : users) {
+        for (Adopter user : users) {
             JSONObject obj = new JSONObject();
             obj.put("id", user.getId());
             obj.put("user_name", user.getUserName());

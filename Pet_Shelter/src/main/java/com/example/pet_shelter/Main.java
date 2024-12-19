@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Main extends Application {
-    public static List<User> currentUsers;
+    public static List<Adopter> currentUsers;
     public static List<Pet> allPets;
     public static List<AdoptionRequest> requests;
     public static Stage changeStage;
@@ -40,8 +40,6 @@ public class Main extends Application {
         stage.show();}
 
 
-
-
     public void changeScene(String FXML) throws IOException {
         Parent changeRoot = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource(FXML)));
         changeStage.getScene().setRoot(changeRoot);
@@ -56,10 +54,9 @@ public class Main extends Application {
     }
 
     public static void ReadAllData() {
-        currentUsers = User.readData();
+        currentUsers = Adopter.readData();
         allPets = Pet.readData();
         requests=AdoptionRequest.readData();
-
     }
 
     public static void WriteAllData() {

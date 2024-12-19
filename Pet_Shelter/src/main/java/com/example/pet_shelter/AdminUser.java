@@ -100,10 +100,10 @@ public class AdminUser extends User {
             System.out.println("- " + notification);
         }
     }
-
-    public List<String> getAdoptionRequests() {
-        return adoptionRequests;
-    }
+//
+//    public List<String> getAdoptionRequests() {
+//        return adoptionRequests;
+//    }
 
     public List<String> getNotifications() {
         return notifications;

@@ -112,8 +112,8 @@ public class ModifyUserStage implements Initializable
         {
             throw new AlreadyFoundException("Missing data");
         }
-        Main.currentUsers.remove(FoundUser);
-        Main.currentUsers.add(changedUser);
+        Main.currentUsers.remove((Adopter)FoundUser);
+        Main.currentUsers.add((Adopter)changedUser);
         updateCellFactory();
         TaskSuccessful();
 
@@ -130,7 +130,7 @@ public class ModifyUserStage implements Initializable
     //Throws a NullPointer Exception if the user is not found
     public User findUser()
     {
-        Optional<User> chosenUser = null;
+        Optional<Adopter> chosenUser = null;
         try {
             //Condition to search for the user, Checks for ID first, If it's not entered check for Email, returns false if both conditions fail
             Predicate<User> findUser = new Predicate<User>() {
