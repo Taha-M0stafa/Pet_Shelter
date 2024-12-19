@@ -2,7 +2,6 @@
 // Source code recreated from a .class file by IntelliJ IDEA
 // (powered by FernFlower decompiler)
 //
-
 package com.example.pet_shelter;
 
 import javafx.application.Application;
@@ -18,7 +17,9 @@ import java.util.Objects;
 public class Main extends Application {
     public static List<User> currentUsers;
     public static List<Pet> allPets;
+    public static List<AdoptionRequest> requests;
     public static Stage changeStage;
+
 
     public Main() {
     }
@@ -36,8 +37,10 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Salutations");
         stage.setScene(scene);
-        stage.show();
-    }
+        stage.show();}
+
+
+
 
     public void changeScene(String FXML) throws IOException {
         Parent changeRoot = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource(FXML)));
@@ -55,12 +58,14 @@ public class Main extends Application {
     public static void ReadAllData() {
         currentUsers = User.readData();
         allPets = Pet.readData();
+        requests=AdoptionRequest.readData();
+
     }
 
     public static void WriteAllData() {
         User.writeData(currentUsers);
         Pet.writeData(allPets);
+        AdoptionRequest.writeData(requests);
     }
 
-    
 }
