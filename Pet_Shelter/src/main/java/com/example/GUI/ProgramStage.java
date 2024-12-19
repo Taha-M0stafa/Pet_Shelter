@@ -1,5 +1,6 @@
 package com.example.GUI;
 
+import com.example.pet_shelter.AdoptionRequest;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
 import javafx.event.ActionEvent;
@@ -48,6 +49,9 @@ public class ProgramStage extends AnchorPane implements Initializable {
     @FXML
     private Label nameLabel;
 
+
+
+
     @FXML
     private Button adoptPetButton;
     @FXML
@@ -70,6 +74,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
     @FXML
     private VBox adoptVBox;
+
+    public Pet chosenPet;
 
 
     @FXML
@@ -99,6 +105,12 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
     public ProgramStage() {
 
+    }
+
+    @FXML
+    void onReporting() throws IOException{
+        addNewStage("/FXML/reportingUsers.fxml", "Reporting");
+        System.out.println("i'm here");
     }
 
 
@@ -211,6 +223,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
     @FXML
     void onAdoptPet(ActionEvent event)
     {
+        AdoptionRequest.adopt(chosenPet);
 
     }
 
@@ -265,6 +278,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
                 @Override
                 public void onClickPet(Pet pet) {
                     setPetData(pet);
+                    chosenPet=pet;
                 }
             };
         }
