@@ -87,7 +87,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
     private HBox swapHBox;
     private petListener PetListener;
 
-    public Shelter chosenShelter;
+    public static Shelter chosenShelter;
 
 
     //Nodes used in the  Admin pane
@@ -133,7 +133,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
         adoptNodes.forEach(child -> {child.setVisible(true);});
 
-
+        mainAnchorPane.getChildren().addAll(adoptNodes);
+        showPetPosts();
 
         //Remove Admin button if the user is not an admin
 
@@ -275,7 +276,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
         int column = 0;
         int row = 1;
 
-        if(!Main.allPets.isEmpty())
+        if(!chosenShelter.getPets().isEmpty())
         {
             PetListener = new petListener() {
                 @Override
@@ -287,11 +288,11 @@ public class ProgramStage extends AnchorPane implements Initializable {
         }
 
         try {
-            for (int i = 0; i < Main.allPets.size(); i++) {
+            for (int i = 0; i < chosenShelter.getPets().size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/pet-post.fxml"));
                 AnchorPane anchorPostPane = fxmlLoader.load();
                 petPostController petController = fxmlLoader.getController();
-                petController.setPostData(Main.allPets.get(i), PetListener);
+                petController.setPostData(chosenShelter.getPets().get(i), PetListener);
                 if (column == 2)
                 {
                     row += 1;

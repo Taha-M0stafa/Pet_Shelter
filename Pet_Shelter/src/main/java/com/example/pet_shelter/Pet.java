@@ -47,7 +47,7 @@ public class Pet {
 
     }
 
-    public static void addPet(Pet newPet) throws AlreadyFoundException
+    public static void addPet(Pet newPet, Shelter shelter) throws AlreadyFoundException
     {
         for( Pet pet : Main.allPets)
         {
@@ -56,7 +56,7 @@ public class Pet {
                 throw new AlreadyFoundException("Pet already exists");
             }
         }
-        Main.allPets.add(newPet);
+        shelter.getPets().add(newPet);
     }
 
     public int getPetId() {
@@ -65,59 +65,59 @@ public class Pet {
 
 
 
-    public static List<Pet> readData() {
-
-        List<Pet> pets = null;
-        try {
-            // Specify the file path
-            Path path = Path.of("pets.json");
-            byte[] bytes = Files.readAllBytes(path);
-            String jsonString = new String(bytes);
-            JSONArray jsonArray = new JSONArray(jsonString);
-            pets = new ArrayList<>();
-            // Iterate through the array and add User objects
-            for (int i = 0; i < jsonArray.length(); i++) {
-
-
-                JSONObject obj = jsonArray.getJSONObject(i);
-                pets.add(new Pet(
-                        i,
-                        obj.getString("name"),
-                        obj.getString("species"),
-                        obj.getString("breed"),
-                        obj.getInt("age"),
-                        obj.getString("healthStatus")
-                ));
-            }
-        } catch (IOException e) {
-            System.out.println("No data file found. Creating a new one...");
-        }
-        return pets;
-    }
-
-
-
-    // Generic function to write user data to JSON file
-    public static void writeData(List<Pet> pets) {
-        JSONArray jsonArray = new JSONArray();
-
-        for (Pet pet : pets) {
-            JSONObject obj = new JSONObject();
-            obj.put("id", pet.getPetId());
-            obj.put("name", pet.getName());
-            obj.put("species", pet.getSpecies());
-            obj.put("breed", pet.getBreed());
-            obj.put("age", pet.getAge());
-            obj.put("healthStatus", pet.getHealthStatus());
-            obj.put("ImgSource", pet.getPetImage().getUrl());
-            jsonArray.put(obj);
-        }
-        try (FileWriter writer = new FileWriter("Pets.json")) {
-            writer.write(jsonArray.toString());
-        } catch (IOException e) {
-            System.out.println("Error writing data to file: " + e.getMessage());
-        }
-    }
+//    public static List<Pet> readData() {
+//
+//        List<Pet> pets = null;
+//        try {
+//            // Specify the file path
+//            Path path = Path.of("pets.json");
+//            byte[] bytes = Files.readAllBytes(path);
+//            String jsonString = new String(bytes);
+//            JSONArray jsonArray = new JSONArray(jsonString);
+//            pets = new ArrayList<>();
+//            // Iterate through the array and add User objects
+//            for (int i = 0; i < jsonArray.length(); i++) {
+//
+//
+//                JSONObject obj = jsonArray.getJSONObject(i);
+//                pets.add(new Pet(
+//                        i,
+//                        obj.getString("name"),
+//                        obj.getString("species"),
+//                        obj.getString("breed"),
+//                        obj.getInt("age"),
+//                        obj.getString("healthStatus")
+//                ));
+//            }
+//        } catch (IOException e) {
+//            System.out.println("No data file found. Creating a new one...");
+//        }
+//        return pets;
+//    }
+//
+//
+//
+//    // Generic function to write user data to JSON file
+//    public static void writeData(List<Pet> pets) {
+//        JSONArray jsonArray = new JSONArray();
+//
+//        for (Pet pet : pets) {
+//            JSONObject obj = new JSONObject();
+//            obj.put("id", pet.getPetId());
+//            obj.put("name", pet.getName());
+//            obj.put("species", pet.getSpecies());
+//            obj.put("breed", pet.getBreed());
+//            obj.put("age", pet.getAge());
+//            obj.put("healthStatus", pet.getHealthStatus());
+//            obj.put("ImgSource", pet.getPetImage().getUrl());
+//            jsonArray.put(obj);
+//        }
+//        try (FileWriter writer = new FileWriter("Pets.json")) {
+//            writer.write(jsonArray.toString());
+//        } catch (IOException e) {
+//            System.out.println("Error writing data to file: " + e.getMessage());
+//        }
+//    }
 
 
 

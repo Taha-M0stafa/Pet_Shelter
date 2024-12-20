@@ -3,6 +3,7 @@ package com.example.GUI;
 import com.example.Exceptions.AlreadyFoundException;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
+import com.example.pet_shelter.Shelter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +43,9 @@ public class ModifyPetStage implements Initializable {
 
     @FXML
     private ListView<Pet> petListView;
+    @FXML
+    private ComboBox<Shelter> ShelterBox;
+
 
 
     @FXML
@@ -49,7 +53,8 @@ public class ModifyPetStage implements Initializable {
         try
         {
             Pet newPet = new Pet(Main.allPets.getLast().petID + 1, petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText());
-            Pet.addPet(newPet);
+            Pet.addPet(newPet, ShelterBox.getValue());
+            petListView.getItems().add(newPet);
             UpdateCellFactory();
             TaskSuccessful();
         }
@@ -77,8 +82,11 @@ public class ModifyPetStage implements Initializable {
         {
             throw new AlreadyFoundException("Missing data");
         }
-        Main.allPets.remove(foundPet);
-        Main.allPets.add(changedPet);
+        ShelterBox.getValue().getPets().remove(foundPet);
+        petListView.getItems().remove(foundPet);
+        ShelterBox.getValue().getPets().add(changedPet);
+        petListView.getItems().add(changedPet);
+
         UpdateIDs();
         UpdateCellFactory();
         TaskSuccessful();
@@ -93,34 +101,57 @@ public class ModifyPetStage implements Initializable {
         {
             return;
         }
-        Main.allPets.remove(foundPet);
+        ShelterBox.getValue().getPets().remove(foundPet);
+        petListView.getItems().remove(foundPet);
         UpdateCellFactory();
         TaskSuccessful();
-    }
-
-    @FXML
-    void onFindPet(ActionEvent event) {
-        Pet displayPet = findPet();
-        displayPet(displayPet);
-    }
-
-    @FXML
-    void onShowNextPet(ActionEvent event) {
-        Pet currentPet = Main.allPets.get(Counter);
-        displayPet(currentPet);
-        Counter++;
-        if(Counter == Main.allPets.size())
-        {
-            Counter = 0;
-        }
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         petSpeciesBox.getItems().addAll("Cat", "Dog");
-        petSpeciesBox.setValue(null);
+        petSpeciesBox.setValue("Breed");
 
+        for(Shelter shelter : Main.allShelters)
+        {
+            petListView.getItems().addAll(shelter.getPets());
+            ShelterBox.getItems().add(shelter);
+        }
+
+
+
+        ShelterBox.setCellFactory(new Callback<ListView<Shelter>, ListCell<Shelter>>() {
+
+            @Override
+            public ListCell<Shelter> call(ListView<Shelter> shelterListView) {
+                return new ListCell<Shelter>(){
+                    protected void updateItem(Shelter shelter, boolean empty) {
+                        super.updateItem(shelter, empty);
+                        if(!empty)
+                        {
+                            Text text = new Text();
+                            text.setText(shelter.getShelterName());
+                            setGraphic(text);
+                        }
+                    }
+
+                };
+            }
+        });
+
+        ShelterBox.setButtonCell(new ListCell<Shelter>()
+        {
+            protected void updateItem(Shelter shelter, boolean empty) {
+                super.updateItem(shelter, empty);
+                if(!empty)
+                {
+                    Text text = new Text();
+                    text.setText(shelter.getShelterName());
+                    setGraphic(text);
+                }
+            }
+
+        });
 
         UpdateCellFactory();
 
@@ -185,29 +216,40 @@ public class ModifyPetStage implements Initializable {
 
     private void displayPet(Pet displayPet)
     {
+        Shelter parentShelter = null;
+
         idText.setText(String.valueOf(displayPet.getPetId()));
         breedText.setText(displayPet.getBreed());
         petAgeText.setText(String.valueOf(displayPet.getAge()));
         healthStatusText.setText(displayPet.getHealthStatus());
         petNameText.setText(displayPet.getName());
         petSpeciesBox.setValue(displayPet.getSpecies());
+
+        for(Shelter shelter : Main.allShelters)
+        {
+            boolean isBreak = false;
+            for(Pet pet: shelter.getPets())
+            {
+                if(pet.getPetId() == displayPet.getPetId())
+                {
+                    parentShelter = shelter;
+                    isBreak = true;
+                    break;
+                }
+            }
+            if(isBreak)
+            {
+                break;
+            }
+        }
+
+        ShelterBox.setValue(parentShelter);
     }
 
 
 
     private void UpdateCellFactory()
     {
-
-        petListView.getItems().clear();
-
-
-
-
-        System.out.println(Main.allPets.size());
-
-
-
-
         petListView.setCellFactory(new Callback<ListView<Pet>, ListCell<Pet>>()
         {
             @Override
@@ -244,7 +286,13 @@ public class ModifyPetStage implements Initializable {
                 };
             }
         });
-        petListView.getItems().addAll(Main.allPets);
+
+
+
+
+
+
+
     }
 
     private void UpdateIDs()

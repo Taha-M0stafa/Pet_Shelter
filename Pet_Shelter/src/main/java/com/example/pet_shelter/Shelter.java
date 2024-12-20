@@ -17,7 +17,7 @@ public class Shelter {
     private int shelterContactNumber;
     private String shelterEmail;
     private static int shelterCounter;
-    private static ArrayList<Pet> pets;
+    private  ArrayList<Pet> pets;
     private static final String FILE_NAME = "Shelters.json";
 
     // User can swap between multiple shelters In the program to view different pets
@@ -74,7 +74,7 @@ public class Shelter {
     public String getShelterEmail() {
         return shelterEmail;
     }
-    public static ArrayList<Pet> getPets() {
+    public  ArrayList<Pet> getPets() {
         return pets;
     }
     public void addPet(Pet pet) {

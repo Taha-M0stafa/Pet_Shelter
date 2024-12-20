@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class Main extends Application {
     public static List<User> currentUsers;
-    public static List<Pet> allPets;
+    public static List<Pet> allPets = new ArrayList<>();
     public static List<AdoptionRequest> requests;
     public static Stage changeStage;
     public static List<Shelter> allShelters = new ArrayList<>();
@@ -56,14 +56,18 @@ public class Main extends Application {
 
     public static void ReadAllData() {
         currentUsers = User.readData();
-        allPets = Pet.readData();
+
         requests=AdoptionRequest.readData();
         allShelters = Shelter.readData();
+
+        for(Shelter shelter : allShelters)
+        {
+            allPets.addAll(shelter.getPets());
+        }
     }
 
     public static void WriteAllData() throws IOException {
         User.writeData(currentUsers);
-        Pet.writeData(allPets);
         AdoptionRequest.writeData(requests);
         Shelter.writeData(allShelters);
     }

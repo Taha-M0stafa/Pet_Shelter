@@ -39,6 +39,8 @@ public class ChooseShelterController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         label = new Label("Shelter 1");
         updateCellFactory();
+
+
     }
 
     public void updateCellFactory()
@@ -58,15 +60,9 @@ public class ChooseShelterController implements Initializable {
                         Button button = new Button("Choose");
                         button.setOnAction(event ->
                         {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/program-view.fxml"));
-                            try {
-                                loader.load();
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                            ProgramStage programStage = (ProgramStage)loader.getController();
 
-                            programStage.chosenShelter = shelter;
+                            System.out.println("Shelter selected successfully");
+                            ProgramStage.chosenShelter = shelter;
 
                             Main m = new Main();
                             try {

@@ -5,7 +5,7 @@
                 "petID": 3,
                 "species": "Dog",
                 "healthStatus": "Under Treatment",
-                "name": "Charlie",
+                "name": "Bor3y",
                 "breed": "Beagle",
                 "age": 4
             },
@@ -13,7 +13,7 @@
                 "petID": 4,
                 "species": "Cat",
                 "healthStatus": "Healthy",
-                "name": "Mittens",
+                "name": "Basyony",
                 "breed": "Persian",
                 "age": 5
             }
