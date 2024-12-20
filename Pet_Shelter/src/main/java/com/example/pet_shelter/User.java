@@ -116,7 +116,7 @@ public class User {
         List<User> users = new ArrayList<>();
         try {
             // Specify the file path
-            Path path = Path.of("users.json");
+            Path path = Path.of("Pet_Shelter/users.json");
             byte[] bytes = Files.readAllBytes(path);
             String jsonString = new String(bytes);
             JSONArray jsonArray = new JSONArray(jsonString);

@@ -1,4 +1,5 @@
-module com.example.pet_shelter {
+module com.example.pet_shelter
+{
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;

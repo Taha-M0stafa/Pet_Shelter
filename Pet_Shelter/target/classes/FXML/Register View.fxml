@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane minHeight="1080.0" minWidth="1920.0" stylesheets="@../com/example/pet_shelter/RegisterView.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.RegisterView">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../com/example/pet_shelter/RegisterView.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.RegisterView">
    <left>
    <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="root" BorderPane.alignment="CENTER">
       <children>
-            <VBox layoutX="608.0" layoutY="170.0" prefHeight="604.0" prefWidth="335.0">
+            <VBox layoutX="264.0" layoutY="111.0" prefHeight="604.0" prefWidth="335.0" AnchorPane.bottomAnchor="284.66666666666663" AnchorPane.leftAnchor="264.00000000000006" AnchorPane.rightAnchor="0.6666666666666856" AnchorPane.topAnchor="111.0">
                <children>
                <TextField fx:id="username" prefHeight="40.0" prefWidth="220.0" promptText="Username" styleClass="input-field">
                      <VBox.margin>
