@@ -118,7 +118,7 @@ public  abstract class User {
         List<Adopter> users = new ArrayList<Adopter>();
         try {
             // Specify the file path
-            Path path = Path.of("users.json");
+            Path path = Path.of("Pet_Shelter/users.json");
             byte[] bytes = Files.readAllBytes(path);
             String jsonString = new String(bytes);
             JSONArray jsonArray = new JSONArray(jsonString);

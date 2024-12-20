@@ -77,6 +77,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
     public Pet chosenPet;
 
+    @FXML
+    private Button shelterButton;
 
     @FXML
     private AnchorPane mainAnchorPane;
@@ -121,6 +123,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
         //Store all scene nodes in their respective arrayLists.
         adoptNodes.add(adoptVBox);
         adoptNodes.add(leftAnchorPane);
+        adoptNodes.add(shelterButton);
 
 
         mainAnchorPane.getChildren().clear();
@@ -128,7 +131,6 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
 
         adoptNodes.forEach(child -> {child.setVisible(true);});
-        adminHBox.setVisible(true);
 
 
 
@@ -289,7 +291,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
                 AnchorPane anchorPostPane = fxmlLoader.load();
                 petPostController petController = fxmlLoader.getController();
                 petController.setPostData(Main.allPets.get(i), PetListener);
-                if (column == 3)
+                if (column == 2)
                 {
                     row += 1;
                     column = 0;
@@ -311,6 +313,12 @@ public class ProgramStage extends AnchorPane implements Initializable {
     }
 
 
+    @FXML
+    void onShelter() throws IOException
+    {
+        Main m = new Main();
+        m.changeScene("/FXML/Shelter-view.fxml");
+    }
 
 
 }

@@ -28,6 +28,8 @@ public class Main extends Application {
         stage.resizableProperty().setValue(Boolean.TRUE);
 
 
+        stage.setWidth(1000);
+        stage.setHeight(1000);
 
 
         changeStage = stage;
@@ -38,9 +40,13 @@ public class Main extends Application {
         stage.show();}
 
 
+
+
     public void changeScene(String FXML) throws IOException {
         Parent changeRoot = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource(FXML)));
         changeStage.getScene().setRoot(changeRoot);
+        changeStage.setWidth(1000);
+        changeStage.setHeight(1000);
         changeStage.show();
     }
 
@@ -54,6 +60,7 @@ public class Main extends Application {
         currentUsers = Adopter.readData();
         allPets = Pet.readData();
         requests=AdoptionRequest.readData();
+
     }
 
     public static void WriteAllData() {

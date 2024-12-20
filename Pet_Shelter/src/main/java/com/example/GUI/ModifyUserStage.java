@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -33,7 +34,7 @@ public class ModifyUserStage implements Initializable
     private TextField emailText;
 
     @FXML
-    private TextField idTextField;
+    private Text idTextField;
 
     @FXML
     private TextField passwordText;
@@ -119,14 +120,6 @@ public class ModifyUserStage implements Initializable
 
     }
 
-    @FXML
-    void onFindUser(ActionEvent event)
-    {
-        User displayUser = findUser();
-        displayUser(displayUser);
-    }
-
-
     //Throws a NullPointer Exception if the user is not found
     public User findUser()
     {
@@ -165,7 +158,7 @@ public class ModifyUserStage implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        userRoleBox.getItems().addAll("admin", "user");
+        userRoleBox.getItems().addAll("admin", "User");
         userRoleBox.setValue(null);
 
         //Radio buttons
@@ -173,20 +166,8 @@ public class ModifyUserStage implements Initializable
         maleRadio.setToggleGroup(group);
         femaleRadio.setToggleGroup(group);
 
-
-
-
         userListView.getItems().addAll(Main.currentUsers);
-
        updateCellFactory();
-
-
-
-
-
-
-
-
     }
     public void TaskSuccessful()
     {
@@ -201,7 +182,7 @@ public class ModifyUserStage implements Initializable
         userNameText.setText(null);
         passwordText.setText(null);
         emailText.setText(null);
-        userRoleBox.setValue(null);
+        userRoleBox.setValue("Role");
         addressText.setText(null);
         phoneNumText.setText(null);
         group.selectToggle(null);
@@ -217,19 +198,6 @@ public class ModifyUserStage implements Initializable
         alertStage.setAlwaysOnTop(true);
         alertStage.showAndWait();
         alertStage.toFront();
-    }
-
-    @FXML
-    public void onShowNextUser(ActionEvent event)
-    {
-        User shownUser = Main.currentUsers.get(Counter);
-        displayUser(shownUser);
-
-        Counter++;
-        if(Counter == Main.currentUsers.size()) {
-            Counter = 0;
-        }
-
     }
 
     private void displayUser(User displayUser)
@@ -252,8 +220,6 @@ public class ModifyUserStage implements Initializable
 
         ageText.setText(String.valueOf(displayUser.getAge()));
     }
-
-
     private void updateCellFactory(){
 
         userListView.getItems().clear();
@@ -291,7 +257,6 @@ public class ModifyUserStage implements Initializable
             }
         });
     }
-
     private String getGender()
     {
         if(maleRadio.isSelected()) {

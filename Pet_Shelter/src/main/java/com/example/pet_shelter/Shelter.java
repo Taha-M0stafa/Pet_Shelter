@@ -1,5 +1,14 @@
 package com.example.pet_shelter;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Shelter {
     private String shelterID;
@@ -8,18 +17,21 @@ public class Shelter {
     private int shelterContactNumber;
     private String shelterEmail;
     private static int shelterCounter;
-
+    private static ArrayList<Pet> pets;
+    private static final String FILE_NAME = "Shelter.json";
 
     // User can swap between multiple shelters In the program to view different pets
 
     // Pet[] shownPets;
 
-    public Shelter(String shelterName, String shelterLocation, int shelterNumber, String shelterEmail) {
+    public Shelter(String shelterID, String shelterName, String shelterLocation, int shelterNumber, String shelterEmail) {
+        this.shelterID = shelterID;
         this.shelterName = shelterName;
         this.shelterLocation = shelterLocation;
         this.shelterContactNumber = shelterNumber;
         this.shelterEmail = shelterEmail;
         shelterCounter++;
+        this.pets = new ArrayList<>();
     }
 
 
@@ -58,6 +70,12 @@ public class Shelter {
 
     public String getShelterEmail() {
         return shelterEmail;
+    }
+    public static ArrayList<Pet> getPets() {
+        return pets;
+    }
+    public void addPet(Pet pet) {
+        pets.add(pet);
     }
 
     public void setShelterEmail(String shelterEmail) {
@@ -112,4 +130,87 @@ public class Shelter {
             }
         }
     }
+
+    private static void writeData(List<Shelter> shelters) throws IOException {
+
+        Path path = Path.of("users.json");
+        byte[] bytes = Files.readAllBytes(path);
+        String jsonString = new String(bytes);
+        JSONArray sheltersArray = new JSONArray(jsonString);
+
+        for (Shelter shelter : shelters) {
+            JSONObject shelterObject = new JSONObject();
+            shelterObject.put("shelterID", shelter.getShelterID());
+            shelterObject.put("shelterName", shelter.getShelterName());
+            shelterObject.put("shelterLocation", shelter.getShelterLocation());
+            shelterObject.put("shelterContactNumber", shelter.getShelterContactNumber());
+            shelterObject.put("shelterEmail", shelter.getShelterEmail());
+
+            // Create an array of pets for this shelter
+            JSONArray petsArray = new JSONArray();
+            for (Pet pet : shelter.getPets()) { // shelterPets is the list of pets
+                JSONObject petObject = new JSONObject();
+                petObject.put("petID", pet.getPetId());
+                petObject.put("name", pet.getName());
+                petObject.put("species", pet.getSpecies());
+                petObject.put("breed", pet.getBreed());
+                petObject.put("age", pet.getAge());
+                petObject.put("healthStatus", pet.getHealthStatus());
+                petsArray.put(petObject);
+            }
+
+            shelterObject.put("pets", petsArray); // Attach pets array to the shelter object
+            sheltersArray.put(shelterObject);
+        }
+
+        // Write the JSON array to a file
+        try (FileWriter writer = new FileWriter("Shelters.json")) {
+            writer.write(sheltersArray.toString(4)); // Pretty print JSON with indentation
+        } catch (IOException e) {
+            System.out.println("Error writing data to file: " + e.getMessage());
+        }
+    }
+
+    public static void readData() {
+        try {
+            Path path = Path.of(FILE_NAME);
+            if (!Files.exists(path)) {
+                System.out.println("No data file found. Creating a new one...");
+                return;
+            }
+
+            String jsonString = Files.readString(path);
+            JSONArray sheltersArray = new JSONArray(jsonString);
+
+            for (int i = 0; i < sheltersArray.length(); i++) {
+                JSONObject shelterObject = sheltersArray.getJSONObject(i);
+                Shelter shelter = new Shelter(
+                        shelterObject.getString("shelterID"),
+                        shelterObject.getString("shelterName"),
+                        shelterObject.getString("shelterLocation"),
+                        shelterObject.getInt("shelterContactNumber"),
+                        shelterObject.getString("shelterEmail")
+
+                );
+
+                JSONArray petsArray = shelterObject.getJSONArray("pets");
+                for (int j = 0; j < petsArray.length(); j++) {
+                    JSONObject petObject = petsArray.getJSONObject(j);
+                    Pet pet = new Pet(
+                            petObject.getInt("petID"),
+                            petObject.getString("name"),
+                            petObject.getString("species"),
+                            petObject.getString("breed"),
+                            petObject.getInt("age"),
+                            petObject.getString("healthStatus")
+                    );
+                    shelter.addPet(pet);
+                }
+                shelterList.add(shelter);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+
 }
