@@ -1,0 +1,68 @@
+[
+    {
+        "user_role": "admin",
+        "user_password": "1234",
+        "user_email": "Taha@gmail.com",
+        "address": "lolxd",
+        "gender": "male",
+        "user_name": "Taha",
+        "phoneNum": 1110630831,
+        "id": 1,
+        "age": 19
+    },
+    {
+        "user_role": "admin",
+        "user_password": "1234",
+        "user_email": "Asmaa@gmail.com",
+        "address": "Idk",
+        "gender": "female",
+        "user_name": "Asmaa",
+        "phoneNum": 1112131455,
+        "id": 2,
+        "age": 18
+    },
+    {
+        "user_role": "User",
+        "user_password": "1234",
+        "user_email": "lilac@gmail.com",
+        "address": "home",
+        "gender": "female",
+        "user_name": "lilac",
+        "phoneNum": 123,
+        "id": 3,
+        "age": 18
+    },
+    {
+        "user_role": "User",
+        "user_password": "1234",
+        "user_email": "7amada@gmail.com",
+        "address": "haram",
+        "gender": "male",
+        "user_name": "7amada",
+        "phoneNum": 120,
+        "id": 232,
+        "age": 22
+    },
+    {
+        "user_role": "User",
+        "user_password": "1234",
+        "user_email": "molan@gmail.com",
+        "address": "madinty",
+        "gender": "female",
+        "user_name": "molan",
+        "phoneNum": 18373776,
+        "id": 99,
+        "age": 21
+    },
+    {
+        "user_role": "User",
+        "user_password": "1234",
+        "user_email": "smsm@gmail.com",
+        "address": "shbeen",
+        "gender": "female",
+        "user_name": "smsm",
+        "phoneNum": 12363736,
+        "id": 124,
+        "age": 30
+    }
+]

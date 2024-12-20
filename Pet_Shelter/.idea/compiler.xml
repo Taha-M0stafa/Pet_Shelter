@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="USE_RELEASE_OPTION" value="false" />
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -9,13 +10,10 @@
         <module name="Pet_Shelter" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="json" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="json" options="-Xlint:unchecked" />
+      <module name="Pet_Shelter" options="--add-exports java.base/jdk.internal.icu.text=com.example.pet_shelter,com.example.pet_shelter" />
     </option>
   </component>
 </project>
