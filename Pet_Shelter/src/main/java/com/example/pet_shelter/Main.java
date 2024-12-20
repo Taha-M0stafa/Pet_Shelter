@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ public class Main extends Application {
     public static List<Pet> allPets;
     public static List<AdoptionRequest> requests;
     public static Stage changeStage;
-
+    public static List<Shelter> allShelters = new ArrayList<>();
 
     public Main() {
     }
@@ -39,9 +40,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();}
 
-
-
-
     public void changeScene(String FXML) throws IOException {
         Parent changeRoot = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource(FXML)));
         changeStage.getScene().setRoot(changeRoot);
@@ -50,7 +48,7 @@ public class Main extends Application {
         changeStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ReadAllData();
         launch();
         WriteAllData();
@@ -60,13 +58,14 @@ public class Main extends Application {
         currentUsers = User.readData();
         allPets = Pet.readData();
         requests=AdoptionRequest.readData();
-
+        allShelters = Shelter.readData();
     }
 
-    public static void WriteAllData() {
+    public static void WriteAllData() throws IOException {
         User.writeData(currentUsers);
         Pet.writeData(allPets);
         AdoptionRequest.writeData(requests);
+        Shelter.writeData(allShelters);
     }
 
 }

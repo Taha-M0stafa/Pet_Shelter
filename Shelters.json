@@ -1,0 +1,52 @@
+[
+    {
+        "pets": [
+            {
+                "petID": 3,
+                "species": "Dog",
+                "healthStatus": "Under Treatment",
+                "name": "Charlie",
+                "breed": "Beagle",
+                "age": 4
+            },
+            {
+                "petID": 4,
+                "species": "Cat",
+                "healthStatus": "Healthy",
+                "name": "Mittens",
+                "breed": "Persian",
+                "age": 5
+            }
+        ],
+        "shelterContactNumber": 123456789,
+        "shelterEmail": "contact@happypaws.com",
+        "shelterLocation": "1234 Elm Street, Cityville",
+        "shelterName": "Happy Paws Shelter",
+        "shelterID": "1"
+    },
+    {
+        "pets": [
+            {
+                "petID": 3,
+                "species": "Dog",
+                "healthStatus": "Under Treatment",
+                "name": "Charlie",
+                "breed": "Beagle",
+                "age": 4
+            },
+            {
+                "petID": 4,
+                "species": "Cat",
+                "healthStatus": "Healthy",
+                "name": "Mittens",
+                "breed": "Persian",
+                "age": 5
+            }
+        ],
+        "shelterContactNumber": 987654321,
+        "shelterEmail": "info@furryfriends.com",
+        "shelterLocation": "5678 Oak Avenue, Townsville",
+        "shelterName": "Furry Friends Haven",
+        "shelterID": "2"
+    }
+]

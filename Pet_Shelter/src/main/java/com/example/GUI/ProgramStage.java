@@ -3,6 +3,7 @@ package com.example.GUI;
 import com.example.pet_shelter.AdoptionRequest;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
+import com.example.pet_shelter.Shelter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,7 +87,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
     private HBox swapHBox;
     private petListener PetListener;
 
-
+    public Shelter chosenShelter;
 
 
     //Nodes used in the  Admin pane

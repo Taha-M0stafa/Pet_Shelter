@@ -18,7 +18,7 @@ public class Shelter {
     private String shelterEmail;
     private static int shelterCounter;
     private static ArrayList<Pet> pets;
-    private static final String FILE_NAME = "Shelter.json";
+    private static final String FILE_NAME = "Shelters.json";
 
     // User can swap between multiple shelters In the program to view different pets
 
@@ -35,7 +35,10 @@ public class Shelter {
     }
 
 
-    private static final ArrayList<Shelter> shelterList = new ArrayList<>();
+
+
+
+
     public String getShelterID() {
         return shelterID;
     }
@@ -83,15 +86,15 @@ public class Shelter {
     }
     // Add a shelter
     public static void addShelter(Shelter shelter) {
-        shelterList.add(shelter);
+        Main.allShelters.add(shelter);
         System.out.println("Shelter added: " + shelter.getShelterName());
     }
 
     // Delete a shelter by ID
     public static boolean deleteShelter(String shelterID) {
-        for (Shelter shelter : shelterList) {
+        for (Shelter shelter : Main.allShelters) {
             if (shelter.getShelterID().equals(shelterID)) {
-                shelterList.remove(shelter);
+                Main.allShelters.remove(shelter);
                 System.out.println("Shelter deleted: " + shelter.getShelterName());
                 return true;
             }
@@ -102,7 +105,7 @@ public class Shelter {
 
     // Edit a shelter by ID
     public static boolean editShelter(String shelterID, String newName, String newLocation, int newContactNumber, String newEmail) {
-        for (Shelter shelter : shelterList) {
+        for (Shelter shelter : Main.allShelters) {
             if (shelter.getShelterID().equals(shelterID)) {
                 shelter.setShelterName(newName);
                 shelter.setShelterLocation(newLocation);
@@ -118,10 +121,10 @@ public class Shelter {
 
     // List all shelters
     public static void listShelters() {
-        if (shelterList.isEmpty()) {
+        if (Main.allShelters.isEmpty()) {
             System.out.println("No shelters found.");
         } else {
-            for (Shelter shelter : shelterList) {
+            for (Shelter shelter : Main.allShelters) {
                 System.out.println("ID: " + shelter.getShelterID() +
                         ", Name: " + shelter.getShelterName() +
                         ", Location: " + shelter.getShelterLocation() +
@@ -131,12 +134,9 @@ public class Shelter {
         }
     }
 
-    private static void writeData(List<Shelter> shelters) throws IOException {
+    public static void writeData(List<Shelter> shelters) throws IOException {
 
-        Path path = Path.of("users.json");
-        byte[] bytes = Files.readAllBytes(path);
-        String jsonString = new String(bytes);
-        JSONArray sheltersArray = new JSONArray(jsonString);
+        JSONArray jsonArray = new JSONArray();
 
         for (Shelter shelter : shelters) {
             JSONObject shelterObject = new JSONObject();
@@ -160,23 +160,23 @@ public class Shelter {
             }
 
             shelterObject.put("pets", petsArray); // Attach pets array to the shelter object
-            sheltersArray.put(shelterObject);
+            jsonArray.put(shelterObject);
         }
 
         // Write the JSON array to a file
         try (FileWriter writer = new FileWriter("Shelters.json")) {
-            writer.write(sheltersArray.toString(4)); // Pretty print JSON with indentation
+            writer.write(jsonArray.toString(4)); // Pretty print JSON with indentation
         } catch (IOException e) {
             System.out.println("Error writing data to file: " + e.getMessage());
         }
     }
 
-    public static void readData() {
+    public static List<Shelter> readData() {
+        List<Shelter> shelters = new ArrayList<>();
         try {
             Path path = Path.of(FILE_NAME);
             if (!Files.exists(path)) {
                 System.out.println("No data file found. Creating a new one...");
-                return;
             }
 
             String jsonString = Files.readString(path);
@@ -206,11 +206,12 @@ public class Shelter {
                     );
                     shelter.addPet(pet);
                 }
-                shelterList.add(shelter);
+                shelters.add(shelter);
             }
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }
+        return shelters;
     }
 
 }
