@@ -157,9 +157,25 @@
       <Button fx:id="shelterButton" layoutY="117.0" mnemonicParsing="false" onAction="#onShelter" text="Shelters" visible="false" AnchorPane.bottomAnchor="857.3333333333333" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="942.0" />
       <AnchorPane layoutY="116.0" prefHeight="158.0" prefWidth="1000.0">
          <children>
-            <Button layoutX="71.0" layoutY="67.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="379.0" layoutY="66.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="623.0" layoutY="67.0" mnemonicParsing="false" text="Button" />
+            <HBox fx:id="adminHBox" layoutX="71.0" layoutY="66.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onModifyUser" text="Modify User">
+                     <HBox.margin>
+                        <Insets right="100.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onModifyPet" text="Modify Pet">
+                     <HBox.margin>
+                        <Insets right="100.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Modify Shelter">
+                     <HBox.margin>
+                        <Insets right="100.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>
