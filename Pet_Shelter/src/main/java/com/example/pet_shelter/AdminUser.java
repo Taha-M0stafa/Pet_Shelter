@@ -1,5 +1,6 @@
 package com.example.pet_shelter;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class AdminUser extends User {
 
     }
 
-    public AdminUser(User user)
+    public AdminUser(Adopter user)
     {
         super(user.getId(), user.getUserName(), user.getUserPassword(), "admin", user.getUserEmail(), user.getAge(), user.getGender(), user.contactInfo);
 
@@ -79,13 +80,15 @@ public class AdminUser extends User {
 
     public void viewAdoptionRequests() {
         System.out.println("Adoption Requests:");
-        for (String request : adoptionRequests) {
+        for (String request : adoptionRequests)
+        {
             System.out.println("- " + request);
         }
     }
 
     public void approveAdoptionRequest(String request) {
-        if (adoptionRequests.remove(request)) {
+        if (adoptionRequests.remove(request))
+        {
             notifications.add("Request approved: " + request);
             System.out.println("Approved adoption request: " + request);
         } else {
@@ -100,10 +103,10 @@ public class AdminUser extends User {
             System.out.println("- " + notification);
         }
     }
-
-    public List<String> getAdoptionRequests() {
-        return adoptionRequests;
-    }
+//
+//    public List<String> getAdoptionRequests() {
+//        return adoptionRequests;
+//    }
 
     public List<String> getNotifications() {
         return notifications;

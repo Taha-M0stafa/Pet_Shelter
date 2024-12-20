@@ -10,8 +10,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 //My Fav User Ever Go To Hell
-public abstract class  User {
+public  abstract class User {
     final int id;
     private String user_name;
     private String user_password;
@@ -20,6 +21,7 @@ public abstract class  User {
     private int age;
     private String gender;
     public ContactInformation contactInfo;
+
 
     // File to store user data
     private static final String FILE_NAME = "users.json";
@@ -133,10 +135,9 @@ public abstract class  User {
                         obj.getString("user_email"),
                         obj.getInt("age"),
                         obj.getString("gender"),
-                        obj.getInt("phoneNum"),
-                        obj.getString("address")
-                );
-users.add(adopter);
+                        obj.getInt("phoneNum"), obj.getString("address")
+
+                ));
             }
         } catch (IOException e) {
             System.out.println("No data file found. Creating a new one...");
@@ -229,4 +230,3 @@ users.add(adopter);
 
     public ContactInformation getContactInfo(){return contactInfo;}
 }
-
