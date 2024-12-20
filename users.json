@@ -64,19 +64,6 @@
                 "adoption_Date": "2024-12-20",
                 "adoptionId": 2,
                 "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
                     "petId": 2,
                     "species": "Cat",
                     "healthStatus": "healthy",

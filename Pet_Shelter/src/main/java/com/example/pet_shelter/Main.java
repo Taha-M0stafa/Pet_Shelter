@@ -57,12 +57,13 @@ public class Main extends Application {
     }
 
     public static void ReadAllData() {
-        currentUsers = Adopter.readData();
+        currentUsers = User.readData();
         allPets = Pet.readData();
         requests=AdoptionRequest.readData();
-//        for(int i=0;i< requests.size();i++){
-//            System.out.println(requests.get(i).adoptionId);
-//        }
+
+        for(int i=0;i< requests.size();i++){
+            System.out.println(requests.get(i).adoptionId);
+        }
         AssignPetsToAdopters();
 AssignRequestsToAdopters();
     }

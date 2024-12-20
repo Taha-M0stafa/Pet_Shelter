@@ -70,7 +70,7 @@ public class ModifyUserStage implements Initializable
     void onAddUser(ActionEvent event)
     {
         try {
-            User newUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(),  Integer.parseInt(ageText.getText()), getGender(),Integer.parseInt(phoneNumText.getText()), addressText.getText());
+            Adopter newUser = new Adopter(Integer.parseInt(idTextField.getText()), userNameText.getText(), passwordText.getText(), userRoleBox.getValue(), emailText.getText(),  Integer.parseInt(ageText.getText()), getGender(),Integer.parseInt(phoneNumText.getText()), addressText.getText());
             User.register(newUser);
             updateCellFactory();
             TaskSuccessful();
