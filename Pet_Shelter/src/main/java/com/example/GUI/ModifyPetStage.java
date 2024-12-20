@@ -52,7 +52,10 @@ public class ModifyPetStage implements Initializable {
     void onAddPet(ActionEvent event) {
         try
         {
-            Pet newPet = new Pet(Main.allPets.getLast().petID + 1, petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText(), ShelterBox.getValue().getShelterName());
+            int petId=0;
+            if(Main.allPets.isEmpty()){petId=1;}
+            else{petId=Main.allPets.getLast().getPetId()+1;}
+            Pet newPet = new Pet(petId, petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText(), ShelterBox.getValue().getShelterName());
             Pet.addPet(newPet, ShelterBox.getValue());
             petListView.getItems().add(newPet);
             UpdateCellFactory();

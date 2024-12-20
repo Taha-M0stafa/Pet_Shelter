@@ -94,7 +94,6 @@ public class Main extends Application {
 
     public static void WriteAllData() throws IOException {
         User.writeData(currentUsers);
-        Pet.writeData(allPets);
         AdoptionRequest.writeData(requests);
         Shelter.writeData(allShelters);
     }

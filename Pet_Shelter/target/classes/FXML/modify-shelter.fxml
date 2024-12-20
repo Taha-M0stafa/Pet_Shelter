@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="1404.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ModifyShelterStage">
+<AnchorPane fx:id="MainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="1255.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ModifyShelterStage">
     <children>
         <VBox layoutX="6.666666666666666" layoutY="6.666666666666666" prefHeight="391.0" prefWidth="974.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="425.0" AnchorPane.topAnchor="5.0">
             <children>
@@ -118,9 +118,9 @@
               </HBox>
             </children>
         </VBox>
-        <ScrollPane hbarPolicy="NEVER" layoutX="970.6666666666667" layoutY="6.666666666666666" prefHeight="394.0" prefWidth="432.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="969.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="5.0">
+        <ScrollPane hbarPolicy="NEVER" layoutX="856.0" layoutY="3.0" prefHeight="394.0" prefWidth="400.0" AnchorPane.bottomAnchor="4.0">
             <content>
-                <ListView fx:id="shelterListView" prefHeight="393.0" prefWidth="421.0" />
+                <ListView fx:id="shelterListView" prefHeight="393.0" prefWidth="400.0" />
             </content>
         </ScrollPane>
     </children>

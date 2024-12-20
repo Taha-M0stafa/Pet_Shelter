@@ -1,23 +1,13 @@
 [
     {
-        "pets": [
-            {
-                "petID": 0,
-                "species": "Dog",
-                "healthStatus": "Dead",
-                "name": "Gus Fring",
-                "breed": "Drug Empire",
-                "age": 1
-            },
-            {
-                "petID": 2,
-                "species": "Cat",
-                "healthStatus": "Dead",
-                "name": "Waltuh",
-                "breed": "AWOOGA",
-                "age": 4
-            }
-        ],
+        "pets": [{
+            "petID": 1,
+            "species": "Dog",
+            "healthStatus": "healty",
+            "name": "alexa",
+            "breed": "alexaaaaa",
+            "age": 4
+        }],
         "shelterContactNumber": 1234,
         "shelterEmail": "Forreal@real.com",
         "shelterLocation": "Forreal",

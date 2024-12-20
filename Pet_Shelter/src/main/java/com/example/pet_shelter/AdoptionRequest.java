@@ -18,7 +18,7 @@ import static com.example.pet_shelter.Main.*;
 
 public class AdoptionRequest {
     public int adoptionId;
-    public static int Next_ID=0;
+    public static int Next_ID;
     public Pet adoptedPet;
     public Adopter adopter;
     public LocalDate adoption_Date;
@@ -67,14 +67,14 @@ public class AdoptionRequest {
             return;
         }
 
-        if( requests.isEmpty())
+        if( requests.isEmpty()||requests==null)
         {
             Next_ID = 1;
         }
         else {
             Next_ID = requests.getLast().adoptionId++;
         }
-        AdoptionRequest newRequest = new AdoptionRequest(Next_ID,(Adopter)User.loggedInUser,p,null,null);
+        AdoptionRequest newRequest = new AdoptionRequest(Next_ID, (Adopter) Adopter.loggedInUser,p,null,null);
         requests.add(newRequest);
         System.out.println("your request have been submitted successfully ");// pop message in the GUI
     }
@@ -103,6 +103,12 @@ public class AdoptionRequest {
     public static void rejectRequest(AdoptionRequest request) {
         request.setStatus(AdoptionStatus.REJECTED);
         System.out.println("Adoption Request Rejected for Pet: " + request.adoptedPet.getPetId());
+        for(AdoptionRequest req1:requests){
+            if(request.adoptedPet.getPetId()==req1.adoptedPet.getPetId()){
+                requests.remove(req1);
+                break;
+            }
+        }
     }
 
     // Method to approve the request
@@ -111,14 +117,23 @@ public class AdoptionRequest {
         System.out.println("Adoption Request Approved for Pet: " + request.adoptedPet.getPetId());
         request.adopter.requestAdoption(request.adoptedPet); //for adopter class
         //removing the accepted pet from the pets list
-        allPets.remove(request.adoptedPet);
+       // allPets.remove(request.adoptedPet);
+      // Shelter sh= request.adoptedPet.getShelter(request.adoptedPet);
+       request.adoptedPet.getShelter(request.adoptedPet).getPets().remove(request.adoptedPet);
 
-        for(AdoptionRequest req1:requests){
-            if(request.adoptedPet.getPetId()==req1.adoptedPet.getPetId()){
-                requests.remove(req1);
-                break;
-            }
-        }
+//        for(AdoptionRequest req1:requests){
+//            if(request.adoptedPet.getPetId()==req1.adoptedPet.getPetId()){
+//                requests.remove(req1);
+//                break;
+//            }
+//        }
+
+     List<AdoptionRequest>duplicatedReq= requests.stream().filter(request1 -> request1.adoptedPet.getPetId()==request.adoptedPet.getPetId()&&!request1.getStatus().equals(AdoptionStatus.APPROVED)).toList();
+     requests.removeAll(duplicatedReq);
+
+
+
+
 
     }
 //------------------------------------------------------------
@@ -161,7 +176,7 @@ public class AdoptionRequest {
                         petObj.getString("breed"),
                         petObj.getInt("age"),
                         petObj.getString("healthStatus"),
-                        "PlaceHolder"
+                        petObj.getString("Shelter Name")
                 );
 
 
@@ -211,6 +226,7 @@ public class AdoptionRequest {
                     .put("breed", request.adoptedPet.getBreed())
                     .put("age", request.adoptedPet.getAge())
                     .put("healthStatus", request.adoptedPet.getHealthStatus())
+                    .put("Shelter Name",request.adoptedPet.getShelter(request.adoptedPet).getShelterName())
             );
 
             obj.put("adoptionDate", request.adoption_Date.toString());

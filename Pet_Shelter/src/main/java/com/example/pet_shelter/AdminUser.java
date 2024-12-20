@@ -26,7 +26,6 @@ public class AdminUser extends User {
     }
 
     public void addAdopter(Adopter adopter){
-
         adopterProfiles.add(adopter);
         System.out.println("Adopter profile added: " + adopter.getUserName());
 

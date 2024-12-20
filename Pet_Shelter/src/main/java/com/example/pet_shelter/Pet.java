@@ -76,6 +76,22 @@ public class Pet {
         shelter.getPets().add(newPet);
     }
 
+    public Shelter getShelter(Pet pet)
+    {
+        Shelter parentShelter=null;
+        for(Shelter shelter : Main.allShelters)
+        {
+            if(shelter.getShelterName().equals(pet.shelterName))
+            {
+                parentShelter = shelter;
+                break;
+            }
+        }
+        return parentShelter;
+    }
+
+
+
     public int getPetId() {
         return petID;
     }
