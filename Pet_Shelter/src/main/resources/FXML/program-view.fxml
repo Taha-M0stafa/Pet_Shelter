@@ -73,7 +73,7 @@
 
          </children>
       </HBox>
-      <AnchorPane fx:id="leftAnchorPane" layoutX="566.0" layoutY="116.0" maxHeight="1080.0" maxWidth="1920.0" prefHeight="883.0" prefWidth="434.0" style="-fx-background-color: #FEDCAE;" visible="false" AnchorPane.bottomAnchor="0.6666666666666288" AnchorPane.leftAnchor="566.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="116.0">
+      <AnchorPane fx:id="leftAnchorPane" layoutX="566.0" layoutY="116.0" maxHeight="1080.0" maxWidth="1920.0" prefHeight="883.0" prefWidth="434.0" style="-fx-background-color: #FEDCAE;" AnchorPane.bottomAnchor="0.6666666666666288" AnchorPane.leftAnchor="566.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="116.0">
          <children>
             <VBox layoutX="123.0" layoutY="315.0" prefHeight="276.0" prefWidth="247.0">
                <children>
@@ -134,7 +134,7 @@
                </padding>
             </VBox>
             <ImageView fx:id="petImage" fitHeight="315.0" fitWidth="318.0" layoutX="88.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="adoptPetButton" layoutX="166.0" layoutY="615.0" mnemonicParsing="false" onAction="#onAdoptPet" prefHeight="93.0" prefWidth="161.0" style="-fx-background-color: white;" text="Adopt">
+            <Button fx:id="adoptPetButton" layoutX="247.0" layoutY="221.0" mnemonicParsing="false" onAction="#onAdoptPet" prefHeight="93.0" prefWidth="161.0" style="-fx-background-color: white;" text="Adopt">
                <font>
                   <Font name="System Bold" size="28.0" />
                </font>
