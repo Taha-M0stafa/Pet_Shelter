@@ -60,6 +60,9 @@ public class Main extends Application {
         currentUsers = Adopter.readData();
         allPets = Pet.readData();
         requests=AdoptionRequest.readData();
+//        for(int i=0;i< requests.size();i++){
+//            System.out.println(requests.get(i).adoptionId);
+//        }
 
     }
 

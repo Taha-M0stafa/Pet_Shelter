@@ -321,7 +321,14 @@ public class ProgramStage extends AnchorPane implements Initializable {
     }
 
 
+    @FXML
+    void OnRequest() throws IOException {
+        addNewStage("/FXML/Request stage.fxml","RequestStage");
+    }
+
+
 }
+
 
 
 
