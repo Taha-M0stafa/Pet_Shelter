@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="MainAnchorPane" prefHeight="346.0" prefWidth="1172.0" stylesheets="@../com/example/pet_shelter/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ModifyPetStage">
     <children>
-        <VBox prefHeight="265.0" prefWidth="795.0">
+        <VBox prefHeight="275.0" prefWidth="758.0">
             <children>
                 <HBox prefHeight="87.0" prefWidth="795.0">
                     <children>
@@ -63,7 +63,7 @@
                         </TextField>
                     </children>
                 </HBox>
-                <HBox prefHeight="85.0" prefWidth="795.0">
+                <HBox prefHeight="104.0" prefWidth="758.0">
                     <children>
                         <Label text="Breed">
                             <HBox.margin>
@@ -99,19 +99,36 @@
                         </TextField>
                     </children>
                 </HBox>
-                <Label text="Species">
-                    <font>
+            <HBox prefHeight="67.0" prefWidth="795.0">
+               <children>
+                  <Label text="Shelter">
+                     <font>
                         <Font size="24.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets left="330.0" />
-                    </VBox.margin>
-                </Label>
-                <ComboBox fx:id="petSpeciesBox" prefWidth="150.0" promptText="Species" visibleRowCount="2">
-                    <VBox.margin>
-                        <Insets left="300.0" />
-                    </VBox.margin>
-                </ComboBox>
+                     </font>
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="ShelterBox" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ComboBox>
+                      <Label text="Species">
+                          <font>
+                              <Font size="24.0" />
+                          </font>
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                      </Label>
+                      <ComboBox fx:id="petSpeciesBox" prefWidth="150.0" promptText="Species" visibleRowCount="2">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                      </ComboBox>
+               </children>
+            </HBox>
             </children>
         </VBox>
       <HBox layoutX="14.0" layoutY="288.0" AnchorPane.bottomAnchor="14.666666666666664" AnchorPane.leftAnchor="13.666666666666629" AnchorPane.rightAnchor="426.33333333333337" AnchorPane.topAnchor="288.0">

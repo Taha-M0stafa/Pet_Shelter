@@ -262,6 +262,9 @@ public class ModifyPetStage implements Initializable {
                         if(!empty)
                         {
 
+
+
+
                           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/pets-list.fxml"));
                           AnchorPane anchorPane;
 
@@ -280,6 +283,10 @@ public class ModifyPetStage implements Initializable {
 
                          anchorPane.setPrefWidth(petListView.getMaxWidth());
                          setGraphic(anchorPane);
+
+
+
+
 
                         }
                     }
