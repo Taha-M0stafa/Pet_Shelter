@@ -160,7 +160,8 @@ public class AdoptionRequest {
                         petObj.getString("species"),
                         petObj.getString("breed"),
                         petObj.getInt("age"),
-                        petObj.getString("healthStatus")
+                        petObj.getString("healthStatus"),
+                        "PlaceHolder"
                 );
 
 

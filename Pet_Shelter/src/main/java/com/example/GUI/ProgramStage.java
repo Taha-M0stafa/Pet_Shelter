@@ -3,6 +3,7 @@ package com.example.GUI;
 import com.example.pet_shelter.AdoptionRequest;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
+import com.example.pet_shelter.Shelter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,7 +87,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
     private HBox swapHBox;
     private petListener PetListener;
 
-
+    public static Shelter chosenShelter;
 
 
     //Nodes used in the  Admin pane
@@ -132,7 +133,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
         adoptNodes.forEach(child -> {child.setVisible(true);});
 
-
+        mainAnchorPane.getChildren().addAll(adoptNodes);
+        showPetPosts();
 
         //Remove Admin button if the user is not an admin
 
@@ -252,6 +254,10 @@ public class ProgramStage extends AnchorPane implements Initializable {
        addNewStage("/FXML/modify-pet.fxml", "Modify Pet");
     }
 
+    @FXML
+    void onModifyShelter() throws IOException{
+        addNewStage("/FXML/modify-shelter.fxml", "Modify Shelter");
+    }
 
     private void addNewStage(String fxml, String title) throws IOException {
         Stage stage = new Stage();
@@ -274,7 +280,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
         int column = 0;
         int row = 1;
 
-        if(!Main.allPets.isEmpty())
+        if(!chosenShelter.getPets().isEmpty())
         {
             PetListener = new petListener() {
                 @Override
@@ -286,11 +292,11 @@ public class ProgramStage extends AnchorPane implements Initializable {
         }
 
         try {
-            for (int i = 0; i < Main.allPets.size(); i++) {
+            for (int i = 0; i < chosenShelter.getPets().size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/pet-post.fxml"));
                 AnchorPane anchorPostPane = fxmlLoader.load();
                 petPostController petController = fxmlLoader.getController();
-                petController.setPostData(Main.allPets.get(i), PetListener);
+                petController.setPostData(chosenShelter.getPets().get(i), PetListener);
                 if (column == 2)
                 {
                     row += 1;

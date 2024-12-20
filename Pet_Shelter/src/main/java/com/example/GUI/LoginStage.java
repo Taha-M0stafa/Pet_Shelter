@@ -52,11 +52,11 @@ public class LoginStage implements Initializable {
         if(User.login(userField.getText(), passwordField.getText()))
         {
             if(User.loggedInUser.getUserRole().equals("admin")) {
-                m.changeScene("/FXML/program-view.fxml");
+                m.changeScene("/FXML/Shelter-view.fxml");
             }
             else
             {
-                m.changeScene("/FXML/program-view.fxml");
+                m.changeScene("/FXML/Shelter-view.fxml");
             }
         }
 

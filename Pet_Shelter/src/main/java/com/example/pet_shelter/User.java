@@ -83,7 +83,7 @@ public  abstract class User {
     public static boolean login(String userName, String password) throws AlreadyFoundException {
 
 
-        for (Adopter user : Main.currentUsers) {
+        for (User user : Main.currentUsers) {
             if (user.getUserName().equals(userName) && user.getUserPassword().equals(password)) {
                 System.out.println("Login successful أهلا بيك");
                 loggedInUser = user;
@@ -114,6 +114,7 @@ public  abstract class User {
         System.out.println("Registration successful!");
     }
 
+    // Generic function to read user data from JSON file
     public static List<Adopter> readData() {
         List<Adopter> users = new ArrayList<>();
         try {
@@ -134,10 +135,9 @@ public  abstract class User {
                         obj.getString("user_email"),
                         obj.getInt("age"),
                         obj.getString("gender"),
-                        obj.getInt("phoneNum"),
-                        obj.getString("address")
-                );
-                users.add(adopter);
+                        obj.getInt("phoneNum"), obj.getString("address")
+
+                ));
             }
         } catch (IOException e) {
             System.out.println("No data file found. Creating a new one...");
@@ -230,3 +230,4 @@ public  abstract class User {
 
     public ContactInformation getContactInfo(){return contactInfo;}
 }
+

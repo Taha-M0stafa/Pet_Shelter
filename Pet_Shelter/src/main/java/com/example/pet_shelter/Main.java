@@ -11,15 +11,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Main extends Application {
     public static List<Adopter> currentUsers;
-    public static List<Pet> allPets;
+    public static List<Pet> allPets = new ArrayList<>();
     public static List<AdoptionRequest> requests;
     public static Stage changeStage;
-
+    public static List<Shelter> allShelters = new ArrayList<>();
 
     public Main() {
     }
@@ -50,7 +51,7 @@ public class Main extends Application {
         changeStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ReadAllData();
         launch();
         WriteAllData();
@@ -58,14 +59,15 @@ public class Main extends Application {
 
     public static void ReadAllData() {
         currentUsers = User.readData();
-        allPets = Pet.readData();
+        allShelters = Shelter.readData();
         requests=AdoptionRequest.readData();
-
-        for(int i=0;i< requests.size();i++){
-            System.out.println(requests.get(i).adoptionId);
-        }
         AssignPetsToAdopters();
-AssignRequestsToAdopters();
+        AssignRequestsToAdopters();
+
+        for(Shelter shelter : allShelters)
+        {
+            allPets.addAll(shelter.getPets());
+        }
     }
     public static void AssignRequestsToAdopters() {
         for (Adopter adopter : currentUsers) {
@@ -77,39 +79,29 @@ AssignRequestsToAdopters();
         }
     }
 
+
     public static void AssignPetsToAdopters() {
         for (Adopter adopter : currentUsers) {
             for (AdoptionRequest request : requests) {
                 if (request.getAdopter().getId() == adopter.getId()&& request.getStatus() == AdoptionRequest.AdoptionStatus.APPROVED){
-Pet pet = request.adoptedPet;
+                    Pet pet = request.adoptedPet;
                     adopter.currentPets.add(pet);
                 }
             }
         }
+
     }
 
-    public static void WriteAllData() {
+    public static void WriteAllData() throws IOException {
         User.writeData(currentUsers);
         Pet.writeData(allPets);
         AdoptionRequest.writeData(requests);
-
-        for (Adopter user : currentUsers) {
-            System.out.println(user.getUserName());
-            System.out.println("---------------");
-            for (Pet pet : user.currentPets) {
-                System.out.println(pet.toString());
-            }
-            System.out.println();
-        }
-
-        for (Adopter user : currentUsers) {
-            System.out.println(user.getUserName());
-            System.out.println("---------------");
-            for (AdoptionRequest request : user.adoptionHistory) {
-                System.out.println(request.toString());
-            }
-            System.out.println();
-        }
+        Shelter.writeData(allShelters);
     }
 
+
 }
+
+
+
+
