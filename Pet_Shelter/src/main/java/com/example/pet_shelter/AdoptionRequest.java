@@ -1,5 +1,6 @@
 package com.example.pet_shelter;
 import java.time.LocalDate;
+import java.util.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,6 +25,9 @@ public class AdoptionRequest {
     private AdoptionStatus adoption_status;
 
 
+    public Adopter getAdopter() {
+        return adopter;
+    }
 
     public AdoptionRequest(int id,Adopter u, Pet p,LocalDate d,AdoptionStatus ad) {
         this.adoptionId = id;
@@ -31,6 +35,17 @@ public class AdoptionRequest {
         this.adoptedPet = p;
         this.adoption_Date =(d!=null)?d: LocalDate.now();
         this.adoption_status =(d!=null)?ad: AdoptionStatus.PENDED;
+    }
+
+    @Override
+    public String toString() {
+        return "AdoptionRequest{" +
+                "adoptionId=" + adoptionId +
+                ", adoptedPet=" + adoptedPet.toString() +
+                ", adopterID=" + adopter.getId() +
+                ", adoption_Date=" + adoption_Date +
+                ", adoption_status=" + adoption_status +
+                '}';
     }
 
     public void setStatus(AdoptionStatus s) {

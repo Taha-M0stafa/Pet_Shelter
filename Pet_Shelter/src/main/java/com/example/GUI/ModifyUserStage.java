@@ -113,8 +113,8 @@ public class ModifyUserStage implements Initializable
         {
             throw new AlreadyFoundException("Missing data");
         }
-        Main.currentUsers.remove((Adopter)FoundUser);
-        Main.currentUsers.add((Adopter)changedUser);
+        Main.currentUsers.remove(FoundUser);
+        Main.currentUsers.add((Adopter) changedUser);
         updateCellFactory();
         TaskSuccessful();
 

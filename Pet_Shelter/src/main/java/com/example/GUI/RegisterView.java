@@ -40,7 +40,7 @@ public class RegisterView implements Initializable {
 
     public void onCreateAccount(ActionEvent e) throws AlreadyFoundException, IOException {
         try{
-            User newUser = new Adopter(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "User", email.getText(), Integer.parseInt(age.getText()), gender.getText(),Integer.parseInt(PhoneNumText.getText()), addressText.getText());
+            Adopter newUser = new Adopter(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "User", email.getText(), Integer.parseInt(age.getText()), gender.getText(),Integer.parseInt(PhoneNumText.getText()), addressText.getText());
 
             User.register(newUser);
 

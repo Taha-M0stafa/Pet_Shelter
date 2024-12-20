@@ -63,13 +63,52 @@ public class Main extends Application {
 //        for(int i=0;i< requests.size();i++){
 //            System.out.println(requests.get(i).adoptionId);
 //        }
+        AssignPetsToAdopters();
+AssignRequestsToAdopters();
+    }
+    public static void AssignRequestsToAdopters() {
+        for (Adopter adopter : currentUsers) {
+            for (AdoptionRequest request : requests) {
+                if (request.getAdopter().getId() == adopter.getId()) {
+                    adopter.adoptionHistory.add(request);
+                }
+            }
+        }
+    }
 
+    public static void AssignPetsToAdopters() {
+        for (Adopter adopter : currentUsers) {
+            for (AdoptionRequest request : requests) {
+                if (request.getAdopter().getId() == adopter.getId()&& request.getStatus() == AdoptionRequest.AdoptionStatus.APPROVED){
+Pet pet = request.adoptedPet;
+                    adopter.currentPets.add(pet);
+                }
+            }
+        }
     }
 
     public static void WriteAllData() {
         User.writeData(currentUsers);
         Pet.writeData(allPets);
         AdoptionRequest.writeData(requests);
+
+        for (Adopter user : currentUsers) {
+            System.out.println(user.getUserName());
+            System.out.println("---------------");
+            for (Pet pet : user.currentPets) {
+                System.out.println(pet.toString());
+            }
+            System.out.println();
+        }
+
+        for (Adopter user : currentUsers) {
+            System.out.println(user.getUserName());
+            System.out.println("---------------");
+            for (AdoptionRequest request : user.adoptionHistory) {
+                System.out.println(request.toString());
+            }
+            System.out.println();
+        }
     }
 
 }

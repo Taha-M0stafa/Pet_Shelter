@@ -21,6 +21,18 @@ public class Pet {
     public String name;
     private Image petImage;
 
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "petID=" + petID +
+                ", name='" + name + '\'' +
+                ", petImage=" + petImage +
+                ", species='" + species + '\'' +
+                ", breed='" + breed + '\'' +
+                ", age=" + age +
+                ", healthStatus='" + healthStatus + '\'' +
+                '}';
+    }
 
     public String species;
     public String breed;
