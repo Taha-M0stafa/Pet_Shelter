@@ -28,8 +28,6 @@ public class Main extends Application {
         stage.resizableProperty().setValue(Boolean.TRUE);
 
 
-        stage.setWidth(800);
-        stage.setHeight(600);
 
 
         changeStage = stage;
@@ -43,7 +41,6 @@ public class Main extends Application {
     public void changeScene(String FXML) throws IOException {
         Parent changeRoot = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource(FXML)));
         changeStage.getScene().setRoot(changeRoot);
-        changeStage.sizeToScene();
         changeStage.show();
     }
 

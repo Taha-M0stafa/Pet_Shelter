@@ -1,1 +1,122 @@
-[]
+[
+    {
+        "adoptionStatus": "PENDED",
+        "adoptionId": 2,
+        "adoptedPet": {
+            "petId": 0,
+            "species": "Dog",
+            "healthStatus": "Healthy",
+            "name": "Doggo",
+            "breed": "Dog",
+            "age": 4
+        },
+        "adoptionDate": "2024-12-20",
+        "adopter": {
+            "user_role": "Normal",
+            "user_password": "1234",
+            "user_email": "Reham@gmail.com",
+            "phoneNumber": 111314231,
+            "address": "Reham's home ",
+            "gender": "male",
+            "user_name": "Reham",
+            "id": 3,
+            "age": 0
+        }
+    },
+    {
+        "adoptionStatus": "PENDED",
+        "adoptionId": 2,
+        "adoptedPet": {
+            "petId": 1,
+            "species": "Dog",
+            "healthStatus": "Healthy",
+            "name": "Doo",
+            "breed": "Dog",
+            "age": 4
+        },
+        "adoptionDate": "2024-12-20",
+        "adopter": {
+            "user_role": "Normal",
+            "user_password": "1234",
+            "user_email": "Reham@gmail.com",
+            "phoneNumber": 111314231,
+            "address": "Reham's home ",
+            "gender": "male",
+            "user_name": "Reham",
+            "id": 3,
+            "age": 0
+        }
+    },
+    {
+        "adoptionStatus": "PENDED",
+        "adoptionId": 2,
+        "adoptedPet": {
+            "petId": 3,
+            "species": "Cat",
+            "healthStatus": "healthy",
+            "name": "Catter",
+            "breed": "Cat",
+            "age": 4
+        },
+        "adoptionDate": "2024-12-20",
+        "adopter": {
+            "user_role": "Normal",
+            "user_password": "1234",
+            "user_email": "Reham@gmail.com",
+            "phoneNumber": 111314231,
+            "address": "Reham's home ",
+            "gender": "male",
+            "user_name": "Reham",
+            "id": 3,
+            "age": 0
+        }
+    },
+    {
+        "adoptionStatus": "PENDED",
+        "adoptionId": 2,
+        "adoptedPet": {
+            "petId": 0,
+            "species": "Dog",
+            "healthStatus": "Healthy",
+            "name": "Doggo",
+            "breed": "Dog",
+            "age": 4
+        },
+        "adoptionDate": "2024-12-20",
+        "adopter": {
+            "user_role": "Normal",
+            "user_password": "1234",
+            "user_email": "Reham@gmail.com",
+            "phoneNumber": 111314231,
+            "address": "Reham's home ",
+            "gender": "male",
+            "user_name": "Reham",
+            "id": 3,
+            "age": 0
+        }
+    },
+    {
+        "adoptionStatus": "PENDED",
+        "adoptionId": 1,
+        "adoptedPet": {
+            "petId": 3,
+            "species": "Cat",
+            "healthStatus": "healthy",
+            "name": "Catter",
+            "breed": "Cat",
+            "age": 4
+        },
+        "adoptionDate": "2024-12-20",
+        "adopter": {
+            "user_role": "Normal",
+            "user_password": "1234",
+            "user_email": "Reham@gmail.com",
+            "phoneNumber": 111314231,
+            "address": "Reham's home ",
+            "gender": "male",
+            "user_name": "Reham",
+            "id": 3,
+            "age": 0
+        }
+    }
+]

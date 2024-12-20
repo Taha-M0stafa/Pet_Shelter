@@ -21,6 +21,7 @@ public  abstract class User {
     private String gender;
     public ContactInformation contactInfo;
 
+
     // File to store user data
     private static final String FILE_NAME = "users.json";
     public static User loggedInUser;
@@ -81,7 +82,7 @@ public  abstract class User {
     public static boolean login(String userName, String password) throws AlreadyFoundException {
 
 
-        for (User user : Main.currentUsers) {
+        for (Adopter user : Main.currentUsers) {
             if (user.getUserName().equals(userName) && user.getUserPassword().equals(password)) {
                 System.out.println("Login successful أهلا بيك");
                 loggedInUser = user;
@@ -187,4 +188,3 @@ public  abstract class User {
 
     public ContactInformation getContactInfo(){return contactInfo;}
 }
-

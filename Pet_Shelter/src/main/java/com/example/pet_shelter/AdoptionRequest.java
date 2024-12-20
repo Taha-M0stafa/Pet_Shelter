@@ -1,6 +1,5 @@
 package com.example.pet_shelter;
 import java.time.LocalDate;
-import java.util.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -25,8 +24,8 @@ public class AdoptionRequest {
     private AdoptionStatus adoption_status = AdoptionStatus.PENDED;
 
 
+
     public AdoptionRequest(int id,Adopter u, Pet p,LocalDate d,AdoptionStatus ad) {
-//
         this.adoptionId = id;
         this.adopter = u;
         this.adoptedPet = p;
@@ -48,7 +47,18 @@ public class AdoptionRequest {
 
     //adoption request method
     public static void adopt( Pet p) {
-       Next_ID= requests.getLast().adoptionId++;
+        if (p == null) {
+            System.out.println("Error: The pet cannot be null.");
+            return;
+        }
+
+        if(requests.equals(null) || requests.isEmpty())
+        {
+            Next_ID = 1;
+        }
+        else {
+            Next_ID = requests.getLast().adoptionId++;
+        }
         AdoptionRequest newRequest = new AdoptionRequest(Next_ID,(Adopter)User.loggedInUser,p,null,null);
         requests.add(newRequest);
         System.out.println("your request have been submitted successfully ");// pop message in the GUI
@@ -85,9 +95,9 @@ public class AdoptionRequest {
         request.setStatus(AdoptionStatus.APPROVED);
         System.out.println("Adoption Request Approved for Pet: " + request.adoptedPet.getPetId());
         request.adopter.requestAdoption(request.adoptedPet); //for adopter class
-        request.adopter.requestAdoption(request.adoptedPet);
         //removing the accepted pet from the pets list
         allPets.remove(request.adoptedPet);
+
     }
 //------------------------------------------------------------
 
@@ -146,8 +156,6 @@ public class AdoptionRequest {
         } catch (IOException e) {
             System.out.println("No data found");
         }
-
-
         return adoptionRequests;
     }
 
@@ -174,7 +182,7 @@ public class AdoptionRequest {
             );
 
             obj.put("adoptedPet", new JSONObject()
-                    .put("petId", request.adoptedPet.getPetId())
+                    .put("petId", request.adoptedPet.petID)
                     .put("name", request.adoptedPet.getName())
                     .put("species", request.adoptedPet.getSpecies())
                     .put("breed", request.adoptedPet.getBreed())
