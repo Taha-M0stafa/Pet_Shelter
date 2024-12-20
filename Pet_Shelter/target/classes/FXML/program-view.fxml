@@ -73,7 +73,7 @@
 
          </children>
       </HBox>
-      <AnchorPane fx:id="leftAnchorPane" layoutX="566.0" layoutY="116.0" maxHeight="1080.0" maxWidth="1920.0" prefHeight="883.0" prefWidth="434.0" style="-fx-background-color: #FEDCAE;" AnchorPane.bottomAnchor="0.6666666666666288" AnchorPane.leftAnchor="566.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="116.0">
+      <AnchorPane fx:id="leftAnchorPane" layoutX="566.0" layoutY="116.0" maxHeight="1080.0" maxWidth="1920.0" prefHeight="883.0" prefWidth="434.0" style="-fx-background-color: #FEDCAE;" visible="false" AnchorPane.bottomAnchor="0.6666666666666288" AnchorPane.leftAnchor="566.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="116.0">
          <children>
             <VBox layoutX="123.0" layoutY="315.0" prefHeight="276.0" prefWidth="247.0">
                <children>
@@ -141,7 +141,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <VBox fx:id="adoptVBox" layoutY="191.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="808.0" prefWidth="562.0" AnchorPane.bottomAnchor="0.6666666666666288" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="438.0" AnchorPane.topAnchor="191.0">
+      <VBox fx:id="adoptVBox" layoutY="191.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="808.0" prefWidth="562.0" visible="false" AnchorPane.bottomAnchor="0.6666666666666288" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="438.0" AnchorPane.topAnchor="191.0">
          <children>
             <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="564.0">
                <content>
@@ -154,6 +154,13 @@
             </ScrollPane>
          </children>
       </VBox>
-      <Button fx:id="shelterButton" layoutY="117.0" mnemonicParsing="false" onAction="#onShelter" text="Shelters" />
+      <Button fx:id="shelterButton" layoutY="117.0" mnemonicParsing="false" onAction="#onShelter" text="Shelters" visible="false" AnchorPane.bottomAnchor="857.3333333333333" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="942.0" />
+      <AnchorPane layoutY="116.0" prefHeight="158.0" prefWidth="1000.0">
+         <children>
+            <Button layoutX="71.0" layoutY="67.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="379.0" layoutY="66.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="623.0" layoutY="67.0" mnemonicParsing="false" text="Button" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
