@@ -169,7 +169,7 @@
                         <Insets right="100.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Modify Shelter">
+                  <Button mnemonicParsing="false" onAction="#onModifyShelter" text="Modify Shelter">
                      <HBox.margin>
                         <Insets right="100.0" />
                      </HBox.margin>

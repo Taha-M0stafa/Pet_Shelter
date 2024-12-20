@@ -52,7 +52,7 @@ public class ModifyPetStage implements Initializable {
     void onAddPet(ActionEvent event) {
         try
         {
-            Pet newPet = new Pet(Main.allPets.getLast().petID + 1, petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText());
+            Pet newPet = new Pet(Main.allPets.getLast().petID + 1, petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText(), ShelterBox.getValue().getShelterName());
             Pet.addPet(newPet, ShelterBox.getValue());
             petListView.getItems().add(newPet);
             UpdateCellFactory();
@@ -68,15 +68,15 @@ public class ModifyPetStage implements Initializable {
     @FXML
     void onChangePet(ActionEvent event) {
         Pet changedPet = null;
-        Pet foundPet = findPet();
+        Pet foundPet = petListView.getSelectionModel().getSelectedItem();
 
         if(foundPet == null)
         {
-            return;
+            throw new AlreadyFoundException("Please select a pet");
         }
 
         try {
-            changedPet = new Pet(Integer.parseInt(idText.getText()),petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText());
+            changedPet = new Pet(Integer.parseInt(idText.getText()),petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText(), ShelterBox.getValue().getShelterName());
         }
         catch (AlreadyFoundException | NumberFormatException | NullPointerException e)
         {
@@ -94,12 +94,10 @@ public class ModifyPetStage implements Initializable {
 
     @FXML
     void onDeletePet(ActionEvent event) {
-        Pet foundPet = findPet();
-
-
-        if(foundPet.equals(null))
+        Pet foundPet = petListView.getSelectionModel().getSelectedItem();
+        if(foundPet == null)
         {
-            return;
+            throw new AlreadyFoundException("Select a Pet");
         }
         ShelterBox.getValue().getPets().remove(foundPet);
         petListView.getItems().remove(foundPet);
@@ -157,44 +155,7 @@ public class ModifyPetStage implements Initializable {
 
     }
 
-    public Pet findPet()
-    {
-        Optional<Pet> chosenPet = null;
-        try {
-            //Condition to search for the pet, Checks for ID , returns false if the conditions fails
-            Predicate<Pet> findPet = new Predicate<Pet>() {
-                @Override
-                public boolean test(Pet pet) {
-                    if (pet.getPetId() == Integer.parseInt(idText.getText()))
-                    {
-                        return true;
-                    }
-                    return false;
-                }
-            };
-            //Stream to find the pet following the Predicate
-            chosenPet = Main.allPets.stream()
-                    .filter(findPet)
-                    .findAny();
-            if(chosenPet.isEmpty()) {
-                throw new NullPointerException();
-            }
-        }
-        catch(NullPointerException e){
-            PetNotFound();
-        }
-        return chosenPet.orElse(null);
-    }
 
-    private void PetNotFound()
-    {
-        Alert wrongIDAlert = new Alert(Alert.AlertType.ERROR, "Pet not found. Try again.", ButtonType.OK, ButtonType.CANCEL);
-        Stage alertStage = (Stage) wrongIDAlert.getDialogPane().getScene().getWindow();
-        wrongIDAlert.setHeaderText("Pet Not Found.");
-        alertStage.setAlwaysOnTop(true);
-        alertStage.showAndWait();
-        alertStage.toFront();
-    }
 
 
     public void TaskSuccessful()
@@ -227,18 +188,9 @@ public class ModifyPetStage implements Initializable {
 
         for(Shelter shelter : Main.allShelters)
         {
-            boolean isBreak = false;
-            for(Pet pet: shelter.getPets())
+            if(shelter.getShelterName().equals(displayPet.shelterName))
             {
-                if(pet.getPetId() == displayPet.getPetId())
-                {
-                    parentShelter = shelter;
-                    isBreak = true;
-                    break;
-                }
-            }
-            if(isBreak)
-            {
+                parentShelter = shelter;
                 break;
             }
         }
@@ -293,13 +245,6 @@ public class ModifyPetStage implements Initializable {
                 };
             }
         });
-
-
-
-
-
-
-
     }
 
     private void UpdateIDs()

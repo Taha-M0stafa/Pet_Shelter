@@ -254,6 +254,10 @@ public class ProgramStage extends AnchorPane implements Initializable {
        addNewStage("/FXML/modify-pet.fxml", "Modify Pet");
     }
 
+    @FXML
+    void onModifyShelter() throws IOException{
+        addNewStage("/FXML/modify-shelter.fxml", "Modify Shelter");
+    }
 
     private void addNewStage(String fxml, String title) throws IOException {
         Stage stage = new Stage();

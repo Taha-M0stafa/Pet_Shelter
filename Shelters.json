@@ -2,51 +2,42 @@
     {
         "pets": [
             {
-                "petID": 3,
+                "petID": 0,
                 "species": "Dog",
-                "healthStatus": "Under Treatment",
-                "name": "Bor3y",
-                "breed": "Beagle",
-                "age": 4
+                "healthStatus": "Dead",
+                "name": "Gus Fring",
+                "breed": "Drug Empire",
+                "age": 1
             },
             {
-                "petID": 4,
+                "petID": 2,
                 "species": "Cat",
-                "healthStatus": "Healthy",
-                "name": "Basyony",
-                "breed": "Persian",
-                "age": 5
+                "healthStatus": "Dead",
+                "name": "Waltuh",
+                "breed": "AWOOGA",
+                "age": 4
             }
         ],
-        "shelterContactNumber": 123456789,
-        "shelterEmail": "contact@happypaws.com",
-        "shelterLocation": "1234 Elm Street, Cityville",
-        "shelterName": "Happy Paws Shelter",
+        "shelterContactNumber": 1234,
+        "shelterEmail": "Forreal@real.com",
+        "shelterLocation": "Forreal",
+        "shelterName": "Fur real",
+        "shelterID": "3"
+    },
+    {
+        "pets": [],
+        "shelterContactNumber": 1110630831,
+        "shelterEmail": "FFH@gmail.com",
+        "shelterLocation": "El @atamya",
+        "shelterName": "Furry Friends Haven",
         "shelterID": "1"
     },
     {
-        "pets": [
-            {
-                "petID": 3,
-                "species": "Dog",
-                "healthStatus": "Under Treatment",
-                "name": "Charlie",
-                "breed": "Beagle",
-                "age": 4
-            },
-            {
-                "petID": 4,
-                "species": "Cat",
-                "healthStatus": "Healthy",
-                "name": "Mittens",
-                "breed": "Persian",
-                "age": 5
-            }
-        ],
-        "shelterContactNumber": 987654321,
-        "shelterEmail": "info@furryfriends.com",
-        "shelterLocation": "5678 Oak Avenue, Townsville",
-        "shelterName": "Furry Friends Haven",
+        "pets": [],
+        "shelterContactNumber": 312312,
+        "shelterEmail": "HPL@gmail.com",
+        "shelterLocation": "Sohag",
+        "shelterName": "Happy Paws Legion",
         "shelterID": "2"
     }
 ]

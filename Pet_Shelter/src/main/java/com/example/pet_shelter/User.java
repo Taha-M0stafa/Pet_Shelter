@@ -136,7 +136,7 @@ public abstract class  User {
                         obj.getInt("phoneNum"),
                         obj.getString("address")
                 );
-users.add(adopter);
+            users.add(adopter);
             }
         } catch (IOException e) {
             System.out.println("No data file found. Creating a new one...");

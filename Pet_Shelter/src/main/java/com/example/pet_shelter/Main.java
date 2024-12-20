@@ -81,7 +81,7 @@ public class Main extends Application {
         for (Adopter adopter : currentUsers) {
             for (AdoptionRequest request : requests) {
                 if (request.getAdopter().getId() == adopter.getId()&& request.getStatus() == AdoptionRequest.AdoptionStatus.APPROVED){
-Pet pet = request.adoptedPet;
+                    Pet pet = request.adoptedPet;
                     adopter.currentPets.add(pet);
                 }
             }
@@ -91,26 +91,7 @@ Pet pet = request.adoptedPet;
 
     public static void WriteAllData() throws IOException {
         User.writeData(currentUsers);
-        Pet.writeData(allPets);
         AdoptionRequest.writeData(requests);
-
-        for (Adopter user : currentUsers) {
-            System.out.println(user.getUserName());
-            System.out.println("---------------");
-            for (Pet pet : user.currentPets) {
-                System.out.println(pet.toString());
-            }
-            System.out.println();
-        }
-
-        for (Adopter user : currentUsers) {
-            System.out.println(user.getUserName());
-            System.out.println("---------------");
-            for (AdoptionRequest request : user.adoptionHistory) {
-                System.out.println(request.toString());
-            }
-            System.out.println();
-        }
         Shelter.writeData(allShelters);
     }
 

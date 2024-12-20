@@ -1,5 +1,6 @@
 package com.example.pet_shelter;
 
+import com.example.Exceptions.AlreadyFoundException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -86,8 +87,17 @@ public class Shelter {
     }
     // Add a shelter
     public static void addShelter(Shelter shelter) {
+
+        for (Shelter s : Main.allShelters) {
+            if (s.getShelterID().equals(shelter.getShelterID())) {
+                throw new AlreadyFoundException("Shelter ID already exists");
+            }
+            if (s.getShelterName().equalsIgnoreCase(shelter.getShelterName())) {
+                throw new AlreadyFoundException("Shelter name already exists");
+            }
+        }
         Main.allShelters.add(shelter);
-        System.out.println("Shelter added: " + shelter.getShelterName());
+
     }
 
     // Delete a shelter by ID
@@ -190,7 +200,6 @@ public class Shelter {
                         shelterObject.getString("shelterLocation"),
                         shelterObject.getInt("shelterContactNumber"),
                         shelterObject.getString("shelterEmail")
-
                 );
 
                 JSONArray petsArray = shelterObject.getJSONArray("pets");
@@ -202,7 +211,8 @@ public class Shelter {
                             petObject.getString("species"),
                             petObject.getString("breed"),
                             petObject.getInt("age"),
-                            petObject.getString("healthStatus")
+                            petObject.getString("healthStatus"),
+                            shelter.getShelterName()
                     );
                     shelter.addPet(pet);
                 }
