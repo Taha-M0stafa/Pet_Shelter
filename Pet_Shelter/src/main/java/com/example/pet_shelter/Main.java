@@ -40,6 +40,9 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();}
 
+
+
+
     public void changeScene(String FXML) throws IOException {
         Parent changeRoot = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource(FXML)));
         changeStage.getScene().setRoot(changeRoot);

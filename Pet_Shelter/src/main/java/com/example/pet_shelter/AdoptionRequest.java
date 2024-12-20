@@ -17,19 +17,19 @@ import static com.example.pet_shelter.Main.*;
 
 
 public class AdoptionRequest {
-    Integer adoptionId;
-    protected static int Next_ID=0;
-    protected Pet adoptedPet;
-    protected Adopter adopter;
-    protected LocalDate adoption_Date;
-    private AdoptionStatus adoption_status = AdoptionStatus.PENDED;
+    public int adoptionId;
+    public static int Next_ID=0;
+    public Pet adoptedPet;
+    public Adopter adopter;
+    public LocalDate adoption_Date;
+    private AdoptionStatus adoption_status;
+
 
     public Adopter getAdopter() {
         return adopter;
     }
 
-    public AdoptionRequest(int id, Adopter u, Pet p, LocalDate d, AdoptionStatus ad) {
-//
+    public AdoptionRequest(int id,Adopter u, Pet p,LocalDate d,AdoptionStatus ad) {
         this.adoptionId = id;
         this.adopter = u;
         this.adoptedPet = p;
@@ -62,13 +62,18 @@ public class AdoptionRequest {
 
     //adoption request method
     public static void adopt( Pet p) {
+        if (p == null) {
+            System.out.println("Error: The pet cannot be null.");
+            return;
+        }
 
-       if(requests.isEmpty()){
-           Next_ID=1;
-       }
-       else {
-           Next_ID= requests.getLast().adoptionId++;
-       }
+        if( requests.isEmpty())
+        {
+            Next_ID = 1;
+        }
+        else {
+            Next_ID = requests.getLast().adoptionId++;
+        }
         AdoptionRequest newRequest = new AdoptionRequest(Next_ID,(Adopter)User.loggedInUser,p,null,null);
         requests.add(newRequest);
         System.out.println("your request have been submitted successfully ");// pop message in the GUI
@@ -95,18 +100,26 @@ public class AdoptionRequest {
     }
 
     // Method to reject the request
-    public void rejectRequest(AdoptionRequest request) {
+    public static void rejectRequest(AdoptionRequest request) {
         request.setStatus(AdoptionStatus.REJECTED);
         System.out.println("Adoption Request Rejected for Pet: " + request.adoptedPet.getPetId());
     }
 
     // Method to approve the request
-    public void approveRequest(AdoptionRequest request) {
+    public static void approveRequest(AdoptionRequest request) {
         request.setStatus(AdoptionStatus.APPROVED);
         System.out.println("Adoption Request Approved for Pet: " + request.adoptedPet.getPetId());
         request.adopter.requestAdoption(request.adoptedPet); //for adopter class
-         //removing the accepted pet from the pets list
+        //removing the accepted pet from the pets list
         allPets.remove(request.adoptedPet);
+
+        for(AdoptionRequest req1:requests){
+            if(request.adoptedPet.getPetId()==req1.adoptedPet.getPetId()){
+                requests.remove(req1);
+                break;
+            }
+        }
+
     }
 //------------------------------------------------------------
 
@@ -166,8 +179,6 @@ public class AdoptionRequest {
         } catch (IOException e) {
             System.out.println("No data found");
         }
-
-
         return adoptionRequests;
     }
 
@@ -194,7 +205,7 @@ public class AdoptionRequest {
             );
 
             obj.put("adoptedPet", new JSONObject()
-                    .put("petId", request.adoptedPet.getPetId())
+                    .put("petId", request.adoptedPet.petID)
                     .put("name", request.adoptedPet.getName())
                     .put("species", request.adoptedPet.getSpecies())
                     .put("breed", request.adoptedPet.getBreed())

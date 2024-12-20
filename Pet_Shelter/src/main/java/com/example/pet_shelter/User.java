@@ -10,8 +10,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 //My Fav User Ever Go To Hell
-public abstract class  User {
+public  abstract class User {
     final int id;
     private String user_name;
     private String user_password;
@@ -20,6 +21,7 @@ public abstract class  User {
     private int age;
     private String gender;
     public ContactInformation contactInfo;
+
 
     // File to store user data
     private static final String FILE_NAME = "users.json";
