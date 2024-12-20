@@ -24,14 +24,28 @@ public class AdoptionRequest {
     protected LocalDate adoption_Date;
     private AdoptionStatus adoption_status = AdoptionStatus.PENDED;
 
+    public Adopter getAdopter() {
+        return adopter;
+    }
 
-    public AdoptionRequest(int id,Adopter u, Pet p,LocalDate d,AdoptionStatus ad) {
+    public AdoptionRequest(int id, Adopter u, Pet p, LocalDate d, AdoptionStatus ad) {
 //
         this.adoptionId = id;
         this.adopter = u;
         this.adoptedPet = p;
         this.adoption_Date =(d!=null)?d: LocalDate.now();
         this.adoption_status =(d!=null)?ad: AdoptionStatus.PENDED;
+    }
+
+    @Override
+    public String toString() {
+        return "AdoptionRequest{" +
+                "adoptionId=" + adoptionId +
+                ", adoptedPet=" + adoptedPet.toString() +
+                ", adopterID=" + adopter.getId() +
+                ", adoption_Date=" + adoption_Date +
+                ", adoption_status=" + adoption_status +
+                '}';
     }
 
     public void setStatus(AdoptionStatus s) {
@@ -48,7 +62,13 @@ public class AdoptionRequest {
 
     //adoption request method
     public static void adopt( Pet p) {
-       Next_ID= requests.getLast().adoptionId++;
+
+       if(requests.isEmpty()){
+           Next_ID=1;
+       }
+       else {
+           Next_ID= requests.getLast().adoptionId++;
+       }
         AdoptionRequest newRequest = new AdoptionRequest(Next_ID,(Adopter)User.loggedInUser,p,null,null);
         requests.add(newRequest);
         System.out.println("your request have been submitted successfully ");// pop message in the GUI
@@ -85,8 +105,7 @@ public class AdoptionRequest {
         request.setStatus(AdoptionStatus.APPROVED);
         System.out.println("Adoption Request Approved for Pet: " + request.adoptedPet.getPetId());
         request.adopter.requestAdoption(request.adoptedPet); //for adopter class
-        request.adopter.requestAdoption(request.adoptedPet);
-        //removing the accepted pet from the pets list
+         //removing the accepted pet from the pets list
         allPets.remove(request.adoptedPet);
     }
 //------------------------------------------------------------

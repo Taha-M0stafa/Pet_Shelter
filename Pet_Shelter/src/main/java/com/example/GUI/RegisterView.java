@@ -1,6 +1,7 @@
 package com.example.GUI;
 
 import com.example.Exceptions.AlreadyFoundException;
+import com.example.pet_shelter.Adopter;
 import com.example.pet_shelter.ContactInformation;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.User;
@@ -39,7 +40,7 @@ public class RegisterView implements Initializable {
 
     public void onCreateAccount(ActionEvent e) throws AlreadyFoundException, IOException {
         try{
-            User newUser = new User(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "User", email.getText(), Integer.parseInt(age.getText()), gender.getText(),new ContactInformation(Integer.parseInt(PhoneNumText.getText()), addressText.getText()));
+            Adopter newUser = new Adopter(Integer.parseInt(textID.getText()), username.getText(), password.getText(), "User", email.getText(), Integer.parseInt(age.getText()), gender.getText(),Integer.parseInt(PhoneNumText.getText()), addressText.getText());
 
             User.register(newUser);
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Adopter extends User {
     public int numOfadoptedPets;
-    public ArrayList<Pet>adoptionHistory;
+    public ArrayList<AdoptionRequest>adoptionHistory;
     public ArrayList<Pet>currentPets;
 
     public Adopter(int id, String user_name, String user_password, String user_role, String user_email, int age, String gender, int phoneNumber, String address) {
@@ -19,7 +19,7 @@ public class Adopter extends User {
         super(user.getId(), user.getUserName(), user.getUserPassword(), user.getUserRole(), user.getUserEmail(), user.getAge(), user.getGender(), user.getContactInfo());
     }
 
-    public ArrayList<Pet> getAdoptionHistory() {
+    public ArrayList<AdoptionRequest> getAdoptionHistory() {
         return adoptionHistory;
     }
 
@@ -28,27 +28,12 @@ public class Adopter extends User {
     }
 
     public  void requestAdoption(Pet pet){
-            adoptionHistory.add(pet);
+
             numOfadoptedPets++;
             currentPets.add(pet);
     }
 
-    public void displayAdoptedPets() {
-        if (adoptionHistory.isEmpty()){
-            System.out.println("No pets adopted yet");
-            return;}
-        else {
-            for (int i = 0; i < adoptionHistory.size(); i++) {
-                System.out.println("Pet number " + (i + 1) + "#");
-                System.out.println("Pet id: " + adoptionHistory.get(i).getPetId());
-                System.out.println("Pet name: " + adoptionHistory.get(i).getName());
-                System.out.println("Pet age: " + adoptionHistory.get(i).getAge());
-                System.out.println("Pet Health Status: " + adoptionHistory.get(i).getHealthStatus());
-                System.out.println("------------");
-            }
-            System.out.println();
-        }
-    }
+
 
 }
 
