@@ -1,6 +1,7 @@
 package com.example.pet_shelter;
 
 import com.example.Exceptions.AlreadyFoundException;
+import org.controlsfx.control.Notifications;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.nio.file.Files;
@@ -90,6 +91,15 @@ public  abstract class User {
                 if(loggedInUser.getUserRole().equals("admin"))
                 {
                     loggedInUser = new AdminUser(user);
+                }
+                if(loggedInUser instanceof Adopter){
+
+                        // Safely downcast to Adopter
+                        Adopter adopter = (Adopter) loggedInUser;
+                        if(adopter.getNumberOfCurrentPetsForNotification()<adopter.numOfadoptedPets){
+                            Notifications.create().title("Congrats on your pet!").text("your request is approved").showInformation();
+
+                        }
                 }
                 return true;
             }
