@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -28,6 +29,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
     public TextField userNameField;
 
     public AnchorPane ProfileNodes;
+
+    public ListView<AdoptionRequest> historyListView;
 
     @FXML
     private ImageView homeView;
@@ -142,7 +145,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
         //Remove Admin button if the user is not an admin
 
-        if(/*!User.loggedInUser.getUserRole().equals("admin"*/ false){
+        if(!User.loggedInUser.getUserRole().equals("admin"))
+        {
             swapHBox.getChildren().remove(adminButton);
         }
 
@@ -178,6 +182,27 @@ public class ProgramStage extends AnchorPane implements Initializable {
             }
         });
 
+        //Set the historyRequest list view factory
+        historyListView.setCellFactory(new Callback<ListView<AdoptionRequest>, ListCell<AdoptionRequest>>() {
+            @Override
+            public ListCell<AdoptionRequest> call(ListView<AdoptionRequest> adoptionRequestListView) {
+                return new ListCell<>(){
+                    protected void updateItem(AdoptionRequest adoptionRequest, boolean empty) {
+                        super.updateItem(adoptionRequest, empty);
+                        if (!empty) {
+                            AnchorPane anchorPane = new AnchorPane();
+
+                            Text petName = new Text(adoptionRequest.adoptedPet.getName());
+                            Text status = new Text(adoptionRequest.getStatus().toString());
+                            status.setTranslateX(400);
+                            anchorPane.getChildren().add(petName);
+                            anchorPane.getChildren().add(status);
+                            setGraphic(anchorPane);
+                        }
+                    }
+                };
+            }
+        });
     }//End of logic;
 
 
@@ -259,6 +284,15 @@ public class ProgramStage extends AnchorPane implements Initializable {
             currentPets.getItems().clear();
             currentPets.getItems().addAll(User.loggedInUser.getCurrentPets());
             currentPets.refresh();
+        }
+        if(User.loggedInUser.getAdoptionHistory() == null)
+        {}
+        else if(!User.loggedInUser.getAdoptionHistory().isEmpty())
+        {
+            historyListView.getItems().clear();
+            historyListView.getItems().addAll(User.loggedInUser.getAdoptionHistory());
+            historyListView.refresh();
+            System.out.println("yasta mwgod");
         }
         setUserData(User.loggedInUser);
         currentMenu = 1;

@@ -67,7 +67,7 @@ public class AdoptionRequest {
             return;
         }
 
-        if( requests.isEmpty()||requests==null)
+        if( requests.isEmpty()|| requests==null)
         {
             Next_ID = 1;
         }
@@ -83,7 +83,7 @@ public class AdoptionRequest {
             if(newRequest.adoptedPet.getPetId()==r.adoptedPet.getPetId()&&newRequest.adopter.getId()==r.adopter.getId()){
 
                 throw new AlreadyFoundException("you already adopted this pet before." +
-                        " check ur history to know the status of ur request");
+                        " check your history to know the status of your request");
             }
         }
         requests.add(newRequest);

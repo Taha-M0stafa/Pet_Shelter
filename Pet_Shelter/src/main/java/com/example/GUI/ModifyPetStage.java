@@ -43,6 +43,7 @@ public class ModifyPetStage implements Initializable {
     @FXML
     private TextField healthStatusText;
 
+    public static int NEXT_PET_ID = 1;
     @FXML
     private ListView<Pet> petListView;
     @FXML
@@ -53,10 +54,8 @@ public class ModifyPetStage implements Initializable {
     void onAddPet(ActionEvent event) {
         try
         {
-            int petId=0;
-            if(Main.allPets.isEmpty()){petId=1;}
-            else{petId=Main.allPets.getLast().getPetId()+1;}
-            Pet newPet = new Pet(petId, petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText(), ShelterBox.getValue().getShelterName());
+
+            Pet newPet = new Pet(NEXT_PET_ID++, petNameText.getText(), petSpeciesBox.getValue(), breedText.getText(), Integer.parseInt(petAgeText.getText()), healthStatusText.getText(), ShelterBox.getValue().getShelterName());
             Pet.addPet(newPet, ShelterBox.getValue());
             petListView.getItems().add(newPet);
             UpdateCellFactory();
@@ -118,7 +117,14 @@ public class ModifyPetStage implements Initializable {
             ShelterBox.getItems().add(shelter);
         }
 
-
+        if(!Main.allPets.isEmpty())
+        {
+            NEXT_PET_ID = Main.allPets.getLast().getPetId() + 1;
+        }
+        else
+        {
+            NEXT_PET_ID = 1;
+        }
 
         ShelterBox.setCellFactory(new Callback<ListView<Shelter>, ListCell<Shelter>>() {
 
