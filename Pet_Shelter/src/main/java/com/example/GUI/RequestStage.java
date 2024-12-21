@@ -16,17 +16,17 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RequestStage implements Initializable {
 
 
-    public ObservableList<AdoptionRequest> requestObservList = FXCollections.observableArrayList();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        requestObservList.addAll(Main.requests);
-        reqlist.setItems(requestObservList);
+        reqlist.getItems().addAll(Main.requests.stream().filter(request -> request.getStatus().equals(AdoptionRequest.AdoptionStatus.PENDED)).toList());
         UpdateCellFactory();
 
     }
@@ -42,7 +42,7 @@ public class RequestStage implements Initializable {
                 return new ListCell<>() {
                     protected void updateItem(AdoptionRequest request, boolean empty) {
                         super.updateItem(request, empty);
-                        if(!empty){
+                        if(!empty) {
                             AnchorPane pane = new AnchorPane();
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Request2.fxml"));
                             try {
@@ -53,13 +53,22 @@ public class RequestStage implements Initializable {
                             Request2 request2 = (Request2) loader.getController();
                             request2.setData(request);
                             request2.setCurrentRequest(request);
+
+                            request2.AcceptButton.setOnAction(event -> {
+                                    AdoptionRequest.approveRequest(request);
+                                    reqlist.getItems().remove(request);
+                                    reqlist.refresh();
+                            });
+
+                            request2.RejectButton.setOnAction(event -> {
+                                AdoptionRequest.rejectRequest(request);
+                            });
+
                             pane.setPrefWidth(reqlist.getPrefWidth());
                             pane.setPrefHeight(USE_COMPUTED_SIZE);
-                           // System.out.println("I am not empty");
+                            // System.out.println("I am not empty");
                             setGraphic(pane);
                         }
-
-
                     }
                 };
             }
@@ -68,7 +77,12 @@ public class RequestStage implements Initializable {
 
     }
 
-
+    public void UpdateList()
+    {
+        List<AdoptionRequest> r = reqlist.getItems().stream().filter(request -> request.getStatus().equals(AdoptionRequest.AdoptionStatus.APPROVED)).toList();
+        reqlist.getItems().removeAll(r);
+        reqlist.refresh();
+    }
 
 }
 

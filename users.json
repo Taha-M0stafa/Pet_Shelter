@@ -62,13 +62,39 @@
             {
                 "adoption_status": "APPROVED",
                 "adoption_Date": "2024-12-21",
-                "adoptionId": 1,
+                "adoptionId": 2,
                 "adoptedPet": {
                     "petId": 1,
                     "species": "Dog",
                     "healthStatus": "sdhgsdhsd",
                     "name": "hgsdfhgsfd",
                     "breed": "hgfsdhgf",
+                    "age": 543
+                }
+            },
+            {
+                "adoption_status": "APPROVED",
+                "adoption_Date": "2024-12-21",
+                "adoptionId": 2,
+                "adoptedPet": {
+                    "petId": 1,
+                    "species": "Dog",
+                    "healthStatus": "healty",
+                    "name": "alexa",
+                    "breed": "alexaaaaa",
+                    "age": 4
+                }
+            },
+            {
+                "adoption_status": "APPROVED",
+                "adoption_Date": "2024-12-21",
+                "adoptionId": 1,
+                "adoptedPet": {
+                    "petId": 2,
+                    "species": "Cat",
+                    "healthStatus": "ghfdshfgsd",
+                    "name": "hgsdfhgfd",
+                    "breed": "hfgdshgfds",
                     "age": 543
                 }
             }
@@ -96,6 +122,22 @@
                 "healthStatus": "sdhgsdhsd",
                 "name": "hgsdfhgsfd",
                 "breed": "hgfsdhgf",
+                "age": 543
+            },
+            {
+                "petId": 1,
+                "species": "Dog",
+                "healthStatus": "healty",
+                "name": "alexa",
+                "breed": "alexaaaaa",
+                "age": 4
+            },
+            {
+                "petId": 2,
+                "species": "Cat",
+                "healthStatus": "ghfdshfgsd",
+                "name": "hgsdfhgfd",
+                "breed": "hfgdshgfds",
                 "age": 543
             }
         ],
