@@ -127,19 +127,12 @@ public class AdoptionRequest {
         request.setStatus(AdoptionStatus.APPROVED);
         System.out.println("Adoption Request Approved for Pet: " + request.adoptedPet.getPetId());
         request.adopter.requestAdoption(request.adoptedPet); //for adopter class
-        //removing the accepted pet from the pets list
-       // allPets.remove(request.adoptedPet);
-      // Shelter sh= request.adoptedPet.getShelter(request.adoptedPet);
-       request.adoptedPet.getShelter(request.adoptedPet).getPets().remove(request.adoptedPet);
+        request.adoptedPet.getShelter(request.adoptedPet).getPets().remove(request.adoptedPet);
 
-//        for(AdoptionRequest req1:requests){
-//            if(request.adoptedPet.getPetId()==req1.adoptedPet.getPetId()){
-//                requests.remove(req1);
-//                break;
-//            }
-//        }
+        request.getAdopter().adoptionHistory.add(request);
 
-     List<AdoptionRequest>duplicatedReq= requests.stream().filter(request1 -> request1.adoptedPet.getPetId()==request.adoptedPet.getPetId()&&!request1.getStatus().equals(AdoptionStatus.APPROVED)).toList();
+
+     List<AdoptionRequest>duplicatedReq= requests.stream().filter(request1 -> request1.adoptedPet.getPetId()==request.adoptedPet.getPetId() && !request1.getStatus().equals(AdoptionStatus.APPROVED)).toList();
      requests.removeAll(duplicatedReq);
 
 

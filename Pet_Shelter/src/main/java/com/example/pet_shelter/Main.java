@@ -57,12 +57,12 @@ public class Main extends Application {
         WriteAllData();
     }
 
-    public static void ReadAllData() {
+    public static void ReadAllData() throws IOException {
         currentUsers = User.readData();
         allShelters = Shelter.readData();
         requests=AdoptionRequest.readData();
-        AssignPetsToAdopters();
         AssignRequestsToAdopters();
+        AssignPetsToAdopters();
 
         for(Shelter shelter : allShelters)
         {

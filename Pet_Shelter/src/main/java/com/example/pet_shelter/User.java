@@ -125,7 +125,7 @@ public  abstract class User {
     }
 
     // Generic function to read user data from JSON file
-    public static List<Adopter> readData() {
+    public static List<Adopter> readData() throws IOException {
         List<Adopter> users = new ArrayList<>();
         try {
             // Specify the file path
@@ -238,6 +238,14 @@ public  abstract class User {
             System.out.println("Breed: " + pet.getBreed());
         }
     }
+
+
+    public abstract ArrayList<Pet> getCurrentPets();
+    public abstract int getNumOfadoptedPets();
+    public abstract ArrayList<AdoptionRequest> getAdoptionHistory();
+
+
+
 
     public ContactInformation getContactInfo(){return contactInfo;}
 }
