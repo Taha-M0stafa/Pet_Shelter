@@ -1,13 +1,14 @@
 package com.example.pet_shelter;
 
 import com.example.Exceptions.AlreadyFoundException;
+import org.controlsfx.control.Notifications;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.io.FileWriter;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,6 +92,15 @@ public  abstract class User {
                 {
                     loggedInUser = new AdminUser(user);
                 }
+                if(loggedInUser instanceof Adopter){
+
+                        // Safely downcast to Adopter
+                        Adopter adopter = (Adopter) loggedInUser;
+                        if(adopter.getNumberOfCurrentPetsForNotification()<adopter.numOfadoptedPets){
+                            Notifications.create().title("Congrats on your pet!").text("your request is approved").showInformation();
+
+                        }
+                }
                 return true;
             }
         }
@@ -115,11 +125,11 @@ public  abstract class User {
     }
 
     // Generic function to read user data from JSON file
-    public static List<Adopter> readData() {
+    public static List<Adopter> readData() throws IOException {
         List<Adopter> users = new ArrayList<>();
         try {
             // Specify the file path
-            Path path = Path.of("users.json");
+            Path path = Path.of("Pet_Shelter/users.json");
             byte[] bytes = Files.readAllBytes(path);
             String jsonString = new String(bytes);
             JSONArray jsonArray = new JSONArray(jsonString);
@@ -135,8 +145,8 @@ public  abstract class User {
                         obj.getString("user_email"),
                         obj.getInt("age"),
                         obj.getString("gender"),
-                        obj.getInt("phoneNum"), obj.getString("address")
-
+                        obj.getInt("phoneNum"),
+                        obj.getString("address")
                 );
                 users.add(adopter);
             }
@@ -229,5 +239,14 @@ public  abstract class User {
         }
     }
 
+
+    public abstract ArrayList<Pet> getCurrentPets();
+    public abstract int getNumOfadoptedPets();
+    public abstract ArrayList<AdoptionRequest> getAdoptionHistory();
+
+
+
+
     public ContactInformation getContactInfo(){return contactInfo;}
 }
+

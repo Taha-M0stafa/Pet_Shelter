@@ -3,6 +3,7 @@ package com.example.pet_shelter;
 import java.util.ArrayList;
 
 public class Adopter extends User {
+
     public int numOfadoptedPets;
     public ArrayList<AdoptionRequest>adoptionHistory;
     public ArrayList<Pet>currentPets;
@@ -16,7 +17,7 @@ public class Adopter extends User {
 
     public Adopter(User user)
     {
-        super(user.getId(), user.getUserName(), user.getUserPassword(), user.getUserRole(), user.getUserEmail(), user.getAge(), user.getGender(), user.getContactInfo());
+        this(user.getId(), user.getUserName(), user.getUserPassword(), user.getUserRole(), user.getUserEmail(), user.getAge(), user.getGender(), user.getContactInfo().getPhoneNumber(), user.getContactInfo().getAddress());
     }
 
     public ArrayList<AdoptionRequest> getAdoptionHistory() {
@@ -33,7 +34,30 @@ public class Adopter extends User {
             currentPets.add(pet);
     }
 
+    public int getNumOfadoptedPets() {
+        return numOfadoptedPets;
+    }
 
+    public void setNumOfadoptedPets(int numOfadoptedPets) {
+        this.numOfadoptedPets = numOfadoptedPets;
+    }
+
+    public void setAdoptionHistory(ArrayList<AdoptionRequest> adoptionHistory) {
+        this.adoptionHistory = adoptionHistory;
+    }
+
+    public ArrayList<Pet> getCurrentPets() {
+        return currentPets;
+    }
+
+    public void setCurrentPets(ArrayList<Pet> currentPets) {
+        this.currentPets = currentPets;
+    }
+
+    private int numberOfCurrentPetsForNotification=numOfadoptedPets;
+    public int getNumberOfCurrentPetsForNotification() {
+        return numberOfCurrentPetsForNotification;
+    }
 
 }
 

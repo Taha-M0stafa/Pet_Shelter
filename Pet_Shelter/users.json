@@ -32,8 +32,73 @@
         "address": "home",
         "gender": "female",
         "user_name": "lilac",
-        "adoptionHistory": [],
-        "currentPets": [],
+        "adoptionHistory": [
+            {
+                "adoption_status": "APPROVED",
+                "adoption_Date": "2024-12-21",
+                "adoptionId": 2,
+                "adoptedPet": {
+                    "petId": 1,
+                    "species": "Dog",
+                    "healthStatus": "fgh",
+                    "name": "hndfg",
+                    "breed": "dhfg",
+                    "age": 5
+                }
+            },
+            {
+                "adoption_status": "APPROVED",
+                "adoption_Date": "2024-12-21",
+                "adoptionId": 2,
+                "adoptedPet": {
+                    "petId": 1,
+                    "species": "Dog",
+                    "healthStatus": "gfsd",
+                    "name": "gfsdgfds",
+                    "breed": "gfdsg",
+                    "age": 532
+                }
+            },
+            {
+                "adoption_status": "APPROVED",
+                "adoption_Date": "2024-12-21",
+                "adoptionId": 1,
+                "adoptedPet": {
+                    "petId": 1,
+                    "species": "Dog",
+                    "healthStatus": "sdhgsdhsd",
+                    "name": "hgsdfhgsfd",
+                    "breed": "hgfsdhgf",
+                    "age": 543
+                }
+            }
+        ],
+        "currentPets": [
+            {
+                "petId": 1,
+                "species": "Dog",
+                "healthStatus": "fgh",
+                "name": "hndfg",
+                "breed": "dhfg",
+                "age": 5
+            },
+            {
+                "petId": 1,
+                "species": "Dog",
+                "healthStatus": "gfsd",
+                "name": "gfsdgfds",
+                "breed": "gfdsg",
+                "age": 532
+            },
+            {
+                "petId": 1,
+                "species": "Dog",
+                "healthStatus": "sdhgsdhsd",
+                "name": "hgsdfhgsfd",
+                "breed": "hgfsdhgf",
+                "age": 543
+            }
+        ],
         "phoneNum": 123,
         "id": 3,
         "age": 18
@@ -45,177 +110,7 @@
         "address": "haram",
         "gender": "male",
         "user_name": "7amada",
-        "adoptionHistory": [
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 2,
-                    "species": "Cat",
-                    "healthStatus": "healthy",
-                    "name": "Catter",
-                    "breed": "Cat",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 1,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Doggo",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "APPROVED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 2,
-                    "species": "Cat",
-                    "healthStatus": "healthy",
-                    "name": "Catter",
-                    "breed": "Cat",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 1,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Doggo",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 0,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Doggo",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-11",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 1,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Doggo",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-30",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 1,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Doggo",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-30",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            }
-        ],
+        "adoptionHistory": [],
         "currentPets": [{
             "petId": 2,
             "species": "Cat",
@@ -235,60 +130,7 @@
         "address": "madinty",
         "gender": "female",
         "user_name": "molan",
-        "adoptionHistory": [
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 2,
-                    "species": "Cat",
-                    "healthStatus": "healthy",
-                    "name": "Catter",
-                    "breed": "Cat",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 2,
-                    "species": "Cat",
-                    "healthStatus": "healthy",
-                    "name": "Catter",
-                    "breed": "Cat",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-20",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            }
-        ],
+        "adoptionHistory": [],
         "currentPets": [],
         "phoneNum": 18373776,
         "id": 99,
@@ -301,34 +143,7 @@
         "address": "shbeen",
         "gender": "female",
         "user_name": "smsm",
-        "adoptionHistory": [
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-11",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 3,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Durge",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            },
-            {
-                "adoption_status": "PENDED",
-                "adoption_Date": "2024-12-11",
-                "adoptionId": 1,
-                "adoptedPet": {
-                    "petId": 0,
-                    "species": "Dog",
-                    "healthStatus": "Healthy",
-                    "name": "Doggo",
-                    "breed": "Dog",
-                    "age": 4
-                }
-            }
-        ],
+        "adoptionHistory": [],
         "currentPets": [],
         "phoneNum": 12363736,
         "id": 124,
