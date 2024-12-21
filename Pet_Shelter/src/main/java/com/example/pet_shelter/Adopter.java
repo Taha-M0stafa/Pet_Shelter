@@ -35,6 +35,11 @@ public class Adopter extends User {
 
 
 
+    private int numberOfCurrentPetsForNotification=numOfadoptedPets;
+    public int getNumberOfCurrentPetsForNotification() {
+        return numberOfCurrentPetsForNotification;
+    }
+
 }
 
 
