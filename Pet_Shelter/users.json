@@ -32,73 +32,8 @@
         "address": "home",
         "gender": "female",
         "user_name": "lilac",
-        "adoptionHistory": [
-            {
-                "adoption_status": "APPROVED",
-                "adoption_Date": "2024-12-21",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 1,
-                    "species": "Dog",
-                    "healthStatus": "fgh",
-                    "name": "hndfg",
-                    "breed": "dhfg",
-                    "age": 5
-                }
-            },
-            {
-                "adoption_status": "APPROVED",
-                "adoption_Date": "2024-12-21",
-                "adoptionId": 2,
-                "adoptedPet": {
-                    "petId": 1,
-                    "species": "Dog",
-                    "healthStatus": "gfsd",
-                    "name": "gfsdgfds",
-                    "breed": "gfdsg",
-                    "age": 532
-                }
-            },
-            {
-                "adoption_status": "APPROVED",
-                "adoption_Date": "2024-12-21",
-                "adoptionId": 1,
-                "adoptedPet": {
-                    "petId": 1,
-                    "species": "Dog",
-                    "healthStatus": "sdhgsdhsd",
-                    "name": "hgsdfhgsfd",
-                    "breed": "hgfsdhgf",
-                    "age": 543
-                }
-            }
-        ],
-        "currentPets": [
-            {
-                "petId": 1,
-                "species": "Dog",
-                "healthStatus": "fgh",
-                "name": "hndfg",
-                "breed": "dhfg",
-                "age": 5
-            },
-            {
-                "petId": 1,
-                "species": "Dog",
-                "healthStatus": "gfsd",
-                "name": "gfsdgfds",
-                "breed": "gfdsg",
-                "age": 532
-            },
-            {
-                "petId": 1,
-                "species": "Dog",
-                "healthStatus": "sdhgsdhsd",
-                "name": "hgsdfhgsfd",
-                "breed": "hgfsdhgf",
-                "age": 543
-            }
-        ],
+        "adoptionHistory": [],
+        "currentPets": [],
         "phoneNum": 123,
         "id": 3,
         "age": 18
@@ -111,14 +46,7 @@
         "gender": "male",
         "user_name": "7amada",
         "adoptionHistory": [],
-        "currentPets": [{
-            "petId": 2,
-            "species": "Cat",
-            "healthStatus": "healthy",
-            "name": "Catter",
-            "breed": "Cat",
-            "age": 4
-        }],
+        "currentPets": [],
         "phoneNum": 120,
         "id": 232,
         "age": 22

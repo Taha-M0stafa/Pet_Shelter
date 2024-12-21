@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ProgramStage">
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GUI.ProgramStage">
    <children>
       <HBox fx:id="swapHBox" prefHeight="116.0" prefWidth="1000.0" style="-fx-background-color: #d9d9d9;">
          <children>
@@ -75,10 +68,22 @@
 
          </children>
       </HBox>
-      <AnchorPane fx:id="leftAnchorPane" layoutX="566.0" layoutY="116.0" maxHeight="1080.0" maxWidth="1920.0" prefHeight="883.0" prefWidth="434.0" style="-fx-background-color: #FEDCAE;" visible="false">
+      <AnchorPane fx:id="leftAnchorPane" layoutX="566.0" layoutY="116.0" maxHeight="1080.0" maxWidth="1920.0" prefHeight="883.0" prefWidth="434.0" style="-fx-background-color: #FEDCAE;">
          <children>
+
             <VBox layoutX="123.0" layoutY="315.0" prefHeight="276.0" prefWidth="247.0">
                <children>
+                  <TextField fx:id="searchField" promptText="Search..." stylesheets="@../com/example/pet_shelter/search.css" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="searchButton" onAction="#onSearch" stylesheets="@../com/example/pet_shelter/search.css" text="Search" />
+                  <ComboBox fx:id="searchCriteriaComboBox">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Name" />
+                           <String fx:value="Age" />
+                           <String fx:value="Breed" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
                   <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" style="-fx-border-color: black; -fx-border-width: 1;" text="Name: ">
                      <font>
                         <Font size="16.0" />

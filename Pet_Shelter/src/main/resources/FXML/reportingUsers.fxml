@@ -38,14 +38,12 @@
                 </BarChart>
                 <BarChart fx:id="MostAdoptedTimesNumRequest" title="Adoption Requests Over Time">
                     <xAxis>
-                        <NumberAxis label="Date"/>
+                        <CategoryAxis label="Date"/>
                     </xAxis>
                     <yAxis>
                         <NumberAxis label="Number of Requests" />
                     </yAxis>
                 </BarChart>
-
-
             </VBox>
         </ScrollPane>
     </center>

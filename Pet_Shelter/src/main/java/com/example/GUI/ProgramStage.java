@@ -1,5 +1,6 @@
 package com.example.GUI;
 
+import com.example.Exceptions.AlreadyFoundException;
 import com.example.pet_shelter.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -98,6 +99,11 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
     @FXML
     private HBox adminHBox;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private ComboBox searchCriteriaComboBox;
+
 
 
     //List of nodes to swap betweeen scenes
@@ -120,11 +126,46 @@ public class ProgramStage extends AnchorPane implements Initializable {
         System.out.println("i'm here");
     }
 
+    @FXML
+    void onSearch(ActionEvent event) {
+
+        System.out.println("i'm here wallahy");
+        String searchKey = searchField.getText().trim();
+        String selectedCriteria = (String) searchCriteriaComboBox.getValue();
+
+
+        if (searchKey.isEmpty() || selectedCriteria == null) {
+            searchPetPosts(chosenShelter.getPets());
+            throw new AlreadyFoundException("Help me with key i'm poor ;0");
+        }
+
+        ArrayList<Pet> searchedPets = new ArrayList<>();
+        switch (selectedCriteria) {
+            case "Name":
+                searchedPets = AdvancedSearch.SearchUsingName(chosenShelter.getPets(), searchKey);
+                break;
+            case "Age":
+                try {
+                    int age = Integer.parseInt(searchKey); //convert
+                    searchedPets = AdvancedSearch.SearchUsingAge(chosenShelter.getPets(), age);
+                } catch (NumberFormatException e) {
+                    searchPetPosts(new ArrayList<Pet>()); // no pets if age is invalid
+                    return;
+                }
+                break;
+            case "Breed":
+                searchedPets = AdvancedSearch.SearchUsingBreed(chosenShelter.getPets(), searchKey);
+                break;
+        }
+
+        searchPetPosts(searchedPets);
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        showPetPosts(chosenShelter.getPets());
         //Store all scene nodes in their respective arrayLists.
         adoptNodes.add(adoptVBox);
         adoptNodes.add(leftAnchorPane);
@@ -138,7 +179,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
         adoptNodes.forEach(child -> {child.setVisible(true);});
 
         mainAnchorPane.getChildren().addAll(adoptNodes);
-        showPetPosts();
+        showPetPosts(chosenShelter.getPets());
 
         //Remove Admin button if the user is not an admin
 
@@ -239,9 +280,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
     @FXML
     void onAdopt(ActionEvent event) {
         currentMenu = 0;
-        showPetPosts();
+        showPetPosts(chosenShelter.getPets());
         ChooseMenu();
-
         System.out.println("I was clicked but not swapped");
     }
 
@@ -315,7 +355,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
     private void addNewStage(String fxml, String title) throws IOException {
         Stage stage = new Stage();
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.resizableProperty().setValue(Boolean.TRUE);
         stage.sizeToScene();
         FXMLLoader fxmlLoader = new FXMLLoader(ProgramStage.class.getResource(fxml));
         Scene scene = new Scene(fxmlLoader.load());
@@ -327,10 +367,9 @@ public class ProgramStage extends AnchorPane implements Initializable {
         stage.showAndWait();
     }
 
-    private void showPetPosts()
+    private void showPetPosts(ArrayList<Pet> pets)
     {
         //Add all pet posts to the main page on Start-up
-
         int column = 0;
         int row = 1;
 
@@ -351,6 +390,51 @@ public class ProgramStage extends AnchorPane implements Initializable {
                 AnchorPane anchorPostPane = fxmlLoader.load();
                 petPostController petController = fxmlLoader.getController();
                 petController.setPostData(chosenShelter.getPets().get(i), PetListener);
+                if (column == 2)
+                {
+                    row += 1;
+                    column = 0;
+                }
+                GridPane.setMargin(anchorPostPane, new Insets(10, 10 , 10, 10 ));
+                gridPane.add(anchorPostPane, column++, row);
+                gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                gridPane.setMaxHeight(Region.USE_PREF_SIZE);
+                gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                gridPane.setMaxWidth(Region.USE_PREF_SIZE);
+            }
+        } catch (IOException e) {
+            System.out.println("File is gone lmao");
+        } catch (NullPointerException ne) {
+            System.out.println("Couldn't find the file");
+        }
+    }
+
+    private void searchPetPosts(ArrayList<Pet> pets)
+    {
+        gridPane.getChildren().clear();
+        //Add all pet posts to the main page on Start-up
+        int column = 0;
+        int row = 1;
+
+        if(!pets.isEmpty())
+        {
+            PetListener = new petListener() {
+                @Override
+                public void onClickPet(Pet pet) {
+                    setPetData(pet);
+                    chosenPet=pet;
+                }
+            };
+        }
+
+        try {
+            for (int i = 0; i < pets.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/pet-post.fxml"));
+                AnchorPane anchorPostPane = fxmlLoader.load();
+                petPostController petController = fxmlLoader.getController();
+                petController.setPostData(pets.get(i), PetListener);
                 if (column == 2)
                 {
                     row += 1;

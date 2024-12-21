@@ -13,7 +13,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Pet_Shelter" options="--add-exports java.base/jdk.internal.icu.text=com.example.pet_shelter,com.example.pet_shelter" />
+      <module name="Pet_Shelter" options="" />
     </option>
   </component>
 </project>

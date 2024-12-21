@@ -1,0 +1,65 @@
+[
+    {
+        "pets": [
+            {
+                "petID": 1,
+                "species": "Dog",
+                "healthStatus": "healty",
+                "name": "alexa",
+                "breed": "alexaaaaa",
+                "age": 4
+            },
+            {
+                "petID": 2,
+                "species": "Dog",
+                "healthStatus": "good",
+                "name": "petsy",
+                "breed": "Dofd3",
+                "age": 2
+            },
+            {
+                "petID": 3,
+                "species": "Cat",
+                "healthStatus": "Avarege",
+                "name": "Safrota",
+                "breed": "Cat",
+                "age": 1
+            }
+        ],
+        "shelterContactNumber": 1234,
+        "shelterEmail": "Forreal@real.com",
+        "shelterLocation": "Forreal",
+        "shelterName": "Fur real",
+        "shelterID": "3"
+    },
+    {
+        "pets": [{
+            "petID": 3,
+            "species": "Cat",
+            "healthStatus": "Very good",
+            "name": "Kitler",
+            "breed": "Cat",
+            "age": 5
+        }],
+        "shelterContactNumber": 1110630831,
+        "shelterEmail": "FFH@gmail.com",
+        "shelterLocation": "El @atamya",
+        "shelterName": "Furry Friends Haven",
+        "shelterID": "1"
+    },
+    {
+        "pets": [{
+            "petID": 2,
+            "species": "Cat",
+            "healthStatus": "Pregnant",
+            "name": "smsma",
+            "breed": "Cat",
+            "age": 1
+        }],
+        "shelterContactNumber": 312312,
+        "shelterEmail": "HPL@gmail.com",
+        "shelterLocation": "Sohag",
+        "shelterName": "Happy Paws Legion",
+        "shelterID": "2"
+    }
+]
