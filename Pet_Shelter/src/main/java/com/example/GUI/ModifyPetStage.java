@@ -13,7 +13,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.controlsfx.control.Notifications;
 
+import javax.management.Notification;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -45,8 +47,7 @@ public class ModifyPetStage implements Initializable {
     private ListView<Pet> petListView;
     @FXML
     private ComboBox<Shelter> ShelterBox;
-
-
+   public Notifications notifications;
 
     @FXML
     void onAddPet(ActionEvent event) {
@@ -111,8 +112,6 @@ public class ModifyPetStage implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         petSpeciesBox.getItems().addAll("Cat", "Dog");
-        petSpeciesBox.setValue("Breed");
-
         for(Shelter shelter : Main.allShelters)
         {
             petListView.getItems().addAll(shelter.getPets());

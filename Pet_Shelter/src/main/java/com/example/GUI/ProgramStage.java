@@ -1,9 +1,6 @@
 package com.example.GUI;
 
-import com.example.pet_shelter.AdoptionRequest;
-import com.example.pet_shelter.Main;
-import com.example.pet_shelter.Pet;
-import com.example.pet_shelter.Shelter;
+import com.example.pet_shelter.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +8,12 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +21,13 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ProgramStage extends AnchorPane implements Initializable {
+
+    public ListView<Pet> currentPets;
+    public TextField phoneNumField;
+    public TextField emailField;
+    public TextField userNameField;
+
+    public AnchorPane ProfileNodes;
 
     @FXML
     private ImageView homeView;
@@ -143,6 +147,37 @@ public class ProgramStage extends AnchorPane implements Initializable {
         }
 
 
+
+
+        //Set the CurrentPets list view factory
+        currentPets.setCellFactory(new Callback<ListView<Pet>, ListCell<Pet>>() {
+            @Override
+            public ListCell<Pet> call(ListView listView) {
+                return new ListCell<Pet>(){
+                    protected void updateItem(Pet pet, boolean empty) {
+                        super.updateItem(pet, empty);
+                        if(!empty)
+                        {
+                            AnchorPane anchorPane;
+
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/pet-post.fxml"));
+                            try {
+                                anchorPane = loader.load();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            petPostController controller = loader.getController();
+
+                            anchorPane.setPrefWidth(currentPets.getWidth());
+                            anchorPane.setPrefHeight(USE_COMPUTED_SIZE);
+                            controller.setPostData(pet, null);
+                            setGraphic(anchorPane);
+                        }
+                    }
+                };
+            }
+        });
+
     }//End of logic;
 
 
@@ -156,7 +191,12 @@ public class ProgramStage extends AnchorPane implements Initializable {
         petImage.setImage(pet.getPetImage());
      }
 
-
+    public void setUserData(User user)
+    {
+        userNameField.setText(user.getUserName());
+        emailField.setText(user.getUserEmail());
+        phoneNumField.setText(String.valueOf(user.getContactInfo().getPhoneNumber()));
+    }
 
     public void ChooseMenu() {
 
@@ -175,7 +215,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
             }
             // Add nodes for profile Menu
             case 1: {
-
+                mainAnchorPane.getChildren().addAll(ProfileNodes);
                 break;
             }
             // Add nodes for Adopt Menu
@@ -184,7 +224,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
                 break;
             }
-            // Add nodes for Requests menu
+            // Add nodes for Admin menu
             case 3: {
                 mainAnchorPane.getChildren().add(adminHBox);
                 break;
@@ -207,13 +247,21 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
     @FXML
     void onHistory(ActionEvent event) {
-        currentMenu = 1;
-        ChooseMenu();
     }
 
     @FXML
     void onProfile(ActionEvent event) {
-        currentMenu = 2;
+        if(User.loggedInUser.getCurrentPets() == null)
+        {}
+        else if( !User.loggedInUser.getCurrentPets().isEmpty())
+        {
+
+            currentPets.getItems().clear();
+            currentPets.getItems().addAll(User.loggedInUser.getCurrentPets());
+            currentPets.refresh();
+        }
+        setUserData(User.loggedInUser);
+        currentMenu = 1;
         ChooseMenu();
     }
 
@@ -227,8 +275,14 @@ public class ProgramStage extends AnchorPane implements Initializable {
     @FXML
     void onAdoptPet(ActionEvent event)
     {
-        AdoptionRequest.adopt(chosenPet);
 
+        AdoptionRequest.adopt(chosenPet);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Your request is under review");
+        alert.setTitle("Error");
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.setAlwaysOnTop(true);
+        stage.toFront();
+        stage.showAndWait();
     }
 
     @FXML
@@ -333,6 +387,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
     }
 
 
+    public void onUpdateData(ActionEvent actionEvent) {
+    }
 }
 
 

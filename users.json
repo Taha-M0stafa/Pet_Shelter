@@ -32,8 +32,73 @@
         "address": "home",
         "gender": "female",
         "user_name": "lilac",
-        "adoptionHistory": [],
-        "currentPets": [],
+        "adoptionHistory": [
+            {
+                "adoption_status": "APPROVED",
+                "adoption_Date": "2024-12-21",
+                "adoptionId": 2,
+                "adoptedPet": {
+                    "petId": 1,
+                    "species": "Dog",
+                    "healthStatus": "fgh",
+                    "name": "hndfg",
+                    "breed": "dhfg",
+                    "age": 5
+                }
+            },
+            {
+                "adoption_status": "APPROVED",
+                "adoption_Date": "2024-12-21",
+                "adoptionId": 2,
+                "adoptedPet": {
+                    "petId": 1,
+                    "species": "Dog",
+                    "healthStatus": "gfsd",
+                    "name": "gfsdgfds",
+                    "breed": "gfdsg",
+                    "age": 532
+                }
+            },
+            {
+                "adoption_status": "APPROVED",
+                "adoption_Date": "2024-12-21",
+                "adoptionId": 1,
+                "adoptedPet": {
+                    "petId": 1,
+                    "species": "Dog",
+                    "healthStatus": "sdhgsdhsd",
+                    "name": "hgsdfhgsfd",
+                    "breed": "hgfsdhgf",
+                    "age": 543
+                }
+            }
+        ],
+        "currentPets": [
+            {
+                "petId": 1,
+                "species": "Dog",
+                "healthStatus": "fgh",
+                "name": "hndfg",
+                "breed": "dhfg",
+                "age": 5
+            },
+            {
+                "petId": 1,
+                "species": "Dog",
+                "healthStatus": "gfsd",
+                "name": "gfsdgfds",
+                "breed": "gfdsg",
+                "age": 532
+            },
+            {
+                "petId": 1,
+                "species": "Dog",
+                "healthStatus": "sdhgsdhsd",
+                "name": "hgsdfhgsfd",
+                "breed": "hgfsdhgf",
+                "age": 543
+            }
+        ],
         "phoneNum": 123,
         "id": 3,
         "age": 18

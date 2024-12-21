@@ -3,6 +3,8 @@ package com.example.GUI;
 import com.example.pet_shelter.Adopter;
 import com.example.pet_shelter.AdoptionRequest;
 import com.example.pet_shelter.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,17 +21,21 @@ import java.util.ResourceBundle;
 public class RequestStage implements Initializable {
 
 
+    public ObservableList<AdoptionRequest> requestObservList = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        requestObservList.addAll(Main.requests);
+        reqlist.setItems(requestObservList);
         UpdateCellFactory();
+
     }
 
     @FXML
-    public ListView <AdoptionRequest>reqlist;
+    public ListView <AdoptionRequest> reqlist;
 
     public void UpdateCellFactory(){
-        reqlist.getItems().addAll(Main.requests);
+
         reqlist.setCellFactory(new Callback<ListView<AdoptionRequest>, ListCell<AdoptionRequest>>() {
             @Override
             public ListCell<AdoptionRequest> call(ListView<AdoptionRequest> reqlist) {
