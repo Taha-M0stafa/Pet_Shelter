@@ -3,10 +3,10 @@
         "pets": [{
             "petID": 1,
             "species": "Dog",
-            "healthStatus": "healty",
-            "name": "alexa",
-            "breed": "alexaaaaa",
-            "age": 4
+            "healthStatus": "gfdsgsdf",
+            "name": "gfsdgdfs",
+            "breed": "gfdsgfsd",
+            "age": 5
         }],
         "shelterContactNumber": 1234,
         "shelterEmail": "Forreal@real.com",

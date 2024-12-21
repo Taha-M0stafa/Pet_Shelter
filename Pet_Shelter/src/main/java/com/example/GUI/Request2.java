@@ -5,6 +5,7 @@ import com.example.pet_shelter.AdoptionRequest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class Request2 {
     @FXML
     private Label Date;
 
+    public Button AcceptButton, RejectButton;
 
     @FXML
     private Label Id;
@@ -67,29 +69,6 @@ void setCurrentRequest(AdoptionRequest r){
     }
 
 
-    @FXML
-    void OnAccept(ActionEvent event) {
-        if(currentRequest!=null) {
-
-            AdoptionRequest.approveRequest(currentRequest);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Request2.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            RequestStage requestStage = new RequestStage();
-        }
-
-    }
-
-    @FXML
-    void OnReject(ActionEvent event) {
-        if(currentRequest!=null) {
-            System.out.println("I am not null");
-            AdoptionRequest.rejectRequest(currentRequest);
-        }
-    }
 
 
 

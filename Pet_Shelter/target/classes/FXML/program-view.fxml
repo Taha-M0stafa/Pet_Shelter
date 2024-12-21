@@ -33,22 +33,6 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="requestButton" layoutX="210.0" layoutY="50.0" mnemonicParsing="false" onAction="#onRequest" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Requests">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="60.0" top="40.0" />
-               </HBox.margin>
-            </Button>
-            <Button layoutX="303.0" layoutY="50.0" mnemonicParsing="false" onAction="#onHistory" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="History">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="60.0" top="40.0" />
-               </HBox.margin>
-            </Button>
             <Button fx:id="profileButton" layoutX="377.0" layoutY="10.0" mnemonicParsing="false" onAction="#onProfile" stylesheets="@../com/example/pet_shelter/LoginButton.css" text="Profile">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -229,19 +213,43 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="461.0" prefWidth="1000.0">
+                  <HBox prefHeight="353.0" prefWidth="1257.0">
                      <children>
-                        <ScrollPane prefHeight="455.0" prefWidth="200.0">
+                        <Label text="History">
+                           <HBox.margin>
+                              <Insets left="600.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane prefHeight="353.0" prefWidth="347.0">
                            <content>
-                              <ListView fx:id="currentPets" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="196.0" />
+                              <ListView fx:id="historyListView" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="331.0" />
                            </content>
                            <HBox.margin>
-                              <Insets left="800.0" />
+                              <Insets />
                            </HBox.margin>
                         </ScrollPane>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <HBox prefHeight="347.0" prefWidth="1000.0">
+                     <children>
+                        <ScrollPane prefHeight="353.0" prefWidth="304.0">
+                           <content>
+                              <ListView fx:id="currentPets" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="343.0" prefWidth="285.0" />
+                           </content>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ScrollPane>
+                        <Label text="Current Pets">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>

@@ -77,12 +77,12 @@
                         <Insets left="60.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" onAction="#OnAccept" text="Accept">
+                  <Button fx:id="AcceptButton" mnemonicParsing="false" text="Accept">
                      <VBox.margin>
                         <Insets left="55.0" right="5.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#OnReject" text="Reject">
+                  <Button fx:id="RejectButton" mnemonicParsing="false" text="Reject">
                      <VBox.margin>
                         <Insets left="55.0" top="10.0" />
                      </VBox.margin>
