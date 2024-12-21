@@ -26,12 +26,8 @@ public class Main extends Application {
 
     public void start(Stage stage) throws IOException {
         stage.resizableProperty().setValue(Boolean.TRUE);
-
-
         stage.setWidth(1000);
         stage.setHeight(1000);
-
-
         changeStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/FXML/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -91,24 +87,6 @@ Pet pet = request.adoptedPet;
         User.writeData(currentUsers);
         Pet.writeData(allPets);
         AdoptionRequest.writeData(requests);
-
-        for (Adopter user : currentUsers) {
-            System.out.println(user.getUserName());
-            System.out.println("---------------");
-            for (Pet pet : user.currentPets) {
-                System.out.println(pet.toString());
-            }
-            System.out.println();
-        }
-
-        for (Adopter user : currentUsers) {
-            System.out.println(user.getUserName());
-            System.out.println("---------------");
-            for (AdoptionRequest request : user.adoptionHistory) {
-                System.out.println(request.toString());
-            }
-            System.out.println();
-        }
     }
 
 }

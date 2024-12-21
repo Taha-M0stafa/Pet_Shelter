@@ -1,7 +1,6 @@
 package com.example.GUI;
 
 
-import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,6 +37,8 @@ public class petPostController implements Initializable {
 
     public void setPostData(Pet pet, petListener PetListener)
     {
+
+
 
         this.PetListener = PetListener;
         this.pet = pet;

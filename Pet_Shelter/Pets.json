@@ -1,6 +1,6 @@
 [
     {
-        "ImgSource": "file:/C:/Users/asmaa/IdeaProjects/Pet_Shelter/Pet_Shelter/Dog.png",
+        "ImgSource": "file:/C:/Users/asmaa/IdeaProjects/Pet_Shelter/Pet_Shelter/Pet_Shelter/src/main/resources/Photos/Dog.png",
         "species": "Dog",
         "healthStatus": "Healthy",
         "name": "Doggo",
@@ -9,7 +9,7 @@
         "age": 4
     },
     {
-        "ImgSource": "file:/C:/Users/asmaa/IdeaProjects/Pet_Shelter/Pet_Shelter/Dog.png",
+        "ImgSource": "file:/C:/Users/asmaa/IdeaProjects/Pet_Shelter/Pet_Shelter/Pet_Shelter/src/main/resources/Photos/Dog.png",
         "species": "Dog",
         "healthStatus": "Healthy",
         "name": "Doo",
@@ -18,7 +18,7 @@
         "age": 4
     },
     {
-        "ImgSource": "file:/C:/Users/asmaa/IdeaProjects/Pet_Shelter/Pet_Shelter/Dog.png",
+        "ImgSource": "file:/C:/Users/asmaa/IdeaProjects/Pet_Shelter/Pet_Shelter/Pet_Shelter/src/main/resources/Photos/Dog.png",
         "species": "Dog",
         "healthStatus": "Healthy",
         "name": "Doggo",
@@ -27,7 +27,7 @@
         "age": 4
     },
     {
-        "ImgSource": "file:/C:/Users/asmaa/IdeaProjects/Pet_Shelter/Pet_Shelter/Cat.png",
+        "ImgSource": "file:/C:/Users/asmaa/IdeaProjects/Pet_Shelter/Pet_Shelter/Pet_Shelter/src/main/resources/Photos/Cat.png",
         "species": "Cat",
         "healthStatus": "healthy",
         "name": "Catter",

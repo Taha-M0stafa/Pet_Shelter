@@ -8,8 +8,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -125,7 +123,7 @@ public class Pet {
             jsonArray.put(obj);
         }
         try (FileWriter writer = new FileWriter("Pets.json")) {
-            writer.write(jsonArray.toString());
+            writer.write(jsonArray.toString(4));
         } catch (IOException e) {
             System.out.println("Error writing data to file: " + e.getMessage());
         }

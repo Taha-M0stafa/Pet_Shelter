@@ -1,0 +1,31 @@
+
+.HBox {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1;
+}
+
+
+#searchField {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-padding: 5 10;
+    -fx-font-size: 14px;
+    -fx-pref-width: 250px;
+}
+
+#searchButton {
+    -fx-background-color: #9a33d5;
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-font-size: 14px;
+    -fx-padding: 5 15;
+}
+
+
+#searchButton:hover {
+    -fx-background-color: #9a33d5;
+}

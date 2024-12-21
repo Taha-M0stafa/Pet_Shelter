@@ -1,6 +1,7 @@
 package com.example.GUI;
 
 import com.example.pet_shelter.AdoptionRequest;
+import com.example.pet_shelter.AdvancedSearch;
 import com.example.pet_shelter.Main;
 import com.example.pet_shelter.Pet;
 import javafx.event.ActionEvent;
@@ -11,7 +12,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -85,8 +88,12 @@ public class ProgramStage extends AnchorPane implements Initializable {
     @FXML
     private HBox swapHBox;
     private petListener PetListener;
-
-
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Button searchButton;
+    @FXML
+    private ComboBox searchCriteriaComboBox;
 
 
     //Nodes used in the  Admin pane
@@ -109,6 +116,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
     }
 
+
+
     @FXML
     void onReporting() throws IOException{
         addNewStage("/FXML/reportingUsers.fxml", "Reporting");
@@ -116,10 +125,12 @@ public class ProgramStage extends AnchorPane implements Initializable {
     }
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        showPetPosts((ArrayList<Pet>) Main.allPets);
         //Store all scene nodes in their respective arrayLists.
         adoptNodes.add(adoptVBox);
         adoptNodes.add(leftAnchorPane);
@@ -153,6 +164,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
         speciesLabel.setText("Species: " + pet.getSpecies());
         petImage.setImage(pet.getPetImage());
      }
+
 
 
 
@@ -197,11 +209,47 @@ public class ProgramStage extends AnchorPane implements Initializable {
     @FXML
     void onAdopt(ActionEvent event) {
         currentMenu = 0;
-        showPetPosts();
+        showPetPosts(new ArrayList<Pet>());
         ChooseMenu();
 
         System.out.println("I was clicked but not swapped");
     }
+
+    @FXML
+    void onSearch(ActionEvent event) {
+
+        System.out.println("i'm here wallahy");
+        String searchKey = searchField.getText().trim();
+        String selectedCriteria = (String) searchCriteriaComboBox.getValue();
+
+
+        if (searchKey.isEmpty() || selectedCriteria == null) {
+            showPetPosts((ArrayList<Pet>) Main.allPets);
+            return;
+        }
+
+        ArrayList<Pet> searchedPets = new ArrayList<>();
+        switch (selectedCriteria) {
+            case "Name":
+                searchedPets = AdvancedSearch.SearchUsingName((ArrayList<Pet>) Main.allPets, searchKey);
+                break;
+            case "Age":
+                try {
+                    int age = Integer.parseInt(searchKey); //convert
+                    searchedPets = AdvancedSearch.SearchUsingAge((ArrayList<Pet>) Main.allPets, age);
+                } catch (NumberFormatException e) {
+                    showPetPosts(new ArrayList<Pet>()); // no pets if age is invalid
+                    return;
+                }
+                break;
+            case "Breed":
+                searchedPets = AdvancedSearch.SearchUsingBreed((ArrayList<Pet>) Main.allPets, searchKey);
+                break;
+        }
+
+        showPetPosts(searchedPets);
+    }
+
 
     @FXML
     void onHistory(ActionEvent event) {
@@ -255,7 +303,7 @@ public class ProgramStage extends AnchorPane implements Initializable {
 
     private void addNewStage(String fxml, String title) throws IOException {
         Stage stage = new Stage();
-        stage.resizableProperty().setValue(Boolean.FALSE);
+        stage.resizableProperty().setValue(Boolean.TRUE);
         stage.sizeToScene();
         FXMLLoader fxmlLoader = new FXMLLoader(ProgramStage.class.getResource(fxml));
         Scene scene = new Scene(fxmlLoader.load());
@@ -267,8 +315,9 @@ public class ProgramStage extends AnchorPane implements Initializable {
         stage.showAndWait();
     }
 
-    private void showPetPosts()
+    private void showPetPosts(ArrayList<Pet> pets)
     {
+        gridPane.getChildren().clear(); //intially to view search res
         //Add all pet posts to the main page on Start-up
 
         int column = 0;
@@ -310,6 +359,8 @@ public class ProgramStage extends AnchorPane implements Initializable {
         } catch (NullPointerException ne) {
             System.out.println("Couldn't find the file");
         }
+
+
     }
 
 

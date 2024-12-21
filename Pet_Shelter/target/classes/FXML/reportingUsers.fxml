@@ -1,38 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.GUI.reportingUsers"
             stylesheets="@../com/example/pet_shelter/reportingUsers.css"
-            prefHeight="600.0" prefWidth="800.0">
+            prefHeight="1000.0" prefWidth="1000.0">
 
     <top>
-        <Label text="User Demographics Report" styleClass="header-label" />
+        <Label text="Ur Fav Reports" styleClass="header-label" />
     </top>
 
     <center>
-        <VBox spacing="20.0" alignment="CENTER">
-            <PieChart fx:id="genderPieChart" title="Gender Distribution" />
-            <BarChart fx:id="ageBarChart" title="Age Distribution">
-                <xAxis>
-                    <CategoryAxis label="Age Groups" />
-                </xAxis>
-                <yAxis>
-                    <NumberAxis label="Number of Users" />
-                </yAxis>
-            </BarChart>
-            <FlowPane fx:id="tagCloudPane" hgap="10.0" vgap="10.0" />
-        </VBox>
+        <ScrollPane fitToWidth="true" fitToHeight="false">
+            <VBox spacing="20.0" alignment="CENTER">
+                <PieChart fx:id="genderPieChart" title="Gender Distribution" />
+                <BarChart fx:id="ageBarChart" title="Age Distribution">
+                    <xAxis>
+                        <CategoryAxis label="Age Groups" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Number of Users" />
+                    </yAxis>
+                </BarChart>
+                <FlowPane fx:id="tagCloudPane" hgap="10.0" vgap="10.0" /> <!-- for locations ya user-->
+                <BarChart fx:id="MostAdoptedBarChart" title="Most Adopted">
+                    <xAxis>
+                        <CategoryAxis label="Species" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Number Adoption" />
+                    </yAxis>
+                </BarChart>
+                <BarChart fx:id="MostAdoptedTimesNumRequest" title="Adoption Requests Over Time">
+                    <xAxis>
+                        <NumberAxis label="Date"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Number of Requests" />
+                    </yAxis>
+                </BarChart>
+
+
+            </VBox>
+        </ScrollPane>
     </center>
 
 </BorderPane>
+
 

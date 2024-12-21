@@ -1,7 +1,5 @@
 package com.example.pet_shelter;
 
-import com.example.pet_shelter.Pet;
-
 import java.util.ArrayList;
 
 public class AdvancedSearch {
@@ -41,9 +39,6 @@ public class AdvancedSearch {
         }
         return  searchedPets;
     }
-
-
-
 
 
 }

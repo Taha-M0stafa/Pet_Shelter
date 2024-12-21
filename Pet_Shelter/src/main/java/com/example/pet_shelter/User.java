@@ -3,11 +3,11 @@ package com.example.pet_shelter;
 import com.example.Exceptions.AlreadyFoundException;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,7 +83,7 @@ public  abstract class User {
     public static boolean login(String userName, String password) throws AlreadyFoundException {
 
 
-        for (User user : Main.currentUsers) {
+        for (Adopter user : Main.currentUsers) {
             if (user.getUserName().equals(userName) && user.getUserPassword().equals(password)) {
                 System.out.println("Login successful أهلا بيك");
                 loggedInUser = user;
@@ -119,7 +119,7 @@ public  abstract class User {
         List<Adopter> users = new ArrayList<>();
         try {
             // Specify the file path
-            Path path = Path.of("Pet_Shelter/users.json");
+            Path path = Path.of("users.json");
             byte[] bytes = Files.readAllBytes(path);
             String jsonString = new String(bytes);
             JSONArray jsonArray = new JSONArray(jsonString);
@@ -137,7 +137,8 @@ public  abstract class User {
                         obj.getString("gender"),
                         obj.getInt("phoneNum"), obj.getString("address")
 
-                ));
+                );
+                users.add(adopter);
             }
         } catch (IOException e) {
             System.out.println("No data file found. Creating a new one...");
