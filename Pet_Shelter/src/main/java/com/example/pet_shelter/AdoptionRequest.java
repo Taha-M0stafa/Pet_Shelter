@@ -61,7 +61,7 @@ public class AdoptionRequest {
     }
 
     //adoption request method
-    public static void adopt( Pet p) {
+    public static void adopt( Pet p) throws AlreadyFoundException{
         if (p == null) {
             System.out.println("Error: The pet cannot be null.");
             return;
@@ -74,7 +74,18 @@ public class AdoptionRequest {
         else {
             Next_ID = requests.getLast().adoptionId++;
         }
+
+
+
+
         AdoptionRequest newRequest = new AdoptionRequest(Next_ID, (Adopter) Adopter.loggedInUser,p,null,null);
+        for(AdoptionRequest r:requests){
+            if(newRequest.adoptedPet.getPetId()==r.adoptedPet.getPetId()&&newRequest.adopter.getId()==r.adopter.getId()){
+
+                throw new AlreadyFoundException("you already adopted this pet before." +
+                        " check ur history to know the status of ur request");
+            }
+        }
         requests.add(newRequest);
         System.out.println("your request have been submitted successfully ");// pop message in the GUI
     }
@@ -246,12 +257,3 @@ public class AdoptionRequest {
 }
 
 
-/*
-for the notification part we have 2 options or we can make both :
-in the 2 options we need to add a list as an attribute to the user class
-
-1. make a section for each user called notification and display there the notifications of the current user
-
-2. (preferred option) when the user is logged in if he has a notification so it appears as a pop message
-
- */

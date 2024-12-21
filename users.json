@@ -32,7 +32,19 @@
         "address": "home",
         "gender": "female",
         "user_name": "lilac",
-        "adoptionHistory": [],
+        "adoptionHistory": [{
+            "adoption_status": "PENDED",
+            "adoption_Date": "2024-12-21",
+            "adoptionId": 3,
+            "adoptedPet": {
+                "petId": 1,
+                "species": "Dog",
+                "healthStatus": "healty",
+                "name": "alexa",
+                "breed": "alexaaaaa",
+                "age": 4
+            }
+        }],
         "currentPets": [],
         "phoneNum": 123,
         "id": 3,
